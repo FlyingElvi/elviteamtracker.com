@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Elvi's Team Tracker</title>
+<meta name="description" content="Privacy Policy for Elvi's Team Tracker: exactly what the bot stores, why, where it lives, and how to have it deleted.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/logo-180.png">
+<meta property="og:title" content="Elvi's Team Tracker">
+<meta property="og:description" content="EA NHL Pro Clubs stats, posted in your Discord.">
+<meta property="og:image" content="https://elviteamtracker.com/assets/logo-512.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/">Overview</a>
+    <a href="/changelog/">What's new</a>
+    <a href="/terms/">Terms</a>
+    <a href="/privacy/" aria-current="page">Privacy</a>
+      <a href="https://discord.gg/xJgUDyUhtP">Support</a>
+  </div>
+</div></nav>
+
+<main><div class="wrap legal">
+
+<h1>Privacy Policy</h1>
+<p class="updated">Last updated: September 27, 2026</p>
+
+<div class="note">
+  <p><strong>The short version.</strong> The bot stores Discord <em>ids</em> — server, channel,
+  and your user id if you link yourself — plus public EA match data. It <strong>cannot read your
+  messages</strong>: it never requested that permission from Discord. Nothing is sold, shared,
+  or used for advertising, and there is no analytics on this website. Ask and your link is
+  deleted.</p>
+</div>
+
+<div class="toc">
+  <ol>
+    <li><a href="#who">Who is responsible</a></li>
+    <li><a href="#stored">What is stored</a></li>
+    <li><a href="#notstored">What is not stored</a></li>
+    <li><a href="#why">Why it is stored</a></li>
+    <li><a href="#ea">Data that comes from EA</a></li>
+    <li><a href="#sharing">Who can see it</a></li>
+    <li><a href="#where">Where it lives</a></li>
+    <li><a href="#retention">How long it is kept</a></li>
+    <li><a href="#removal">Getting your data removed</a></li>
+    <li><a href="#children">Children</a></li>
+    <li><a href="#site">This website</a></li>
+    <li><a href="#changes">Changes to this policy</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</div>
+
+<h2 id="who">1. Who is responsible</h2>
+<p>Elvi's Team Tracker is an independent personal project run by one individual, not a company.
+That person is the data controller for everything described here, and is reachable through the
+support server linked at the bottom of this page.</p>
+
+<h2 id="stored">2. What is stored</h2>
+<p>Field by field, this is everything the bot keeps.</p>
+
+<h3>About your Discord server</h3>
+<table class="cmds">
+  <thead><tr><th>Stored</th><th>When</th></tr></thead>
+  <tbody>
+    <tr><td>Server id and server name</td><td>When the bot is added.</td></tr>
+    <tr><td>Channel ids</td><td>The channels you told it to post in — scores, availability, tournaments.</td></tr>
+    <tr><td>Role ids</td><td>Only the roles you explicitly hand it: a manager role, a tournament sign-up role.</td></tr>
+    <tr><td>Message ids of its own posts</td><td>So it can edit a box score when the game is re-read, instead of posting it twice.</td></tr>
+    <tr><td>Which clubs the server follows, and how</td><td>The club, the channel, the emoji, and the match filter you chose.</td></tr>
+  </tbody>
+</table>
+
+<h3>About you, as a Discord user</h3>
+<table class="cmds">
+  <thead><tr><th>Stored</th><th>When</th></tr></thead>
+  <tbody>
+    <tr><td>Your Discord user id, linked to your in-game player id, platform and in-game name</td><td>Only when <strong>you</strong> run <code>/trackme</code>. Nothing links you to a gamertag until you do.</td></tr>
+    <tr><td>Your user id on an availability sign-up, a lineup, or a tournament sheet</td><td>When you click to answer one.</td></tr>
+    <tr><td>Your user id on a server roster used to gate optional features</td><td>Only on servers where those features are switched on.</td></tr>
+  </tbody>
+</table>
+<p>That's the whole list. The bot stores no Discord username, avatar, email address, IP address
+or payment information — it never receives them in the first place, and it has no accounts and
+no login.</p>
+
+<h3>About matches</h3>
+<table class="cmds">
+  <thead><tr><th>Stored</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Club id, platform, club name and club logo settings</td><td>For every club a server follows.</td></tr>
+    <tr><td>Match records — id, type, timestamp, the two clubs, goals, shots, result</td><td>Straight from EA.</td></tr>
+    <tr><td>Per-player match lines — in-game player id, in-game name, position, the statistics of that game, and a computed rating</td><td>This is EA's own public data. It exists whether or not the player has ever touched this bot, and whether or not they are on Discord at all.</td></tr>
+  </tbody>
+</table>
+
+<h2 id="notstored">3. What is not stored</h2>
+<ul>
+  <li><strong>Message content.</strong> The bot does not have Discord's Message Content intent.
+  It is technically incapable of reading what people write, in any channel, including ones it
+  can see.</li>
+  <li><strong>Direct messages.</strong> Never read, never stored.</li>
+  <li><strong>Voice.</strong> The bot never joins a voice channel.</li>
+  <li><strong>Your member list</strong>, beyond the roster described above on the servers that
+  use it. It is a list of ids and nothing else — no names, no join dates, no roles.</li>
+  <li><strong>Anything about you as a person</strong> — no email, no real name, no location, no
+  device or browser information, no advertising identifiers.</li>
+</ul>
+
+<h2 id="why">4. Why it is stored</h2>
+<p>Each thing is stored for exactly one reason, and that reason is to make a feature work:</p>
+<ul>
+  <li>Server, channel and club settings, so the bot knows where to post and what to follow.</li>
+  <li>The <code>/trackme</code> link, so that when EA says a player scored, the bot knows whose
+  <code>/playercard</code> that belongs to. Without it the bot simply doesn't know who you are,
+  and every player-facing command says so.</li>
+  <li>Match data, so leaderboards, head-to-head records and cards have a history to read.</li>
+  <li>Message ids, so posts can be updated rather than duplicated.</li>
+</ul>
+<p>None of it is used for profiling, advertising, or anything other than showing you hockey
+statistics in the server that asked for them.</p>
+
+<h2 id="ea">5. Data that comes from EA</h2>
+<p>Match and player statistics are read from EA's <strong>public</strong> NHL Pro Clubs
+endpoints — the same records the official EA companion app shows to anyone. The bot sends EA
+nothing about you or your Discord server; it only asks for club and match records. Your
+in-game name and stats being visible there is a function of the game, not of this bot.</p>
+
+<h2 id="sharing">6. Who can see it</h2>
+<ul>
+  <li><strong>Anyone in a Discord server that follows your club</strong> can see the box scores
+  and leaderboards posted there. That is the point of the bot.</li>
+  <li><strong>Nobody else.</strong> Data is not sold, rented, licensed, shared with advertisers
+  or analytics companies, or handed to any third party.</li>
+  <li><strong>The maintainer</strong> can see the database, because it runs on their machine.</li>
+  <li>It may be disclosed if the law actually requires it — which has never happened.</li>
+</ul>
+
+<h2 id="where">7. Where it lives</h2>
+<p>On a single self-hosted server in Canada, in one SQLite database. There is no cloud provider,
+no third-party database service, and no data warehouse. Backups are taken nightly, kept on the
+same premises, and retained for about two weeks before being overwritten.</p>
+<p>This is a hobby project on home hardware. It is protected with reasonable care — the bot has
+no inbound network port at all, and the database is not reachable from the internet — but no
+system is perfectly secure, and you should assume that anything you put into a Discord server
+could conceivably leak.</p>
+
+<h2 id="retention">8. How long it is kept</h2>
+<ul>
+  <li><strong>Server settings</strong> are kept while the bot is in the server. Removing the bot
+  or running <code>/stoptracking</code> removes the link.</li>
+  <li><strong>Your <code>/trackme</code> link</strong> is kept until you ask for it to be
+  deleted, or until you relink to a different gamertag.</li>
+  <li><strong>Match records</strong> are kept indefinitely. They're a historical record of games
+  that were played, they are derived from public EA data, and other servers' leaderboards depend
+  on them. Removing the bot from your server does not erase games that happened.</li>
+</ul>
+
+<h2 id="removal">9. Getting your data removed</h2>
+<p>Ask in the support server and it will be done — normally the same week, and you don't have to
+give a reason.</p>
+<ul>
+  <li><strong>Unlink yourself:</strong> your <code>/trackme</code> row is deleted. Your Discord
+  id stops being connected to any gamertag anywhere in the database.</li>
+  <li><strong>Remove your sign-ups:</strong> your id is cleared from availability and tournament
+  sheets.</li>
+  <li><strong>A whole server:</strong> a server admin can ask for every row belonging to their
+  server — settings, channels, sign-ups, tournaments — to be deleted.</li>
+</ul>
+<p>What can't be undone is the existence of a match. A game's per-player line stays, because it
+is EA's public record of a game other people also played in. After you unlink, it is no longer
+connected to your Discord account.</p>
+<p>You can also ask for a copy of everything held about you, in the same place.</p>
+
+<h2 id="children">10. Children</h2>
+<p>The bot is not directed at children. Discord's own Terms of Service set the minimum age for
+using Discord at all — 13 in most countries, higher in some — and the bot is only usable through
+Discord. Nothing is knowingly collected from anyone below that age. If you believe a child's
+data is in there, say so in the support server and it will be removed.</p>
+
+<h2 id="site">11. This website</h2>
+<p>This site is static pages hosted on GitHub Pages. There are no cookies, no analytics, no
+tracking pixels, no advertising and no embedded third-party scripts. Nothing here profiles you.
+As with any web host, GitHub receives the requests your browser makes to load the pages; their
+handling of that is covered by
+<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+
+<h2 id="changes">12. Changes to this policy</h2>
+<p>If what the bot stores changes, this page changes with it, and the date at the top is
+updated. Anything material will also be announced in the support server. Old versions are
+visible in this site's public page history.</p>
+
+<h2 id="contact">13. Contact</h2>
+<p>Privacy questions, data requests, deletion requests, or anything at all about the bot:
+<a href="https://discord.gg/xJgUDyUhtP">the Elvi's Team Tracker support server on Discord</a>.</p>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <p><a href="/">Overview</a> · <a href="/changelog/">What's new</a> · <a href="/terms/">Terms of Service</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+</body>
+</html>

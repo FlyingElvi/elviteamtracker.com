@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elvi's Team Tracker — EA NHL Pro Clubs stats for Discord</title>
+<meta name="description" content="A Discord bot that follows your EA NHL Pro Clubs team: automatic box scores, player cards, head-to-head records, leaderboards, weekly availability and tournaments.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/logo-180.png">
+<meta property="og:title" content="Elvi's Team Tracker">
+<meta property="og:description" content="EA NHL Pro Clubs stats, posted in your Discord.">
+<meta property="og:image" content="https://elviteamtracker.com/assets/logo-512.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/" aria-current="page">Overview</a>
+    <a href="/changelog/">What's new</a>
+    <a href="/terms/">Terms</a>
+    <a href="/privacy/">Privacy</a>
+      <a href="https://discord.gg/xJgUDyUhtP">Support</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap hero-grid">
+  <img class="hero-logo" src="/assets/logo-512.png" alt="Elvi's Team Tracker" width="140" height="140">
+  <div>
+  <h1>Your club's stats, posted in your Discord.</h1>
+  <p class="lede">Elvi's Team Tracker follows your EA NHL Pro Clubs team and posts every game
+  as it finishes — the real final score, the three stars, and who did what. Then it gives your
+  players cards, head-to-head records and leaderboards to argue over.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://discord.com/oauth2/authorize?client_id=1514985481040035870&amp;scope=bot+applications.commands&amp;permissions=314368">Add to your server</a>
+    <a class="btn" href="#setup">How to set it up</a>
+    <a class="btn" href="https://discord.gg/xJgUDyUhtP">Support server</a>
+  </div>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+
+<section>
+  <h2>What it does</h2>
+  <p class="sub">Free, no ads, no premium tier.</p>
+  <ul class="features">
+    <li><strong>Automatic box scores</strong><span>Every game your club plays posts itself in the channel you pick — final score, three stars, and the full skater and goalie lines.</span></li>
+    <li><strong>Real scores, not segments</strong><span>When a private game lags out and gets replayed, the pieces are merged back into one true score instead of three fake ones.</span></li>
+    <li><strong>No games against the CPU</strong><span>Practice and scrimmage games against the computer are never stored and never counted toward anyone's stats.</span></li>
+    <li><strong>Player cards</strong><span>Players link their gamertag once with <code>/trackme</code>, then <code>/playercard</code> gives them a card with their season on it.</span></li>
+    <li><strong>Head-to-head</strong><span><code>/versus</code> knows your record against any player or club, the teammates you win the most with, and the ones who own you.</span></li>
+    <li><strong>Leaderboards</strong><span>Skater and goalie boards for your server's clubs, or for any club the bot has seen.</span></li>
+    <li><strong>Weekly availability</strong><span>A manager panel that collects who's in for which night, then builds the lineup and publishes it.</span></li>
+    <li><strong>Tournaments</strong><span>A sign-up sheet players claim positions on, a draft, a schedule, and scores posted per team.</span></li>
+    <li><strong>Tracked by name</strong><span>You type the start of your club's name. Nobody has to go dig up an EA club id.</span></li>
+  </ul>
+</section>
+
+<section id="setup">
+  <h2>Setting it up</h2>
+  <p class="sub">Two steps, about a minute. You need <strong>Manage Server</strong> on the Discord server.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Add the bot</strong>
+      Use <a href="https://discord.com/oauth2/authorize?client_id=1514985481040035870&amp;scope=bot+applications.commands&amp;permissions=314368">the install link</a>
+      and pick your server. It installs to the server — there is no account install.
+    </li>
+    <li>
+      <strong>Point it at your club</strong>
+      Go to the channel where you want scores to land and run
+      <code>/trackprimaryclub name:&lt;start of your club's name&gt;</code>.
+      Type the <em>start</em> of the name — often your league's prefix, like <code>ITHL</code>.
+      One match and it's tracked immediately; several and you pick yours from a menu.
+      Already know your EA club id? Use <code>clubid:&lt;id&gt;</code> instead.
+    </li>
+  </ol>
+
+  <p>That's it. Games post in that channel from then on.</p>
+
+  <h3>Options on <code>/trackprimaryclub</code></h3>
+  <table class="cmds">
+    <thead><tr><th>Option</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>emoji:</code></td><td>Shows a logo next to your club in scoreboards. Upload the emoji to <em>your</em> server first (Server Settings → Emoji) — a bot can't use emojis from servers it isn't in.</td></tr>
+      <tr><td><code>matches:</code></td><td><code>all</code> (default), or <code>private_only</code> if you only want league games posted.</td></tr>
+      <tr><td><code>backfill:</code></td><td>0–5. How many already-played games to post right now. Default 0.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note warn">
+    <p><strong>Don't see <code>/trackprimaryclub</code>?</strong> Three things, in this order:</p>
+    <ol>
+      <li><strong>Do you have Manage Server?</strong> Every track command is admin-only, and Discord <em>hides</em> a command you can't run rather than greying it out. If <code>/trackme</code> shows up but <code>/trackprimaryclub</code> doesn't, this is why.</li>
+      <li><strong>Just added the bot?</strong> Commands can take up to an hour to appear on a new server. Ctrl+R (Cmd+R on Mac) in Discord usually forces it.</li>
+      <li><strong>Server Settings → Integrations → Elvi's Team Tracker → Commands.</strong> If somebody already restricted it there, that setting wins.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>Commands</h2>
+  <p class="sub">Anything marked admin needs <strong>Manage Server</strong>. You can narrow that further per role or per channel in Server Settings → Integrations.</p>
+
+  <h3>For your players — no permission needed</h3>
+  <table class="cmds">
+    <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>/trackme</code></td><td>Links your Discord account to your in-game name. Do this once; it's what makes the rest work.</td></tr>
+      <tr><td><code>/playercard</code></td><td>Your hockey card — your season, on a card you can flip through.</td></tr>
+      <tr><td><code>/versus player</code></td><td>Your head-to-head record against one player.</td></tr>
+      <tr><td><code>/versus club</code></td><td>Your record against a whole club.</td></tr>
+      <tr><td><code>/versus nemesis</code></td><td>Your top tormentors, and the club that owns you.</td></tr>
+      <tr><td><code>/versus bff</code></td><td>The teammates you win the most with.</td></tr>
+      <tr><td><code>/versus together</code></td><td>Your record with one to three named teammates on the same bench.</td></tr>
+      <tr><td><code>/leaderboard server</code></td><td>Skater and goalie boards for this server's clubs, combined.</td></tr>
+      <tr><td><code>/leaderboard club</code></td><td>The same boards for any one club.</td></tr>
+      <tr><td><code>/trackmyclub</code></td><td>Watch your own club so your games count toward your card. Posts nowhere — it's just for your stats.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Setting up tracking — admin</h3>
+  <table class="cmds">
+    <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>/trackprimaryclub</code></td><td>Your club. Its games post in the channel you run this in.</td></tr>
+      <tr><td><code>/trackaffiliateclub</code></td><td>Another club, but only the games your own players actually appear in.</td></tr>
+      <tr><td><code>/trackscoutclub</code></td><td>A rival. Posts only their matchups against the other rivals you're scouting.</td></tr>
+      <tr><td><code>/trackedclubs</code></td><td>Everything this server tracks, with its channels and filters.</td></tr>
+      <tr><td><code>/stoptracking</code></td><td>Stop tracking a club. Pick it from a list.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Running the team — admin</h3>
+  <table class="cmds">
+    <thead><tr><th>Command</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>/trackavailability panel</code></td><td>Posts the weekly availability manager in this channel. Players answer on it; you build and publish the lineup from it.</td></tr>
+      <tr><td><code>/tournament panel</code></td><td>Posts the tournament manager. Create, lock, draft, schedule and delete all live on it — it only offers what's legal right now.</td></tr>
+      <tr><td><code>/tournament team</code></td><td>Points a tournament team at its EA club, so that team's scores post too.</td></tr>
+      <tr><td><code>/tournament role</code></td><td>Hands a role to players who sign up, which is how you unlock a private channel for them. A separate one for captains.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <p>A few extras — challenges, milestone chases, streak records — are switched on server by
+    server rather than shipped to everyone at once. If you want them on yours,
+    <a href="https://discord.gg/xJgUDyUhtP">say so in the support server</a>.</p>
+  </div>
+</section>
+
+<section>
+  <h2>How it works</h2>
+  <p>The bot reads EA's public NHL Pro Clubs match data on a schedule — the same records the EA
+  companion app shows. It stores the games your tracked clubs played, works out the real score
+  and a per-match rating for each player, and posts the result. Nothing is scraped from your
+  Discord, and the bot has no way to read your messages: it never requested the permission that
+  would let it.</p>
+
+  <h3>What it asks for, and why</h3>
+  <table class="cmds">
+    <thead><tr><th>Permission</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>View Channels</td><td>To see the channel you told it to post in.</td></tr>
+      <tr><td>Send Messages</td><td>To post the box scores and answer commands.</td></tr>
+      <tr><td>Embed Links</td><td>Box scores and cards are embeds.</td></tr>
+      <tr><td>Attach Files</td><td>Cards and some scoreboards are rendered as images.</td></tr>
+      <tr><td>Use External Emojis</td><td>Club logos and position icons live on the bot's own application.</td></tr>
+    </tbody>
+  </table>
+  <p>It does <strong>not</strong> ask for Read Message Content, Manage Messages, Kick, Ban, or
+  anything else that touches your members.</p>
+
+  <h3>Where your data goes</h3>
+  <p>Onto one self-hosted server, and nowhere else. It isn't sold, shared or used for ads, and
+  there is no analytics or tracking anywhere — not on this site either. The
+  <a href="/privacy/">Privacy Policy</a> lists field by field what is stored and how to have it
+  removed.</p>
+</section>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord. EA SPORTS and NHL are trademarks of their respective
+  owners.</p>
+  <p><a href="/changelog/">What's new</a> · <a href="/terms/">Terms of Service</a> · <a href="/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+</body>
+</html>

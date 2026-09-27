@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's new — Elvi's Team Tracker</title>
+<meta name="description" content="Release notes for Elvi's Team Tracker, the EA NHL Pro Clubs stats bot for Discord.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/logo-180.png">
+<meta property="og:title" content="Elvi's Team Tracker">
+<meta property="og:description" content="EA NHL Pro Clubs stats, posted in your Discord.">
+<meta property="og:image" content="https://elviteamtracker.com/assets/logo-512.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/">Overview</a>
+    <a href="/changelog/" aria-current="page">What's new</a>
+    <a href="/terms/">Terms</a>
+    <a href="/privacy/">Privacy</a>
+      <a href="https://discord.gg/xJgUDyUhtP">Support</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <h1>What's new</h1>
+  <p class="lede">What shipped, and when. The log starts at the NHL 27 changeover in
+  September 2026 — everything before that was a different game's data.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<article class="rel">
+  <div class="rel-head"><h2>EA outages that weren't</h2><time datetime="2026-09-22">September 22, 2026</time><span class="tag tag-fix">Fixed</span></div>
+  <ul>
+    <li>EA's API looked down for seven hours. It wasn't — the bot's own HTTP/2 connection had
+    gone stale and was never being retired. Games stopped posting for an afternoon; they were
+    all picked up once the connection handling was fixed.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Tournament cleanup</h2><time datetime="2026-09-19">September 19, 2026</time><span class="tag tag-fix">Fixed</span></div>
+  <ul>
+    <li>Deleting a tournament now takes back <em>every</em> role it handed out, captains
+    included. It used to leave some behind.</li>
+    <li>The Notes button on the week editor never responded. It does now.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Automatic MVP</h2><time datetime="2026-09-18">September 18, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>Every game now names an MVP from its star points, and goalies are eligible — a shutout
+    can win it outright.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Season status, and the league-night flag</h2><time datetime="2026-09-17">September 17, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>A <strong>Season status</strong> button on the availability panel: where the club is in
+    its campaign, without leaving the channel.</li>
+    <li>Two bugs in the league-night flag — one in the data, one in the interface — meant some
+    games were filed under the wrong week. Both fixed, and the affected games were re-filed.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>The Stats card opens to everyone</h2><time datetime="2026-09-16">September 16, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>The <strong>Stats</strong> face of the player card is now available on every server, not
+    just the ones it launched on. Run <code>/playercard</code> and flip to it.</li>
+    <li>The tournament roster block was rebuilt around the players rather than the teams — it
+    reads as a list of who signed up, which is what people were actually looking for.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>More than one lineup a night</h2><time datetime="2026-09-15">September 15, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>A night can hold several lineups. Back-to-backs and split sessions no longer overwrite
+    each other.</li>
+    <li>Private games are no longer locked behind a separate setting.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2><code>/versus bff</code></h2><time datetime="2026-09-14">September 14, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li><code>/versus bff</code> — the teammates you actually win with. The inverse of
+    <code>/versus nemesis</code>, and it finds the names for you.</li>
+    <li>A night's pulse can be skipped when the team already knows it's playing.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2><code>/leaderboard streaks</code></h2><time datetime="2026-09-12">September 12, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>Every streak record on one board, with where you sit on each of them.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Every position once</h2><time datetime="2026-09-10">September 10, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>A tournament variant where each player has to take every position once across the
+    event. The draft and the schedule both understand it.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>NHL 27 launch day</h2><time datetime="2026-09-04">September 4, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>Adopting a club on the new game is a single gesture — no re-entering ids, no re-linking
+    players.</li>
+    <li>Head-to-head records now span both games. Your record against somebody doesn't reset
+    because EA shipped a sequel.</li>
+    <li>The player rating had a measurable bias against defencemen. It was measured, and
+    corrected.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Availability 2.0</h2><time datetime="2026-09-03">September 3, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>The whole weekly flow, rebuilt around one persistent panel per team: the night pulse,
+    the sign-up posts, the lineup editor, publishing, and the assignment that survives a
+    restart.</li>
+    <li>Help buttons on both management panels, so nobody has to remember what a button does.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>NHL 27 era in production</h2><time datetime="2026-09-02">September 2, 2026</time><span class="tag">Changed</span></div>
+  <ul>
+    <li>EA's API switched to NHL 27 ahead of the game's release. The bot flipped with it, and
+    NHL 26 history was kept rather than thrown away.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Card navigation, and nightly backups</h2><time datetime="2026-08-17">August 17, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>The player card moved to a select menu instead of a row of buttons — it stopped running
+    out of room as faces were added.</li>
+    <li>A nightly backup of everything the bot stores, verified, kept for two weeks.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Tournaments grow up</h2><time datetime="2026-08-05">August 5–9, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>Five-team tournaments and a seven-point standings system.</li>
+    <li>A player leaderboard scoped to the tournament.</li>
+    <li>The visual layer: banners, scoreboards and a standings table that reads on a phone.</li>
+  </ul>
+</article>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord.</p>
+  <p><a href="/">Overview</a> · <a href="/terms/">Terms of Service</a> · <a href="/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+</body>
+</html>

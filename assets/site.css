@@ -363,3 +363,21 @@ code {
   .hero-grid { flex-direction: column; gap: 18px; }
   .hero-logo { width: 96px; height: 96px; }
 }
+
+/* ---------- not-shipped-yet feature ---------- */
+
+.features li.soon { border-style: dashed; }
+
+.features .badge {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  vertical-align: middle;
+  margin-left: 8px;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}

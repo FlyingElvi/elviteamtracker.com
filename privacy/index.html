@@ -71,8 +71,8 @@ support server linked at the bottom of this page.</p>
   <thead><tr><th>Stored</th><th>When</th></tr></thead>
   <tbody>
     <tr><td>Server id and server name</td><td>When the bot is added.</td></tr>
-    <tr><td>Channel ids</td><td>The channels you told it to post in — scores, availability, tournaments.</td></tr>
-    <tr><td>Role ids</td><td>Only the roles you explicitly hand it: a manager role, a tournament sign-up role.</td></tr>
+    <tr><td>Channel ids</td><td>The channels you told it to post in — scores, and any sign-up sheet the server runs.</td></tr>
+    <tr><td>Role ids</td><td>Only the roles you explicitly hand it — a manager role, or a role given to people who sign up for something.</td></tr>
     <tr><td>Message ids of its own posts</td><td>So it can edit a box score when the game is re-read, instead of posting it twice.</td></tr>
     <tr><td>Which clubs the server follows, and how</td><td>The club, the channel, the emoji, and the match filter you chose.</td></tr>
   </tbody>
@@ -83,7 +83,7 @@ support server linked at the bottom of this page.</p>
   <thead><tr><th>Stored</th><th>When</th></tr></thead>
   <tbody>
     <tr><td>Your Discord user id, linked to your in-game player id, platform and in-game name</td><td>Only when <strong>you</strong> run <code>/trackme</code>. Nothing links you to a gamertag until you do.</td></tr>
-    <tr><td>Your user id on an availability sign-up, a lineup, or a tournament sheet</td><td>When you click to answer one.</td></tr>
+    <tr><td>Your user id on a sign-up sheet or a lineup</td><td>When you click to answer one.</td></tr>
     <tr><td>Your user id on a server roster used to gate optional features</td><td>Only on servers where those features are switched on.</td></tr>
   </tbody>
 </table>
@@ -169,10 +169,9 @@ give a reason.</p>
 <ul>
   <li><strong>Unlink yourself:</strong> your <code>/trackme</code> row is deleted. Your Discord
   id stops being connected to any gamertag anywhere in the database.</li>
-  <li><strong>Remove your sign-ups:</strong> your id is cleared from availability and tournament
-  sheets.</li>
+  <li><strong>Remove your sign-ups:</strong> your id is cleared from every sign-up sheet and lineup.</li>
   <li><strong>A whole server:</strong> a server admin can ask for every row belonging to their
-  server — settings, channels, sign-ups, tournaments — to be deleted.</li>
+  server — settings, channels, sign-ups — to be deleted.</li>
 </ul>
 <p>What can't be undone is the existence of a match. A game's per-player line stays, because it
 is EA's public record of a game other people also played in. After you unlink, it is no longer

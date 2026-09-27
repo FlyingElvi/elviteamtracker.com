@@ -28,6 +28,13 @@ changes, update `/privacy/` **and** the date at the top of it — the date is th
 
 ## Keep off this site
 
-Furball Coins, bets, parlays and anything else that is exclusive to the Frosty Furballs server
-are deliberately not described here. The gated features (challenges, milestones, streak records,
-duels) get one honest line on the overview page and no detail.
+Furball Coins, bets, parlays and **tournaments** are exclusive to the Frosty Furballs server and
+are deliberately not described here — not in the features, not in the commands, not in the
+changelog. The Privacy Policy still has to be accurate about sign-up data, so it describes it
+generically ("a sign-up sheet") rather than naming the feature.
+
+The other gated features (challenges, milestones, streak records, duels) get one honest line on
+the overview page and no detail.
+
+Weekly availability is the exception: it stays on the overview page, flagged **Coming soon**,
+because it is meant for everyone eventually.

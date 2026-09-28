@@ -82,6 +82,25 @@
 
   <p>That's it. Games post in that channel from then on.</p>
 
+  <div class="note warn">
+    <p><strong>The bot has to be allowed to post in that channel — including attachments.</strong>
+    Adding it to the server grants the permissions server-wide, but <em>a channel can override
+    them</em>, and a private channel starts with the bot locked out entirely.</p>
+    <p>In that channel: <strong>Edit Channel → Permissions → add Elvi's Team Tracker</strong>
+    (or a role it has), and make sure all four are allowed:</p>
+    <ul>
+      <li><strong>View Channel</strong></li>
+      <li><strong>Send Messages</strong></li>
+      <li><strong>Embed Links</strong> — box scores are embeds; without it they arrive blank.</li>
+      <li><strong>Attach Files</strong> — cards and scoreboards are rendered images. Without it
+      the bot has nothing it can send, and the game looks like it was simply skipped.</li>
+    </ul>
+    <p>If games are silently not appearing and nothing in Discord explains why, this is almost
+    always the reason. Posting in a thread needs <strong>Send Messages in Threads</strong> as
+    well.</p>
+  </div>
+
+
   <h3>Options on <code>/trackprimaryclub</code></h3>
   <table class="cmds">
     <thead><tr><th>Option</th><th>What it does</th></tr></thead>
@@ -163,6 +182,8 @@
   </table>
   <p>It does <strong>not</strong> ask for Read Message Content, Manage Messages, Kick, Ban, or
   anything else that touches your members.</p>
+  <p>Granting these when you add the bot covers the server. It does not override a channel that
+  denies them — see <a href="#setup">the note in Setting it up</a>.</p>
 
   <h3>Where your data goes</h3>
   <p>Onto one self-hosted server, and nowhere else. It isn't sold, shared or used for ads, and

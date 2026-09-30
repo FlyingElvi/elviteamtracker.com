@@ -71,16 +71,21 @@
       and pick your server. It installs to the server — there is no account install.
     </li>
     <li>
-      <strong>Point it at your club</strong>
-      Go to the channel where you want scores to land and run
-      <code>/trackprimaryclub name:&lt;start of your club's name&gt;</code>.
-      Type the <em>start</em> of the name — often your league's prefix, like <code>LG</code>.
-      One match and it's tracked immediately; several and you pick yours from a menu.
-      Already know your EA club id? Use <code>clubid:&lt;id&gt;</code> instead.
+      <strong>Add your club</strong>
+      The bot posts a welcome message. Hit <strong>⚙️ Basic Server Setup</strong> on it — or run
+      <code>/elvisetup</code> any time — then <strong>➕ Add a club</strong>: what it is (your team),
+      all games or private games only, the channel its scores go to, and the <em>start</em> of
+      its name — often your league's prefix, like <code>LG</code>. Pick it from the results and
+      confirm.
     </li>
   </ol>
 
-  <p>That's it. Games post in that channel from then on.</p>
+  <p>That's it. Games post in that channel from then on. Several teams, an affiliate, a rival
+  you scout? Add each one the same way, each in its own channel.</p>
+
+  <p>Prefer a command? In the channel where you want scores, run
+  <code>/trackprimaryclub name:&lt;start of your club's name&gt;</code>, or
+  <code>clubid:&lt;id&gt;</code> if you already know your EA club id.</p>
 
   <div class="note warn">
     <p><strong>The bot has to be allowed to post in that channel — including attachments.</strong>
@@ -101,7 +106,7 @@
   </div>
 
 
-  <h3>Options on <code>/trackprimaryclub</code></h3>
+  <h3>Options on <code>/trackprimaryclub</code>, if you use the command</h3>
   <table class="cmds">
     <thead><tr><th>Option</th><th>What it does</th></tr></thead>
     <tbody>
@@ -112,9 +117,9 @@
   </table>
 
   <div class="note warn">
-    <p><strong>Don't see <code>/trackprimaryclub</code>?</strong> Three things, in this order:</p>
+    <p><strong>Don't see <code>/elvisetup</code>?</strong> Three things, in this order:</p>
     <ol>
-      <li><strong>Do you have Manage Server?</strong> Every track command is admin-only, and Discord <em>hides</em> a command you can't run rather than greying it out. If <code>/trackme</code> shows up but <code>/trackprimaryclub</code> doesn't, this is why.</li>
+      <li><strong>Do you have Manage Server?</strong> Every setup command is admin-only, and Discord <em>hides</em> a command you can't run rather than greying it out. If <code>/trackme</code> shows up but <code>/elvisetup</code> doesn't, this is why.</li>
       <li><strong>Just added the bot?</strong> Commands can take up to an hour to appear on a new server. Ctrl+R (Cmd+R on Mac) in Discord usually forces it.</li>
       <li><strong>Server Settings → Integrations → Elvi's Team Tracker → Commands.</strong> If somebody already restricted it there, that setting wins.</li>
     </ol>
@@ -146,11 +151,8 @@
   <table class="cmds">
     <thead><tr><th>Command</th><th>What it does</th></tr></thead>
     <tbody>
-      <tr><td><code>/trackprimaryclub</code></td><td>Your club. Its games post in the channel you run this in.</td></tr>
-      <tr><td><code>/trackaffiliateclub</code></td><td>Another club, but only the games your own players actually appear in.</td></tr>
-      <tr><td><code>/trackscoutclub</code></td><td>A rival. Posts only their matchups against the other rivals you're scouting.</td></tr>
-      <tr><td><code>/trackedclubs</code></td><td>Everything this server tracks, with its channels and filters.</td></tr>
-      <tr><td><code>/stoptracking</code></td><td>Stop tracking a club. Pick it from a list.</td></tr>
+      <tr><td><code>/elvisetup</code></td><td>The server's setup, in one private panel. Add a club — your team, an affiliate (only the games your players are in) or a scouted rival (only its matchups against your other rivals) — with its channel and its games, all or private only. <strong>Tracked clubs</strong> lists everything, with Stop tracking under it.</td></tr>
+      <tr><td><code>/trackprimaryclub</code></td><td>Your club, by command. Its games post in the channel you run this in.</td></tr>
     </tbody>
   </table>
 

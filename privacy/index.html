@@ -30,7 +30,7 @@
 <main><div class="wrap legal">
 
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: September 27, 2026</p>
+<p class="updated">Last updated: September 30, 2026</p>
 
 <div class="note">
   <p><strong>The short version.</strong> The bot stores Discord <em>ids</em> — server, channel,
@@ -75,6 +75,7 @@ support server linked at the bottom of this page.</p>
     <tr><td>Role ids</td><td>Only the roles you explicitly hand it — a manager role, or a role given to people who sign up for something.</td></tr>
     <tr><td>Message ids of its own posts</td><td>So it can edit a box score when the game is re-read, instead of posting it twice.</td></tr>
     <tr><td>Which clubs the server follows, and how</td><td>The club, the channel, the emoji, and the match filter you chose.</td></tr>
+    <tr><td>The league the server plays, and its calendar</td><td>Only if a manager sets it up: the league, its game times, schedule and clock, and its seasons and weeks.</td></tr>
   </tbody>
 </table>
 
@@ -84,6 +85,7 @@ support server linked at the bottom of this page.</p>
   <tbody>
     <tr><td>Your Discord user id, linked to your in-game player id, platform and in-game name</td><td>Only when <strong>you</strong> run <code>/trackme</code>. Nothing links you to a gamertag until you do.</td></tr>
     <tr><td>Your user id on a sign-up sheet or a lineup</td><td>When you click to answer one.</td></tr>
+    <tr><td>What you type into the bot's own dialogs</td><td>Only when you type it — a note for the players, a comment between coaches, a name for a week. Stored as typed, and shown where you put it.</td></tr>
     <tr><td>Your user id on a server roster used to gate optional features</td><td>Only on servers where those features are switched on.</td></tr>
   </tbody>
 </table>
@@ -105,7 +107,7 @@ no login.</p>
 <ul>
   <li><strong>Message content.</strong> The bot does not have Discord's Message Content intent.
   It is technically incapable of reading what people write, in any channel, including ones it
-  can see.</li>
+  can see. The only text it keeps is what you type into its own dialogs, listed above.</li>
   <li><strong>Direct messages.</strong> Never read, never stored.</li>
   <li><strong>Voice.</strong> The bot never joins a voice channel.</li>
   <li><strong>Your member list</strong>, beyond the roster described above on the servers that

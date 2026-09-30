@@ -261,7 +261,8 @@ code {
   font-weight: 700;
 }
 
-.steps strong { display: block; margin-bottom: 2px; }
+/* The step title only: bold words inside a step stay inline. */
+.steps > li > strong:first-child { display: block; margin-bottom: 2px; }
 
 /* ---------- callout ---------- */
 

@@ -124,6 +124,58 @@
       <li><strong>Server Settings → Integrations → Elvi's Team Tracker → Commands.</strong> If somebody already restricted it there, that setting wins.</li>
     </ol>
   </div>
+
+  <h3 id="availability">Weekly availability, if your team plays in a league</h3>
+  <p>The availability manager collects who's in for which night, builds the lineups and
+  publishes them. Set it up once per team. The first three steps need <strong>Manage Server</strong>;
+  after that, the team's coach role can run the panel too.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Set up the league</strong>
+      Run <code>/leaguemanager</code>. <strong>⚙️ League setup</strong> holds the league's game
+      times, whether nights are fixed or negotiated each week, the day a week starts, and its
+      time zone. For leagues the bot already knows, like the LMS or the AXHL, it's all filled
+      in already.
+    </li>
+    <li>
+      <strong>Pick the season</strong>
+      In the same panel, <strong>🗓️ Season setup</strong>: adopt the league's season, with its
+      weeks and its schedule when the bot has it. You can also create your own, like a pre-season
+      or a mini tournament. <strong>📆 Week setup</strong> marks a week off, such as a holiday or
+      the All-Star break. A week off keeps its dates but not its number, so the next one keeps
+      counting.
+    </li>
+    <li>
+      <strong>Post the team's panel</strong>
+      In a channel only your coaches see, run <code>/trackavailability panel</code>. Open
+      <strong>⚙️ Setup</strong> on it: the <em>availability</em> channel for the weekly posts, the
+      <em>lineup</em> channel, the team's league, and two optional roles. The ping role is
+      mentioned on the posts, and the coach role can run the panel without Manage Server.
+    </li>
+    <li>
+      <strong>Start the season</strong>
+      <strong>🏆 Create season</strong> on the panel, and pick the season from step 2. The season
+      counters and the league-game flags hang off it.
+    </li>
+  </ol>
+
+  <p>Then, every week:</p>
+  <ul>
+    <li><strong>Start the week.</strong> When the bot has the league's schedule,
+    <strong>📆 Post Week Availability</strong> puts up one post per night in one click, with its
+    game times and opponents. Otherwise, use <strong>📆 Post this week</strong> for fixed nights,
+    or <strong>📊 Night pulse</strong> to ask which nights work, then
+    <strong>📋 Open sign-ups</strong>.</li>
+    <li><strong>Players answer</strong> on each night's post: In, Maybe or Out, and the game times
+    that don't work for them.</li>
+    <li><strong>🧰 Lineup editor</strong> builds the lineups. Auto-fill spreads the games across
+    the week, and you adjust them. Each published lineup asks its players to confirm, and their
+    answer shows next to their name.</li>
+    <li><strong>🎮 Review games</strong> confirms which EA games were the league games. With a
+    league schedule, the bot does this on its own. <strong>📊 Season status</strong> shows who's
+    been playing.</li>
+  </ul>
 </section>
 
 <section>
@@ -153,6 +205,8 @@
     <tbody>
       <tr><td><code>/elvisetup</code></td><td>The server's setup, in one private panel. Add a club — your team, an affiliate (only the games your players are in) or a scouted rival (only its matchups against your other rivals) — with its channel and its games, all or private only. <strong>Tracked clubs</strong> lists everything, with Stop tracking under it.</td></tr>
       <tr><td><code>/trackprimaryclub</code></td><td>Your club, by command. Its games post in the channel you run this in.</td></tr>
+      <tr><td><code>/leaguemanager</code></td><td>The league's settings, seasons and weeks, for the availability. See <a href="#availability">Weekly availability</a>.</td></tr>
+      <tr><td><code>/trackavailability panel</code></td><td>Posts a team's availability manager in the channel you run this in.</td></tr>
     </tbody>
   </table>
 

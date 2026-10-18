@@ -22,14 +22,22 @@ Support and contact go to the Discord server: https://discord.gg/xJgUDyUhtP
 ## Editing
 
 Plain HTML, one shared stylesheet in `assets/site.css`. No build step, no dependencies, no
-JavaScript. Push to `main` and GitHub Pages redeploys.
+JavaScript. Push to `main`: the site goes live within ~10 minutes (see below).
 
-The one exception is `/playercards/`: it is **generated** by the EASSS server (`SiteExporter`,
-page source in `EASSServer/src/main/resources/site/`) and published by
-`C:\DockerFiles\Ops\Publish-SiteCards.ps1` on the home server, which mirrors the export into
-this folder and commits **only** `playercards/`. A hand edit there is overwritten at the next
-publish: change the page in the EASSS repo instead. Its JSON holds the opted-in players only,
-never everyone.
+### How it is published (since Oct 18, 2026)
+
+GitHub Pages serves the **`gh-pages`** branch, not `main`. That branch is **built**, never
+edited: `C:\DockerFiles\Ops\Publish-SiteCards.ps1` on the home server (scheduled task, every
+10 minutes) takes `origin/main`, adds `/playercards/` from the EASSS server's export, and
+force-pushes the result as **one commit with no parent**. Nothing is pushed when nothing changed.
+
+Why no history: `/playercards/` holds the cards — avatar included — of the players who opted in
+with the card's 🌐 Web button. Someone who opts out must really disappear, not survive in a
+public commit history. So the cards never touch `main`, and `gh-pages` keeps no past versions.
+
+`/playercards/` is **generated** by the EASSS server (`SiteExporter`, page source in
+`EASSServer/src/main/resources/site/`): change the page in the EASSS repo, never here. Its JSON
+holds the opted-in players only, never everyone.
 
 When a feature ships, add an entry at the top of `/changelog/`. When what the bot stores
 changes, update `/privacy/` **and** the date at the top of it — the date is the version.

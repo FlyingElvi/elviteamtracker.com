@@ -31,14 +31,15 @@
 <main><div class="wrap legal">
 
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: September 30, 2026</p>
+<p class="updated">Last updated: October 18, 2026</p>
 
 <div class="note">
   <p><strong>The short version.</strong> The bot stores Discord <em>ids</em> — server, channel,
   and your user id if you link yourself — plus public EA match data. It <strong>cannot read your
   messages</strong>: it never requested that permission from Discord. Nothing is sold, shared,
   or used for advertising, and there is no analytics on this website. Ask and your link is
-  deleted.</p>
+  deleted. Your player card goes on this website only if <strong>you</strong> press its
+  🌐 Web button and agree — and then it is public.</p>
 </div>
 
 <div class="toc">
@@ -88,11 +89,31 @@ support server linked at the bottom of this page.</p>
     <tr><td>Your user id on a sign-up sheet or a lineup</td><td>When you click to answer one.</td></tr>
     <tr><td>What you type into the bot's own dialogs</td><td>Only when you type it — a note for the players, a comment between coaches, a name for a week. Stored as typed, and shown where you put it.</td></tr>
     <tr><td>Your user id on a server roster used to gate optional features</td><td>Only on servers where those features are switched on.</td></tr>
+    <tr><td>That you chose to put your player card on the web, and when</td><td>Only when <strong>you</strong> press <strong>🌐 Web</strong> under your card and agree. See <a href="#webcards">Player cards on the web</a>.</td></tr>
   </tbody>
 </table>
 <p>That's the whole list. The bot stores no Discord username, avatar, email address, IP address
-or payment information — it never receives them in the first place, and it has no accounts and
-no login.</p>
+or payment information, and it has no accounts and no login. The one exception is yours to make:
+if you put your card on the web, a copy of your Discord avatar picture is published with it —
+see below.</p>
+
+<h3 id="webcards">Player cards on the web</h3>
+<p>Pressing <strong>🌐 Web</strong> under your <code>/playercard</code> and agreeing puts your
+card on <a href="/playercards/">elviteamtracker.com/playercards</a>. Nobody is published without
+having said yes, and the page's data holds only the players who did — not everyone, hidden.</p>
+<ul>
+  <li><strong>What is published:</strong> your in-game name, your Discord avatar picture, your
+  club's name and logo, and your card — rating, position, games played, the stats table and your
+  last 10 games.</li>
+  <li><strong>What is not:</strong> your Discord name, your Discord id, and the servers you are
+  in. The avatar is saved under a random-looking file name that does not contain your id.</li>
+  <li><strong>It is public</strong>: anyone can open the page, and search engines can index it.</li>
+  <li><strong>It is a snapshot</strong>, refreshed periodically. The card in Discord is always the
+  up-to-date one.</li>
+  <li><strong>It comes down when you ask</strong> (section 9), at the next refresh. The cards are
+  published without any history: an old version of your card is not kept in the site's page
+  history.</li>
+</ul>
 
 <h3>About matches</h3>
 <table class="cmds">
@@ -140,6 +161,8 @@ in-game name and stats being visible there is a function of the game, not of thi
 <ul>
   <li><strong>Anyone in a Discord server that follows your club</strong> can see the box scores
   and leaderboards posted there. That is the point of the bot.</li>
+  <li><strong>Anyone on the internet</strong> can see the player cards their owners chose to put
+  on <a href="/playercards/">the web</a> — and only those.</li>
   <li><strong>Nobody else.</strong> Data is not sold, rented, licensed, shared with advertisers
   or analytics companies, or handed to any third party.</li>
   <li><strong>The maintainer</strong> can see the database, because it runs on their machine.</li>
@@ -172,6 +195,8 @@ give a reason.</p>
 <ul>
   <li><strong>Unlink yourself:</strong> your <code>/trackme</code> row is deleted. Your Discord
   id stops being connected to any gamertag anywhere in the database.</li>
+  <li><strong>Take your card off the web:</strong> it disappears from the page, avatar included,
+  at the next refresh. Unlinking yourself does the same.</li>
   <li><strong>Remove your sign-ups:</strong> your id is cleared from every sign-up sheet and lineup.</li>
   <li><strong>A whole server:</strong> a server admin can ask for every row belonging to their
   server — settings, channels, sign-ups — to be deleted.</li>

@@ -15,6 +15,7 @@ Privacy Policy.
 | `/changelog/` | Release notes, newest first |
 | `/terms/` | Terms of Service |
 | `/privacy/` | Privacy Policy — field by field, what is stored and how to have it removed |
+| `/playercards/` | The player cards of those who opted in with the card's 🌐 Web button — **generated, never edited here** (see below) |
 
 Support and contact go to the Discord server: https://discord.gg/xJgUDyUhtP
 
@@ -22,6 +23,13 @@ Support and contact go to the Discord server: https://discord.gg/xJgUDyUhtP
 
 Plain HTML, one shared stylesheet in `assets/site.css`. No build step, no dependencies, no
 JavaScript. Push to `main` and GitHub Pages redeploys.
+
+The one exception is `/playercards/`: it is **generated** by the EASSS server (`SiteExporter`,
+page source in `EASSServer/src/main/resources/site/`) and published by
+`C:\DockerFiles\Ops\Publish-SiteCards.ps1` on the home server, which mirrors the export into
+this folder and commits **only** `playercards/`. A hand edit there is overwritten at the next
+publish: change the page in the EASSS repo instead. Its JSON holds the opted-in players only,
+never everyone.
 
 When a feature ships, add an entry at the top of `/changelog/`. When what the bot stores
 changes, update `/privacy/` **and** the date at the top of it — the date is the version.

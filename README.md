@@ -35,6 +35,12 @@ Why no history: `/playercards/` holds the cards — avatar included — of the p
 with the card's 🌐 Web button. Someone who opts out must really disappear, not survive in a
 public commit history. So the cards never touch `main`, and `gh-pages` keeps no past versions.
 
+**`<!--LB … LB-->` blocks** are waiting for the leaderboards launch: the nav link, the
+privacy paragraphs, the changelog entry. They stay HTML comments until the EASSS setting
+`web_leaderboards_live` is on; then the publisher ships `/leaderboards/` and strips the markers
+in every page of the build. Never put `--` or `-->` inside one. On launch day, also give the
+changelog entry its date and bump the privacy policy's.
+
 `/playercards/` is **generated** by the EASSS server (`SiteExporter`, page source in
 `EASSServer/src/main/resources/site/`): change the page in the EASSS repo, never here. Its JSON
 holds the opted-in players only, never everyone.

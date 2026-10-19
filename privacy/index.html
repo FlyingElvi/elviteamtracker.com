@@ -38,7 +38,8 @@
   or used for advertising, and there is no analytics on this website. Ask and your link is
   deleted. Your player card goes on this website only if <strong>you</strong> press its
   🌐 Web button and agree — and then it is public.<!--LB EA's public match statistics can also be
-  browsed by in-game name on the <a href="/leaderboards/">leaderboards</a>. LB--></p>
+  browsed by in-game name on the <a href="/leaderboards/">leaderboards</a>, by members signed in
+  with Discord. LB--></p>
 </div>
 
 <div class="toc">
@@ -158,16 +159,18 @@ in-game name and stats being visible there is a function of the game, not of thi
 <!--LB <p>This website's <a href="/leaderboards/">leaderboards</a> show those same public
 statistics, added up by in-game name for the clubs the bot tracks. They carry nothing from
 Discord — no name, no id, no avatar — and no Furball Coins or anything else the bot keeps
-for itself.</p> LB-->
+for itself. They are for members: you <a href="#site">sign in with Discord</a> to see them.</p> LB-->
 
 <h2 id="sharing">6. Who can see it</h2>
 <ul>
   <li><strong>Anyone in a Discord server that follows your club</strong> can see the box scores
   and leaderboards posted there. That is the point of the bot.</li>
   <li><strong>Anyone on the internet</strong> can see the player cards their owners chose to put
-  on <a href="/playercards/">the web</a><!--LB, and the <a href="/leaderboards/">leaderboards</a>:
-  EA's public match statistics by in-game name, for the clubs the bot tracks — never a Discord
-  name, id or avatar LB-->.</li>
+  on <a href="/playercards/">the web</a>.</li>
+  <!--LB <li><strong>Members signed in with Discord</strong> — anyone who shares a Discord server
+  with the bot — can see the <a href="/leaderboards/">leaderboards</a>: EA's public match
+  statistics by in-game name, for the clubs the bot tracks, never a Discord name, id or
+  avatar.</li> LB-->
   <li><strong>Nobody else.</strong> Data is not sold, rented, licensed, shared with advertisers
   or analytics companies, or handed to any third party.</li>
   <li><strong>The maintainer</strong> can see the database, because it runs on their machine.</li>
@@ -219,11 +222,29 @@ Discord. Nothing is knowingly collected from anyone below that age. If you belie
 data is in there, say so in the support server and it will be removed.</p>
 
 <h2 id="site">11. This website</h2>
-<p>This site is static pages hosted on GitHub Pages. There are no cookies, no analytics, no
-tracking pixels, no advertising and no embedded third-party scripts. Nothing here profiles you.
-As with any web host, GitHub receives the requests your browser makes to load the pages; their
-handling of that is covered by
-<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</p>
+<p>This site is static pages hosted on GitHub Pages. The live parts — the player cards, the
+leaderboards — read their data from <code>api.elviteamtracker.com</code>, this project's own
+server, reached through Cloudflare. There are no analytics, no tracking pixels, no advertising
+and no embedded third-party scripts. Nothing here profiles you. As with any web host, GitHub and
+Cloudflare receive the requests your browser makes; their handling of that is covered by
+<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>
+and <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's</a>.</p>
+
+<h3>Signing in with Discord</h3>
+<p>Signing in is optional, and only for people who already have the bot in one of their Discord
+servers — it opens what is meant for that community, like the leaderboards.</p>
+<ul>
+  <li><strong>What Discord shares:</strong> who you are — your Discord id and name — and nothing
+  else. Discord shows you that request before you accept it.</li>
+  <li><strong>The check:</strong> the bot is asked whether it shares a server with you. The answer
+  is a yes or a no, and it is not stored.</li>
+  <li><strong>The one cookie:</strong> signing in sets a single cookie, from
+  <code>api.elviteamtracker.com</code>, holding your Discord id, your name, whether you are in a
+  premium server, and when it expires. It is signed so it cannot be forged, it lives in your
+  browser only, and nothing about your sign-in is kept on our side. It lasts 14 days, or until
+  you sign out. The only other one is a ten-minute cookie that protects the trip to Discord and
+  back while you sign in; nothing is set if you don't.</li>
+</ul>
 
 <h2 id="changes">12. Changes to this policy</h2>
 <p>If what the bot stores changes, this page changes with it, and the date at the top is

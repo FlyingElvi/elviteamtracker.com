@@ -45,7 +45,13 @@ const API = (LOCAL && params.get('api')) || 'https://api.elviteamtracker.com';
 
 const me = await mountAuth();
 const mine = me.signedIn && (me.links ?? []).some((l) => l.href === location.pathname);
-if (!mine) {
+if (!me.available) {
+  // The session couldn't be checked (a slow moment on the server): say so,
+  // rather than telling a member the page isn't there.
+  document.querySelector('#members .wrap').innerHTML =
+    '<div class="members-none"><h1>Unavailable right now</h1><p>Try again in a minute. '
+    + '<a href="">Reload</a></p></div>';
+} else if (!mine) {
   document.querySelector('#members .wrap').innerHTML =
     '<div class="members-none"><h1>Page not found</h1><p><a href="/">Back to the home page</a></p></div>';
 } else {

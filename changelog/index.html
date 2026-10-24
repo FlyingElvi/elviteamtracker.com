@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's new — Elvi's Team Tracker</title>
+<meta name="description" content="Release notes for Elvi's Team Tracker, the EA NHL Pro Clubs stats bot for Discord.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/logo-180.png">
+<meta property="og:title" content="Elvi's Team Tracker">
+<meta property="og:description" content="EA NHL Pro Clubs stats, posted in your Discord.">
+<meta property="og:image" content="https://elviteamtracker.com/assets/logo-512.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/">Overview</a>
+    <a href="/changelog/" aria-current="page">What's new</a>
+    <a href="/playercards/">Cards</a>
+    <a href="/leaderboards/">Leaderboards</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <h1>What's new</h1>
+  <p class="lede">What shipped, and when. The log starts at the NHL 27 changeover in
+  September 2026 — everything before that was a different game's data.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<article class="rel">
+  <div class="rel-head"><h2>Sign in with Discord</h2><time datetime="2026-10-18">October 18, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li><strong>Sign in</strong> on this website with your Discord account — for people who
+    already have the bot in one of their servers.</li>
+    <li>The <a href="/leaderboards/">leaderboards</a> are now for signed-in members. The
+    <a href="/playercards/">player cards</a> stay open to everyone.</li>
+    <li>Signed in, the leaderboards open on <strong>your</strong> club with your row highlighted,
+    and the Cards page lets you put your card on the web — or take it off — right there.</li>
+    <li>Every board of the bot is on the web now: your clubs one click away, and each league
+    season under the League lens. Premium servers get their own boards there too. The
+    <strong>Leaderboards</strong> button under the card now opens the site.</li>
+    <li>Discord only tells us who you are; nothing is posted, nothing else is read. Details in the
+    <a href="/privacy/#site">privacy policy</a>.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Leaderboards on the web</h2><time datetime="2026-10-18">October 18, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li><a href="/leaderboards/">Leaderboards</a> for any club the bot tracks: every lens —
+    all games, public 6s and 3s, private 6s, league — skaters and goalies, and every column
+    sortable.</li>
+    <li>Live: a board is at most five minutes old. Share one by copying its link.</li>
+  </ul>
+</article>
+<article class="rel">
+  <div class="rel-head"><h2>Player cards on the web</h2><time datetime="2026-10-18">October 18, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>A <strong>🌐 Web</strong> button under your <code>/playercard</code> puts your card on
+    <a href="/playercards/">elviteamtracker.com/playercards</a> — the front, the stats and the
+    last 10 games, drawn exactly like the one in Discord.</li>
+    <li>It's <strong>opt-in</strong>: the first press explains what goes public and asks. Only
+    the players who said yes are on the page — and in its data.</li>
+    <li>The page is a snapshot, refreshed periodically. The card in Discord stays the
+    up-to-date one.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Basic Server Setup</h2><time datetime="2026-09-30">September 30, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>Added to a new server, the bot now posts a welcome: what it does, the players'
+    commands, and a <strong>Basic Server Setup</strong> button for the managers.</li>
+    <li><code>/elvisetup</code> opens the same setup any time. Every club of the server lives
+    there — your teams, affiliates and scouted rivals, each in its own channel, all games or
+    private only — with the tracked list and Stop tracking under it.</li>
+    <li><code>/trackaffiliateclub</code>, <code>/trackscoutclub</code>,
+    <code>/trackedclubs</code> and <code>/stoptracking</code> are gone: it's all in the setup
+    now. <code>/trackprimaryclub</code> stays.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Availability: the league calendar, and lineups players confirm</h2><time datetime="2026-09-30">September 30, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>A <strong>league manager</strong> panel: the league's game times, schedule and clock,
+    and its seasons and weeks. A week off — a holiday, the All-Star break — keeps its dates
+    but not its number, so the next one keeps counting.</li>
+    <li>The night pulse picks a week of the season, with each night's date on it. The pulse
+    and the sign-ups each take a note for the players.</li>
+    <li>A published lineup asks its players: <strong>I'm in</strong> or <strong>Can't make
+    it</strong>, and the answer shows beside each name.</li>
+    <li>The availability panel sorts its buttons into the week's and the team's, and keeps
+    itself current — no Refresh button any more.</li>
+    <li>When the bot has a league's schedule, <strong>Post Week Availability</strong> puts the
+    week up in one click: one post per night, with its game times and opponents. The games
+    played off that schedule are recognized as league games on their own.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>EA outages that weren't</h2><time datetime="2026-09-22">September 22, 2026</time><span class="tag tag-fix">Fixed</span></div>
+  <ul>
+    <li>EA's API looked down for seven hours. It wasn't — the bot's own HTTP/2 connection had
+    gone stale and was never being retired. Games stopped posting for an afternoon; they were
+    all picked up once the connection handling was fixed.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>The week editor's Notes button</h2><time datetime="2026-09-19">September 19, 2026</time><span class="tag tag-fix">Fixed</span></div>
+  <ul>
+    <li>The Notes button on the week editor never responded. It does now.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Automatic MVP</h2><time datetime="2026-09-18">September 18, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>Every game now names an MVP from its star points, and goalies are eligible — a shutout
+    can win it outright.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Season status, and the league-night flag</h2><time datetime="2026-09-17">September 17, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>A <strong>Season status</strong> button on the availability panel: where the club is in
+    its campaign, without leaving the channel.</li>
+    <li>Two bugs in the league-night flag — one in the data, one in the interface — meant some
+    games were filed under the wrong week. Both fixed, and the affected games were re-filed.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>The Stats card opens to everyone</h2><time datetime="2026-09-16">September 16, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>The <strong>Stats</strong> face of the player card is now available on every server, not
+    just the ones it launched on. Run <code>/playercard</code> and flip to it.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>More than one lineup a night</h2><time datetime="2026-09-15">September 15, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>A night can hold several lineups. Back-to-backs and split sessions no longer overwrite
+    each other.</li>
+    <li>Private games are no longer locked behind a separate setting.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2><code>/versus bff</code></h2><time datetime="2026-09-14">September 14, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li><code>/versus bff</code> — the teammates you actually win with. The inverse of
+    <code>/versus nemesis</code>, and it finds the names for you.</li>
+    <li>A night's pulse can be skipped when the team already knows it's playing.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2><code>/leaderboard streaks</code></h2><time datetime="2026-09-12">September 12, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>Every streak record on one board, with where you sit on each of them.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>NHL 27 launch day</h2><time datetime="2026-09-04">September 4, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>Adopting a club on the new game is a single gesture — no re-entering ids, no re-linking
+    players.</li>
+    <li>Head-to-head records now span both games. Your record against somebody doesn't reset
+    because EA shipped a sequel.</li>
+    <li>The player rating had a measurable bias against defencemen. It was measured, and
+    corrected.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Availability 2.0</h2><time datetime="2026-09-03">September 3, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>The whole weekly flow, rebuilt around one persistent panel per team: the night pulse,
+    the sign-up posts, the lineup editor, publishing, and the assignment that survives a
+    restart.</li>
+    <li>Help buttons on both management panels, so nobody has to remember what a button does.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>NHL 27 era in production</h2><time datetime="2026-09-02">September 2, 2026</time><span class="tag">Changed</span></div>
+  <ul>
+    <li>EA's API switched to NHL 27 ahead of the game's release. The bot flipped with it, and
+    NHL 26 history was kept rather than thrown away.</li>
+  </ul>
+</article>
+
+<article class="rel">
+  <div class="rel-head"><h2>Card navigation, and nightly backups</h2><time datetime="2026-08-17">August 17, 2026</time><span class="tag">New</span></div>
+  <ul>
+    <li>The player card moved to a select menu instead of a row of buttons — it stopped running
+    out of room as faces were added.</li>
+    <li>A nightly backup of everything the bot stores, verified, kept for two weeks.</li>
+  </ul>
+</article>
+
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord.</p>
+  <p><a href="/">Overview</a> · <a href="/terms/">Terms of Service</a> · <a href="/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+<script type="module">
+// The account button (sign in with Discord, the menu once signed in) --
+// the same as on the cards and the leaderboards.
+import { mountAuth } from '/leaderboards/auth.js';
+mountAuth();
+</script>
+</body>
+</html>

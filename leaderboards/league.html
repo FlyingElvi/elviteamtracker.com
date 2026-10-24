@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>League — Elvi's Team Tracker</title>
+  <meta name="description" content="A league's own page: standings, results, the calendar and the scoring leaders, from EA NHL Pro Clubs match data.">
+  <!-- A league PORTAL (Oct 24): served on {slug}.elviteamtracker.com by the
+       Cloudflare Worker, which reads this page from the main site. Every
+       link to the main site is absolute: here "/" is the league. -->
+  <link rel="icon" href="https://elviteamtracker.com/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="https://elviteamtracker.com/assets/site.css">
+  <link rel="stylesheet" href="leaderboards.css?v=5a872b64f8">
+  <style>
+    /* The league's badge, left of its name -- taller than the capitals:
+       a badge carries its own margin around the drawing. */
+    .lg-title { display: flex; align-items: center; gap: 0.3em; }
+    .lg-title img { height: 1.8em; width: auto; }
+  </style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="https://elviteamtracker.com/"><img src="https://elviteamtracker.com/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="https://elviteamtracker.com/">Overview</a>
+    <a href="https://elviteamtracker.com/leaderboards/">Leaderboards</a>
+  </div>
+</div></nav>
+
+<header class="lb-head"><div class="lb-wrap">
+  <h1 class="lg-title"><img id="lg-logo" alt="" hidden><span id="lg-name">League</span></h1>
+  <p class="lb-note">Standings, results and leaders from EA's public match data — the league
+  games the tracker matched to the calendar. Updated live; a page can be up to five minutes old.</p>
+</div></header>
+
+<main class="lb-wrap">
+  <section class="lb-gate" id="down" hidden>
+    <h2 id="down-title">Unavailable right now</h2>
+    <p id="down-text">This league page can't be reached at the moment — try again in a few minutes.</p>
+  </section>
+
+  <div id="board" hidden>
+  <div class="lb-boards" id="boards" role="tablist" aria-label="Section"></div>
+
+  <section class="lb-controls" aria-label="Filters">
+    <label class="lb-min" id="seasonwrap">Season
+      <select id="season"></select>
+    </label>
+    <div class="lb-chips" id="views" role="group" aria-label="Position" hidden></div>
+    <label class="lb-min" id="minwrap" hidden>Min. GP
+      <select id="min">
+        <option value="1">1</option>
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+      </select>
+    </label>
+  </section>
+
+  <p class="lb-status" id="status" role="status"></p>
+  <div class="lb-scroll"><table class="lb-table" id="table"></table></div>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord. EA SPORTS and NHL are trademarks of their respective
+  owners.</p>
+  <p><a href="https://elviteamtracker.com/terms/">Terms of Service</a> · <a href="https://elviteamtracker.com/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+<script type="module" src="league.js?v=5a872b64f8"></script>
+</body>
+</html>

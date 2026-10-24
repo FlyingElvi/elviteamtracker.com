@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Player cards — Elvi's Team Tracker</title>
+  <meta name="description" content="The player cards of the EA NHL Pro Clubs players who chose to share them, from Elvi's Team Tracker.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <!-- The site's own sheet first (nav, footer, colour tokens, light/dark),
+       then the cards' -->
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="site.css?v=5a872b64f8">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/">Overview</a>
+    <a href="/changelog/">What's new</a>
+    <a href="/playercards/" aria-current="page">Cards</a>
+    <a href="/leaderboards/">Leaderboards</a>
+  </div>
+</div></nav>
+
+<header class="cards-head"><div class="cards-wrap">
+  <h1>Player cards</h1>
+  <p class="cards-sub" id="sub">Loading cards…</p>
+  <p class="cards-note">Only the players who chose to share their card are here — press
+  <strong>🌐 Web</strong> under your own card in Discord to join them. The cards here can be a
+  few minutes behind: the card in Discord is always the up-to-date one.</p>
+  <div class="mine" id="mine" hidden></div>
+</div></header>
+
+<dialog class="consent" id="consent" aria-labelledby="consent-title">
+  <h2 id="consent-title">🌐 Put your card on the web?</h2>
+  <p>Your player card will be published on <strong>ElviTeamTracker.com/playercards</strong> — a
+  public page that <strong>anyone</strong> can open, search engines included.</p>
+  <p><strong>What goes on it:</strong> your EA gamertag, your Discord avatar, your club and your
+  card's stats (front, stats and last 10 games).<br>
+  <strong>What doesn't:</strong> your Discord name, your servers, your Discord id.</p>
+  <p><strong>It's not live.</strong> The page can be a few minutes behind — your card in Discord
+  is always the up-to-date one.</p>
+  <p>Changed your mind later? Sign in here and remove it, or press ⚙️ on your card's Clubs face
+  in Discord: it comes down at the next refresh, and no copy of it is kept on the site.</p>
+  <div class="consent-actions">
+    <button type="button" class="consent-yes" id="consent-yes">I agree — put my card on the web</button>
+    <button type="button" class="consent-no" id="consent-no">Not now</button>
+  </div>
+</dialog>
+
+<main class="cards-wrap">
+  <section class="controls" aria-label="Filters">
+    <input id="q" type="search" placeholder="Search a gamertag or a club" autocomplete="off">
+    <div class="chips" id="positions" role="group" aria-label="Position"></div>
+    <div class="chips" id="tiers" role="group" aria-label="Tier"></div>
+    <label class="sort">Sort
+      <select id="sort">
+        <option value="ovr">OVR</option>
+        <option value="games">Games</option>
+        <option value="name">Name</option>
+      </select>
+    </label>
+  </section>
+  <p class="count" id="count"></p>
+  <section class="grid" id="grid" aria-live="polite"></section>
+</main>
+
+<dialog id="viewer" aria-label="Player card">
+  <button class="close" id="close" aria-label="Close">×</button>
+  <button class="close refresh" id="refresh" aria-label="Refresh this card" title="Refresh — see your latest game">↻</button>
+  <div class="viewer-body">
+    <div class="stage">
+      <button class="nav-btn prev" id="prev" aria-label="Previous player">‹</button>
+      <div class="flip-col">
+        <div class="flip" id="flip"></div>
+        <!-- Your own card's Challenges face (Oct 21): Get / Abandon, like Discord. -->
+        <div class="card-act" id="cardact" hidden></div>
+      </div>
+      <button class="nav-btn next" id="next" aria-label="Next player">›</button>
+    </div>
+    <div class="faces" id="faces" role="tablist" aria-orientation="vertical" aria-label="Card faces"></div>
+  </div>
+</dialog>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord. EA SPORTS and NHL are trademarks of their respective
+  owners.</p>
+  <p><a href="/changelog/">What's new</a> · <a href="/terms/">Terms of Service</a> · <a href="/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+<script type="module" src="app.js?v=5a872b64f8"></script>
+</body>
+</html>

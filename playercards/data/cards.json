@@ -1,0 +1,3374 @@
+{
+  "generatedAt": "2026-10-24T19:48:49.738817580Z",
+  "contentHash": "cdba61d3a4e903a8080609ff464b55227c906a8495ced0cdded9ee0d0e1acdc1",
+  "players": [
+    {
+      "id": "ladiesigodown2",
+      "name": "ladiesigodown2",
+      "position": "G",
+      "ovr": 94,
+      "ovrTracked": 93,
+      "trend": "up",
+      "games": 162,
+      "club": {
+        "name": "LG Victoria Royals",
+        "code": "ROY",
+        "logo": null
+      },
+      "tier": "fire-elite",
+      "halo": true,
+      "award": null,
+      "back": {
+        "goalie": true,
+        "ovrLast10": 94,
+        "ovrTracked": 93,
+        "rows": [
+          [
+            "GP",
+            "10",
+            "140"
+          ],
+          [
+            "SV%",
+            "86.1%",
+            "81.5%"
+          ],
+          [
+            "GAA",
+            "2.03",
+            "2.99"
+          ],
+          [
+            "SO",
+            "2",
+            "23"
+          ],
+          [
+            "SV",
+            "118",
+            "1668"
+          ],
+          [
+            "SA",
+            "137",
+            "2046"
+          ],
+          [
+            "GA",
+            "19",
+            "378"
+          ],
+          [
+            "BRK",
+            "2/4",
+            "38/80"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 76,
+          "hot": -1,
+          "result": "W",
+          "score": "3-0",
+          "opp": "IGHL EBB AND FLOW FLYERS",
+          "statLine": "2SV 1.00"
+        },
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "2-1",
+          "opp": "Ignition HC",
+          "statLine": "20SV .952"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "W",
+          "score": "5-4",
+          "opp": "THE ICEKINGS",
+          "statLine": "21SV .840"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "W",
+          "score": "2-1",
+          "opp": "ITHL Chics with Stics",
+          "statLine": "10SV .909"
+        },
+        {
+          "rtg": 77,
+          "hot": 0,
+          "result": "W",
+          "score": "9-2",
+          "opp": "ITHL Chics with Stics",
+          "statLine": "9SV .818"
+        },
+        {
+          "rtg": 78,
+          "hot": 0,
+          "result": "W",
+          "score": "7-3",
+          "opp": "RUCKUS N CO",
+          "statLine": "12SV .800"
+        },
+        {
+          "rtg": 88,
+          "hot": 1,
+          "result": "W",
+          "score": "2-0",
+          "opp": "RUCKUS N CO",
+          "statLine": "7SV 1.00"
+        },
+        {
+          "rtg": 76,
+          "hot": -1,
+          "result": "L",
+          "score": "0-3",
+          "opp": "Schittcreek",
+          "statLine": "9SV .818"
+        },
+        {
+          "rtg": 85,
+          "hot": 1,
+          "result": "OTL",
+          "score": "2-3",
+          "opp": "Arch City Heros",
+          "statLine": "22SV .880"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "0-3",
+          "opp": "I TRIUMPH I",
+          "statLine": "6SV .667"
+        }
+      ],
+      "avatar": "avatars/77164381e793deb1.png"
+    },
+    {
+      "id": "dailyspitz",
+      "name": "DailySpitz",
+      "position": "LW",
+      "ovr": 93,
+      "ovrTracked": 93,
+      "trend": "up",
+      "games": 138,
+      "club": {
+        "name": "Frosty Furballs",
+        "code": "FUR",
+        "logo": "logos/a02d2e91016c036e.png"
+      },
+      "tier": "elite",
+      "halo": false,
+      "award": {
+        "line1": "DOT",
+        "line2": "BOSS",
+        "negative": false,
+        "tier": null,
+        "overlay": null
+      },
+      "back": {
+        "goalie": false,
+        "ovrLast10": 93,
+        "ovrTracked": 93,
+        "rows": [
+          [
+            "P/GP",
+            "3.80",
+            "3.12"
+          ],
+          [
+            "G",
+            "17",
+            "151"
+          ],
+          [
+            "A",
+            "21",
+            "280"
+          ],
+          [
+            "P",
+            "38",
+            "431"
+          ],
+          [
+            "+/-",
+            "+16",
+            "+157"
+          ],
+          [
+            "S%",
+            "40%",
+            "32%"
+          ],
+          [
+            "PASS%",
+            "82%",
+            "78%"
+          ],
+          [
+            "HIT",
+            "4",
+            "49"
+          ],
+          [
+            "TK",
+            "37",
+            "507"
+          ],
+          [
+            "GV",
+            "50",
+            "806"
+          ],
+          [
+            "PIM",
+            "4",
+            "70"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "1-4",
+          "opp": "Lakonia Spartans",
+          "statLine": "0G 1A 82%"
+        },
+        {
+          "rtg": 86,
+          "hot": 1,
+          "result": "W",
+          "score": "10-6",
+          "opp": "Cardiac Cobras",
+          "statLine": "4G 5A 84%"
+        },
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "8-3",
+          "opp": "LMSA Roadrunners",
+          "statLine": "2G 5A 71%"
+        },
+        {
+          "rtg": 86,
+          "hot": 1,
+          "result": "W",
+          "score": "6-2",
+          "opp": "On joue pour le fun",
+          "statLine": "4G 1A 88%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "6-7",
+          "opp": "LG Tucson Roadrunners",
+          "statLine": "0G 2A 89%"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "W",
+          "score": "4-1",
+          "opp": "LG Montreal Canadiens",
+          "statLine": "0G 1A 96%"
+        },
+        {
+          "rtg": 86,
+          "hot": 1,
+          "result": "W",
+          "score": "9-1",
+          "opp": "Rangersk",
+          "statLine": "3G 3A 80%"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "W",
+          "score": "4-0",
+          "opp": "Rangersk",
+          "statLine": "3G 0A 75%"
+        },
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "L",
+          "score": "3-4",
+          "opp": "LG Rimouski",
+          "statLine": "1G 1A 76%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "3-6",
+          "opp": "LG MEDICINE HAT TIGERS",
+          "statLine": "0G 2A 83%"
+        }
+      ],
+      "avatar": "avatars/af48aed52cc8d7d0.png"
+    },
+    {
+      "id": "burning-wolves",
+      "name": "Burning Wolves",
+      "position": "LW",
+      "ovr": 91,
+      "ovrTracked": 92,
+      "trend": "steady",
+      "games": 318,
+      "club": {
+        "name": "Frosty Furballs",
+        "code": "FUR",
+        "logo": "logos/a02d2e91016c036e.png"
+      },
+      "tier": "elite",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 91,
+        "ovrTracked": 92,
+        "rows": [
+          [
+            "P/GP",
+            "4.00",
+            "2.90"
+          ],
+          [
+            "G",
+            "21",
+            "426"
+          ],
+          [
+            "A",
+            "19",
+            "493"
+          ],
+          [
+            "P",
+            "40",
+            "919"
+          ],
+          [
+            "+/-",
+            "+23",
+            "+413"
+          ],
+          [
+            "S%",
+            "33%",
+            "29%"
+          ],
+          [
+            "PASS%",
+            "73%",
+            "77%"
+          ],
+          [
+            "HIT",
+            "27",
+            "554"
+          ],
+          [
+            "TK",
+            "32",
+            "1155"
+          ],
+          [
+            "GV",
+            "99",
+            "2210"
+          ],
+          [
+            "PIM",
+            "15",
+            "265"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "8-4",
+          "opp": "LG Victoria Royals",
+          "statLine": "2G 5A 84%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "4-6",
+          "opp": "LG Soo Greyhounds",
+          "statLine": "2G 2A 63%"
+        },
+        {
+          "rtg": 74,
+          "hot": -1,
+          "result": "OTL",
+          "score": "5-6",
+          "opp": "LG Kitchener Rangers",
+          "statLine": "3G 0A 87%"
+        },
+        {
+          "rtg": 78,
+          "hot": 0,
+          "result": "W",
+          "score": "4-1",
+          "opp": "LG Brantford  Bulldogs",
+          "statLine": "3G 0A 67%"
+        },
+        {
+          "rtg": 81,
+          "hot": 1,
+          "result": "W",
+          "score": "5-2",
+          "opp": "EDGE USA Hockey",
+          "statLine": "2G 3A 73%"
+        },
+        {
+          "rtg": 76,
+          "hot": -1,
+          "result": "W",
+          "score": "5-1",
+          "opp": "All The Dogs",
+          "statLine": "1G 3A 59%"
+        },
+        {
+          "rtg": 84,
+          "hot": 1,
+          "result": "W",
+          "score": "7-3",
+          "opp": "Cardiac Cobras",
+          "statLine": "3G 0A 76%"
+        },
+        {
+          "rtg": 84,
+          "hot": 1,
+          "result": "W",
+          "score": "5-3",
+          "opp": "Staten Island Armada",
+          "statLine": "2G 3A 68%"
+        },
+        {
+          "rtg": 69,
+          "hot": -1,
+          "result": "W",
+          "score": "3-2",
+          "opp": "Pizza please",
+          "statLine": "1G 1A 64%"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "W",
+          "score": "6-1",
+          "opp": "Salt lake snipers",
+          "statLine": "2G 2A 95%"
+        }
+      ],
+      "avatar": "avatars/cb072afcf5c3c994.png"
+    },
+    {
+      "id": "kevinjmo",
+      "name": "kevinjmo",
+      "position": "C",
+      "ovr": 91,
+      "ovrTracked": 89,
+      "trend": "up",
+      "games": 147,
+      "club": {
+        "name": "Flickering Fluffballs",
+        "code": "FLU",
+        "logo": "logos/939e1ecce48885be.png"
+      },
+      "tier": "elite",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 91,
+        "ovrTracked": 89,
+        "rows": [
+          [
+            "FO%",
+            "62%",
+            "55%"
+          ],
+          [
+            "G",
+            "15",
+            "177"
+          ],
+          [
+            "A",
+            "17",
+            "264"
+          ],
+          [
+            "P",
+            "32",
+            "441"
+          ],
+          [
+            "+/-",
+            "-1",
+            "+132"
+          ],
+          [
+            "S%",
+            "44%",
+            "37%"
+          ],
+          [
+            "PASS%",
+            "73%",
+            "69%"
+          ],
+          [
+            "HIT",
+            "12",
+            "194"
+          ],
+          [
+            "TK",
+            "35",
+            "597"
+          ],
+          [
+            "GV",
+            "60",
+            "1336"
+          ],
+          [
+            "PIM",
+            "8",
+            "96"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "2-10",
+          "opp": "Community Service HC",
+          "statLine": "1G 0A 80%"
+        },
+        {
+          "rtg": 77,
+          "hot": 0,
+          "result": "L",
+          "score": "2-4",
+          "opp": "VHL Orryx",
+          "statLine": "2G 0A 78%"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "W",
+          "score": "7-5",
+          "opp": "LMS Red Wings",
+          "statLine": "2G 3A 93%"
+        },
+        {
+          "rtg": 78,
+          "hot": 1,
+          "result": "W",
+          "score": "3-1",
+          "opp": "LMS Oilers",
+          "statLine": "1G 2A 87%"
+        },
+        {
+          "rtg": 88,
+          "hot": 1,
+          "result": "W",
+          "score": "10-6",
+          "opp": "Cardiac Cobras",
+          "statLine": "3G 5A 59%"
+        },
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "8-3",
+          "opp": "LMSA Roadrunners",
+          "statLine": "2G 3A 58%"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "W",
+          "score": "6-2",
+          "opp": "On joue pour le fun",
+          "statLine": "1G 3A 66%"
+        },
+        {
+          "rtg": 68,
+          "hot": -1,
+          "result": "L",
+          "score": "0-5",
+          "opp": "LMS Avalanche",
+          "statLine": "0G 0A 65%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "1-3",
+          "opp": "LMS Vegas Golden Knights",
+          "statLine": "0G 1A 73%"
+        },
+        {
+          "rtg": 75,
+          "hot": -1,
+          "result": "L",
+          "score": "5-8",
+          "opp": "LMS Islanders",
+          "statLine": "3G 0A 73%"
+        }
+      ],
+      "avatar": "avatars/946c8c2b7bbe1c97.png"
+    },
+    {
+      "id": "abubaba98",
+      "name": "AbuBaba98",
+      "position": "LD",
+      "ovr": 88,
+      "ovrTracked": 94,
+      "trend": "down",
+      "games": 191,
+      "club": {
+        "name": "Frosty Furballs",
+        "code": "FUR",
+        "logo": "logos/a02d2e91016c036e.png"
+      },
+      "tier": "diamond",
+      "halo": false,
+      "award": {
+        "line1": "PULL OUT",
+        "line2": "GAME",
+        "negative": false,
+        "tier": null,
+        "overlay": null
+      },
+      "back": {
+        "goalie": false,
+        "ovrLast10": 88,
+        "ovrTracked": 94,
+        "rows": [
+          [
+            "BLK",
+            "15",
+            "192"
+          ],
+          [
+            "G",
+            "2",
+            "89"
+          ],
+          [
+            "A",
+            "8",
+            "240"
+          ],
+          [
+            "P",
+            "10",
+            "329"
+          ],
+          [
+            "+/-",
+            "+14",
+            "+261"
+          ],
+          [
+            "S%",
+            "10%",
+            "23%"
+          ],
+          [
+            "PASS%",
+            "83%",
+            "83%"
+          ],
+          [
+            "HIT",
+            "2",
+            "127"
+          ],
+          [
+            "TK",
+            "56",
+            "906"
+          ],
+          [
+            "GV",
+            "34",
+            "737"
+          ],
+          [
+            "PIM",
+            "18",
+            "151"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "8-0",
+          "opp": "LMS Devils",
+          "statLine": "0G 2A 71%"
+        },
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "L",
+          "score": "4-5",
+          "opp": "LMS Predators",
+          "statLine": "0G 1A 80%"
+        },
+        {
+          "rtg": 77,
+          "hot": -1,
+          "result": "OTL",
+          "score": "5-6",
+          "opp": "LMS Hurricanes",
+          "statLine": "0G 0A 92%"
+        },
+        {
+          "rtg": 76,
+          "hot": -1,
+          "result": "W",
+          "score": "6-1",
+          "opp": "Fiery Fuzzballs",
+          "statLine": "0G 2A 94%"
+        },
+        {
+          "rtg": 74,
+          "hot": -1,
+          "result": "OTL",
+          "score": "3-4",
+          "opp": "Fiery Fuzzballs",
+          "statLine": "0G 1A 84%"
+        },
+        {
+          "rtg": 85,
+          "hot": 1,
+          "result": "W",
+          "score": "10-6",
+          "opp": "The Band HC",
+          "statLine": "1G 2A 81%"
+        },
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "L",
+          "score": "2-3",
+          "opp": "LG UConn Huskies",
+          "statLine": "0G 0A 88%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "1-3",
+          "opp": "LG Michigan State",
+          "statLine": "0G 0A 81%"
+        },
+        {
+          "rtg": 81,
+          "hot": 1,
+          "result": "OTL",
+          "score": "1-2",
+          "opp": "LG Penn State Lions",
+          "statLine": "1G 0A 72%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "3-5",
+          "opp": "GRAVEL PIT",
+          "statLine": "0G 0A 83%"
+        }
+      ],
+      "avatar": "avatars/374c9b218407b1b1.png"
+    },
+    {
+      "id": "hockeyman-572",
+      "name": "HockeyMan_572",
+      "position": "RW",
+      "ovr": 87,
+      "ovrTracked": 85,
+      "trend": "up",
+      "games": 214,
+      "club": {
+        "name": "Frosty Furballs",
+        "code": "FUR",
+        "logo": "logos/a02d2e91016c036e.png"
+      },
+      "tier": "diamond",
+      "halo": false,
+      "award": {
+        "line1": "SHORT",
+        "line2": "STICK",
+        "negative": false,
+        "tier": null,
+        "overlay": null
+      },
+      "back": {
+        "goalie": false,
+        "ovrLast10": 87,
+        "ovrTracked": 85,
+        "rows": [
+          [
+            "P/GP",
+            "2.90",
+            "2.96"
+          ],
+          [
+            "G",
+            "15",
+            "130"
+          ],
+          [
+            "A",
+            "14",
+            "172"
+          ],
+          [
+            "P",
+            "29",
+            "302"
+          ],
+          [
+            "+/-",
+            "+8",
+            "+118"
+          ],
+          [
+            "S%",
+            "34%",
+            "38%"
+          ],
+          [
+            "PASS%",
+            "74%",
+            "73%"
+          ],
+          [
+            "HIT",
+            "15",
+            "235"
+          ],
+          [
+            "TK",
+            "16",
+            "268"
+          ],
+          [
+            "GV",
+            "70",
+            "618"
+          ],
+          [
+            "PIM",
+            "9",
+            "101"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "2-5",
+          "opp": "Unamaki Chiefs",
+          "statLine": "2G 0A 63%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "2-3",
+          "opp": "Unamaki Chiefs",
+          "statLine": "1G 1A 67%"
+        },
+        {
+          "rtg": 82,
+          "hot": 1,
+          "result": "W",
+          "score": "9-5",
+          "opp": "Unamaki Chiefs",
+          "statLine": "3G 2A 68%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "W",
+          "score": "5-3",
+          "opp": "The BoneCrushers",
+          "statLine": "0G 2A 68%"
+        },
+        {
+          "rtg": 66,
+          "hot": -1,
+          "result": "L",
+          "score": "1-5",
+          "opp": "RUCKUS N CO",
+          "statLine": "0G 0A 76%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "4-7",
+          "opp": "RUCKUS N CO",
+          "statLine": "1G 3A 62%"
+        },
+        {
+          "rtg": 78,
+          "hot": 1,
+          "result": "W",
+          "score": "3-0",
+          "opp": "AXHL Dallas Stars",
+          "statLine": "1G 1A 78%"
+        },
+        {
+          "rtg": 84,
+          "hot": 1,
+          "result": "W",
+          "score": "7-4",
+          "opp": "EvoFYB LASERBEAMS",
+          "statLine": "2G 1A 92%"
+        },
+        {
+          "rtg": 82,
+          "hot": 1,
+          "result": "W",
+          "score": "9-7",
+          "opp": "Thaa Mighty Ducks",
+          "statLine": "4G 2A 79%"
+        },
+        {
+          "rtg": 82,
+          "hot": 1,
+          "result": "W",
+          "score": "7-3",
+          "opp": "Qaanaaq Quacking Quaggas",
+          "statLine": "2G 3A 83%"
+        }
+      ],
+      "avatar": "avatars/0eb10fef80d92ece.png"
+    },
+    {
+      "id": "flyingelvi24",
+      "name": "FlyingElvi24",
+      "position": "G",
+      "ovr": 87,
+      "ovrTracked": 82,
+      "trend": "up",
+      "games": 321,
+      "club": {
+        "name": "Frosty Furballs",
+        "code": "FUR",
+        "logo": "logos/a02d2e91016c036e.png"
+      },
+      "tier": "diamond",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": true,
+        "ovrLast10": 87,
+        "ovrTracked": 82,
+        "rows": [
+          [
+            "GP",
+            "10",
+            "317"
+          ],
+          [
+            "SV%",
+            "75.9%",
+            "77.6%"
+          ],
+          [
+            "GAA",
+            "4.50",
+            "3.78"
+          ],
+          [
+            "SO",
+            "4",
+            "40"
+          ],
+          [
+            "SV",
+            "101",
+            "3786"
+          ],
+          [
+            "SA",
+            "133",
+            "4877"
+          ],
+          [
+            "GA",
+            "32",
+            "1091"
+          ],
+          [
+            "BRK",
+            "1/8",
+            "70/156"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "L",
+          "score": "3-5",
+          "opp": "LMS Sabres 27",
+          "statLine": "15SV .750"
+        },
+        {
+          "rtg": 69,
+          "hot": -1,
+          "result": "L",
+          "score": "1-9",
+          "opp": "LMS Mammoth",
+          "statLine": "15SV .625"
+        },
+        {
+          "rtg": 82,
+          "hot": 1,
+          "result": "W",
+          "score": "3-2",
+          "opp": "LMS Bruins",
+          "statLine": "22SV .917"
+        },
+        {
+          "rtg": 85,
+          "hot": 1,
+          "result": "L",
+          "score": "0-3",
+          "opp": "Forgotten Legendz",
+          "statLine": "6SV 1.00"
+        },
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "4-0",
+          "opp": "WC Hockey Club",
+          "statLine": "7SV 1.00"
+        },
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "L",
+          "score": "1-5",
+          "opp": "RUCKUS N CO",
+          "statLine": "11SV .688"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "4-7",
+          "opp": "RUCKUS N CO",
+          "statLine": "14SV .667"
+        },
+        {
+          "rtg": 76,
+          "hot": 0,
+          "result": "W",
+          "score": "3-0",
+          "opp": "AXHL Dallas Stars",
+          "statLine": "1SV 1.00"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "W",
+          "score": "9-7",
+          "opp": "Thaa Mighty Ducks",
+          "statLine": "17SV .708"
+        },
+        {
+          "rtg": 78,
+          "hot": 1,
+          "result": "W",
+          "score": "7-3",
+          "opp": "Qaanaaq Quacking Quaggas",
+          "statLine": "18SV .857"
+        }
+      ],
+      "avatar": "avatars/5d12b05c259175c6.png"
+    },
+    {
+      "id": "kotz-sno",
+      "name": "KoTz SNO",
+      "position": "RW",
+      "ovr": 85,
+      "ovrTracked": 83,
+      "trend": "steady",
+      "games": 179,
+      "club": {
+        "name": "LMSA Penguins",
+        "code": "PEN",
+        "logo": "logos/be9bf58457222085.png"
+      },
+      "tier": "platinum",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 85,
+        "ovrTracked": 83,
+        "rows": [
+          [
+            "P/GP",
+            "1.70",
+            "2.39"
+          ],
+          [
+            "G",
+            "5",
+            "243"
+          ],
+          [
+            "A",
+            "12",
+            "185"
+          ],
+          [
+            "P",
+            "17",
+            "428"
+          ],
+          [
+            "+/-",
+            "-19",
+            "-34"
+          ],
+          [
+            "S%",
+            "12%",
+            "30%"
+          ],
+          [
+            "PASS%",
+            "83%",
+            "78%"
+          ],
+          [
+            "HIT",
+            "41",
+            "658"
+          ],
+          [
+            "TK",
+            "49",
+            "650"
+          ],
+          [
+            "GV",
+            "54",
+            "1007"
+          ],
+          [
+            "PIM",
+            "17",
+            "226"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "L",
+          "score": "1-2",
+          "opp": "Bri bunnies",
+          "statLine": "0G 1A 90%"
+        },
+        {
+          "rtg": 82,
+          "hot": 1,
+          "result": "W",
+          "score": "4-1",
+          "opp": "Mushy ones",
+          "statLine": "2G 2A 87%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "0-6",
+          "opp": "LMS Stars",
+          "statLine": "0G 0A 76%"
+        },
+        {
+          "rtg": 68,
+          "hot": -1,
+          "result": "L",
+          "score": "1-8",
+          "opp": "LMS Canadiens",
+          "statLine": "0G 1A 81%"
+        },
+        {
+          "rtg": 96,
+          "hot": 1,
+          "result": "W",
+          "score": "8-2",
+          "opp": "LMS Flyers",
+          "statLine": "3G 2A 85%"
+        },
+        {
+          "rtg": 78,
+          "hot": 1,
+          "result": "L",
+          "score": "2-8",
+          "opp": "LMS Jets",
+          "statLine": "0G 2A 82%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "1-6",
+          "opp": "Flickering Fluffballs",
+          "statLine": "0G 1A 72%"
+        },
+        {
+          "rtg": 81,
+          "hot": 1,
+          "result": "W",
+          "score": "4-3",
+          "opp": "Flickering Fluffballs",
+          "statLine": "0G 3A 81%"
+        },
+        {
+          "rtg": 74,
+          "hot": -1,
+          "result": "L",
+          "score": "0-3",
+          "opp": "EvoFYB LASERBEAMS",
+          "statLine": "0G 0A —"
+        },
+        {
+          "rtg": 68,
+          "hot": -1,
+          "result": "L",
+          "score": "1-9",
+          "opp": "We are bad bois",
+          "statLine": "0G 0A 90%"
+        }
+      ],
+      "avatar": "avatars/a6d691ac11ed80fe.png"
+    },
+    {
+      "id": "tbizzy-15",
+      "name": "TBizzy_15",
+      "position": "RD",
+      "ovr": 85,
+      "ovrTracked": 83,
+      "trend": "steady",
+      "games": 99,
+      "club": {
+        "name": "TTHL Anaheim Ducks",
+        "code": "DUC",
+        "logo": "logos/90d2480cb4da5441.png"
+      },
+      "tier": "platinum",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 85,
+        "ovrTracked": 83,
+        "rows": [
+          [
+            "BLK",
+            "13",
+            "98"
+          ],
+          [
+            "G",
+            "1",
+            "24"
+          ],
+          [
+            "A",
+            "11",
+            "143"
+          ],
+          [
+            "P",
+            "12",
+            "167"
+          ],
+          [
+            "+/-",
+            "+5",
+            "-15"
+          ],
+          [
+            "S%",
+            "8%",
+            "11%"
+          ],
+          [
+            "PASS%",
+            "76%",
+            "72%"
+          ],
+          [
+            "HIT",
+            "42",
+            "489"
+          ],
+          [
+            "TK",
+            "43",
+            "350"
+          ],
+          [
+            "GV",
+            "43",
+            "476"
+          ],
+          [
+            "PIM",
+            "4",
+            "92"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "OTL",
+          "score": "2-3",
+          "opp": "AGL Knights",
+          "statLine": "0G 1A 76%"
+        },
+        {
+          "rtg": 78,
+          "hot": 1,
+          "result": "W",
+          "score": "5-3",
+          "opp": "II  R U S H  II",
+          "statLine": "0G 2A 85%"
+        },
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "W",
+          "score": "5-3",
+          "opp": "VV6L Germany",
+          "statLine": "0G 1A 77%"
+        },
+        {
+          "rtg": 87,
+          "hot": 1,
+          "result": "W",
+          "score": "6-4",
+          "opp": "AGL Knights",
+          "statLine": "1G 2A 71%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "4-5",
+          "opp": "LGNCAA Boston Terriers",
+          "statLine": "0G 1A 67%"
+        },
+        {
+          "rtg": 76,
+          "hot": 0,
+          "result": "W",
+          "score": "6-5",
+          "opp": "Pterodactyl",
+          "statLine": "0G 1A 82%"
+        },
+        {
+          "rtg": 77,
+          "hot": 1,
+          "result": "W",
+          "score": "2-1",
+          "opp": "LMS Avalanche",
+          "statLine": "0G 1A 79%"
+        },
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "W",
+          "score": "6-2",
+          "opp": "TTC Montreal Canadians",
+          "statLine": "0G 0A 76%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "—",
+          "score": "5-5",
+          "opp": "LG Victoria Royals",
+          "statLine": "0G 1A 64%"
+        },
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "L",
+          "score": "5-6",
+          "opp": "CGHL Canucks",
+          "statLine": "0G 1A 87%"
+        }
+      ],
+      "avatar": "avatars/aeb5f99a8c786bbe.png"
+    },
+    {
+      "id": "deadlyberen",
+      "name": "DeadlyBeren",
+      "position": "G",
+      "ovr": 83,
+      "ovrTracked": 87,
+      "trend": "steady",
+      "games": 205,
+      "club": {
+        "name": "LMSA Gulls",
+        "code": "GUL",
+        "logo": "logos/5cde5cdf93c0623c.png"
+      },
+      "tier": "platinum",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": true,
+        "ovrLast10": 83,
+        "ovrTracked": 87,
+        "rows": [
+          [
+            "GP",
+            "10",
+            "176"
+          ],
+          [
+            "SV%",
+            "79.1%",
+            "80.6%"
+          ],
+          [
+            "GAA",
+            "3.41",
+            "3.20"
+          ],
+          [
+            "SO",
+            "1",
+            "13"
+          ],
+          [
+            "SV",
+            "110",
+            "2175"
+          ],
+          [
+            "SA",
+            "139",
+            "2698"
+          ],
+          [
+            "GA",
+            "29",
+            "523"
+          ],
+          [
+            "BRK",
+            "1/3",
+            "35/76"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "L",
+          "score": "2-3",
+          "opp": "LMSA BRUINS",
+          "statLine": "18SV .857"
+        },
+        {
+          "rtg": 75,
+          "hot": -1,
+          "result": "W",
+          "score": "6-2",
+          "opp": "LMSA Admirals",
+          "statLine": "10SV .833"
+        },
+        {
+          "rtg": 65,
+          "hot": -1,
+          "result": "L",
+          "score": "3-7",
+          "opp": "LMSA Wolves",
+          "statLine": "8SV .533"
+        },
+        {
+          "rtg": 74,
+          "hot": -1,
+          "result": "L",
+          "score": "1-8",
+          "opp": "TTC Minnesota Wild",
+          "statLine": "20SV .714"
+        },
+        {
+          "rtg": 77,
+          "hot": 0,
+          "result": "W",
+          "score": "5-0",
+          "opp": "Qaanaaq Quacking Quaggas",
+          "statLine": "2SV 1.00"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "W",
+          "score": "4-1",
+          "opp": "LMSA Barracuda",
+          "statLine": "9SV .900"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "4-5",
+          "opp": "LMSA Eagles 27",
+          "statLine": "8SV .615"
+        },
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "3-1",
+          "opp": "LMSA Americans",
+          "statLine": "18SV .947"
+        },
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "3-2",
+          "opp": "LMS Stars",
+          "statLine": "17SV .895"
+        },
+        {
+          "rtg": 74,
+          "hot": -1,
+          "result": "W",
+          "score": "3-0",
+          "opp": "Yonge Street Yutes",
+          "statLine": "0SV"
+        }
+      ],
+      "avatar": "avatars/7692566f935e885a.png"
+    },
+    {
+      "id": "kfelts13",
+      "name": "kfelts13",
+      "position": "C",
+      "ovr": 82,
+      "ovrTracked": 83,
+      "trend": "steady",
+      "games": 101,
+      "club": {
+        "name": "Fiery Fuzzballs",
+        "code": "FUZ",
+        "logo": "logos/c826d1fb4fcc55fe.png"
+      },
+      "tier": "platinum",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 82,
+        "ovrTracked": 83,
+        "rows": [
+          [
+            "FO%",
+            "44%",
+            "44%"
+          ],
+          [
+            "G",
+            "7",
+            "87"
+          ],
+          [
+            "A",
+            "12",
+            "117"
+          ],
+          [
+            "P",
+            "19",
+            "204"
+          ],
+          [
+            "+/-",
+            "-15",
+            "-14"
+          ],
+          [
+            "S%",
+            "29%",
+            "30%"
+          ],
+          [
+            "PASS%",
+            "78%",
+            "75%"
+          ],
+          [
+            "HIT",
+            "59",
+            "454"
+          ],
+          [
+            "TK",
+            "36",
+            "282"
+          ],
+          [
+            "GV",
+            "53",
+            "492"
+          ],
+          [
+            "PIM",
+            "8",
+            "111"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "L",
+          "score": "6-7",
+          "opp": "Fondation leucan",
+          "statLine": "1G 4A 88%"
+        },
+        {
+          "rtg": 86,
+          "hot": 1,
+          "result": "W",
+          "score": "5-0",
+          "opp": "Creese crashing",
+          "statLine": "3G 1A 78%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "2-7",
+          "opp": "West End Trashers",
+          "statLine": "0G 1A 89%"
+        },
+        {
+          "rtg": 74,
+          "hot": -1,
+          "result": "L",
+          "score": "3-9",
+          "opp": "Phase 12",
+          "statLine": "0G 2A 82%"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "L",
+          "score": "5-7",
+          "opp": "Pika Pika",
+          "statLine": "1G 3A 85%"
+        },
+        {
+          "rtg": 74,
+          "hot": -1,
+          "result": "L",
+          "score": "2-5",
+          "opp": "The 6",
+          "statLine": "1G 0A 86%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "W",
+          "score": "2-1",
+          "opp": "LG Brampton Steelheads",
+          "statLine": "0G 1A 67%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "0-3",
+          "opp": "EvoFYB LASERBEAMS",
+          "statLine": "0G 0A 64%"
+        },
+        {
+          "rtg": 77,
+          "hot": 1,
+          "result": "W",
+          "score": "5-2",
+          "opp": "Ithl goat lordz",
+          "statLine": "2G 1A 67%"
+        },
+        {
+          "rtg": 69,
+          "hot": -1,
+          "result": "L",
+          "score": "1-10",
+          "opp": "Ithl goat lordz",
+          "statLine": "0G 0A 62%"
+        }
+      ],
+      "avatar": "avatars/4f09642b7b0bb930.png"
+    },
+    {
+      "id": "xsogaard",
+      "name": "xSogaard",
+      "position": "LD",
+      "ovr": 82,
+      "ovrTracked": 82,
+      "trend": "steady",
+      "games": 8,
+      "club": {
+        "name": "LG Brantford  Bulldogs",
+        "code": "BUL",
+        "logo": "logos/d4e7ef5a5de21524.png"
+      },
+      "tier": "platinum",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 82,
+        "ovrTracked": 82,
+        "rows": [
+          [
+            "BLK",
+            "6",
+            "6"
+          ],
+          [
+            "G",
+            "0",
+            "0"
+          ],
+          [
+            "A",
+            "11",
+            "11"
+          ],
+          [
+            "P",
+            "11",
+            "11"
+          ],
+          [
+            "+/-",
+            "+20",
+            "+20"
+          ],
+          [
+            "S%",
+            "0%",
+            "0%"
+          ],
+          [
+            "PASS%",
+            "86%",
+            "86%"
+          ],
+          [
+            "HIT",
+            "10",
+            "10"
+          ],
+          [
+            "TK",
+            "40",
+            "40"
+          ],
+          [
+            "GV",
+            "25",
+            "25"
+          ],
+          [
+            "PIM",
+            "2",
+            "2"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "W",
+          "score": "6-5",
+          "opp": "LG Regina Pats",
+          "statLine": "0G 1A 72%"
+        },
+        {
+          "rtg": 75,
+          "hot": -1,
+          "result": "W",
+          "score": "4-1",
+          "opp": "LG Prince George Cougars",
+          "statLine": "0G 0A 85%"
+        },
+        {
+          "rtg": 88,
+          "hot": 1,
+          "result": "W",
+          "score": "8-1",
+          "opp": "LGCHL Everett Silvertips",
+          "statLine": "0G 3A 95%"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "W",
+          "score": "7-3",
+          "opp": "LGCHL Calgary Hitmen",
+          "statLine": "0G 2A 81%"
+        },
+        {
+          "rtg": 76,
+          "hot": -1,
+          "result": "L",
+          "score": "0-1",
+          "opp": "LGCHL Halifax Mooseheads",
+          "statLine": "0G 0A 100%"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "W",
+          "score": "6-1",
+          "opp": "Icey Wolverines",
+          "statLine": "0G 2A 86%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "W",
+          "score": "9-4",
+          "opp": "LSHQ Blocus",
+          "statLine": "0G 2A 75%"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "OTL",
+          "score": "2-3",
+          "opp": "LGECHL KC MAVERICKS",
+          "statLine": "0G 1A 96%"
+        }
+      ],
+      "avatar": "avatars/10860f3da941799d.png"
+    },
+    {
+      "id": "ii-boh1ca-ii",
+      "name": "II BOH1CA II",
+      "position": "LD",
+      "ovr": 80,
+      "ovrTracked": 82,
+      "trend": "steady",
+      "games": 348,
+      "club": {
+        "name": "Frosty Furball Gaming",
+        "code": "GAM",
+        "logo": "logos/a8fe9164741bc911.png"
+      },
+      "tier": "gold",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 80,
+        "ovrTracked": 82,
+        "rows": [
+          [
+            "BLK",
+            "8",
+            "273"
+          ],
+          [
+            "G",
+            "3",
+            "71"
+          ],
+          [
+            "A",
+            "8",
+            "316"
+          ],
+          [
+            "P",
+            "11",
+            "387"
+          ],
+          [
+            "+/-",
+            "+4",
+            "+290"
+          ],
+          [
+            "S%",
+            "30%",
+            "14%"
+          ],
+          [
+            "PASS%",
+            "79%",
+            "80%"
+          ],
+          [
+            "HIT",
+            "5",
+            "330"
+          ],
+          [
+            "TK",
+            "31",
+            "1264"
+          ],
+          [
+            "GV",
+            "31",
+            "1109"
+          ],
+          [
+            "PIM",
+            "20",
+            "317"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "5-9",
+          "opp": "LMS Sharks 27",
+          "statLine": "1G 0A 50%"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "L",
+          "score": "2-3",
+          "opp": "LMS Avalanche",
+          "statLine": "1G 0A 92%"
+        },
+        {
+          "rtg": 74,
+          "hot": -1,
+          "result": "OTL",
+          "score": "2-3",
+          "opp": "LMS Sabres 27",
+          "statLine": "0G 1A 77%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "1-5",
+          "opp": "RUCKUS N CO",
+          "statLine": "0G 0A 83%"
+        },
+        {
+          "rtg": 86,
+          "hot": 1,
+          "result": "L",
+          "score": "4-7",
+          "opp": "RUCKUS N CO",
+          "statLine": "1G 2A 89%"
+        },
+        {
+          "rtg": 80,
+          "hot": 1,
+          "result": "W",
+          "score": "3-0",
+          "opp": "AXHL Dallas Stars",
+          "statLine": "0G 2A 86%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "W",
+          "score": "5-2",
+          "opp": "EDGE USA Hockey",
+          "statLine": "0G 0A 58%"
+        },
+        {
+          "rtg": 66,
+          "hot": -1,
+          "result": "W",
+          "score": "5-1",
+          "opp": "All The Dogs",
+          "statLine": "0G 1A 64%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "W",
+          "score": "7-3",
+          "opp": "Cardiac Cobras",
+          "statLine": "0G 0A 67%"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "W",
+          "score": "5-3",
+          "opp": "Staten Island Armada",
+          "statLine": "0G 3A 100%"
+        }
+      ],
+      "avatar": "avatars/7e97362e41479ba6.png"
+    },
+    {
+      "id": "opensquash33810",
+      "name": "OpenSquash33810",
+      "position": "RW",
+      "ovr": 79,
+      "ovrTracked": 93,
+      "trend": "down",
+      "games": 145,
+      "club": {
+        "name": "Frosty Furball Gaming",
+        "code": "GAM",
+        "logo": "logos/a8fe9164741bc911.png"
+      },
+      "tier": "gold",
+      "halo": false,
+      "award": {
+        "line1": "TURNSTILE",
+        "line2": "",
+        "negative": true,
+        "tier": null,
+        "overlay": null
+      },
+      "back": {
+        "goalie": false,
+        "ovrLast10": 79,
+        "ovrTracked": 93,
+        "rows": [
+          [
+            "P/GP",
+            "2.30",
+            "3.55"
+          ],
+          [
+            "G",
+            "11",
+            "231"
+          ],
+          [
+            "A",
+            "12",
+            "284"
+          ],
+          [
+            "P",
+            "23",
+            "515"
+          ],
+          [
+            "+/-",
+            "0",
+            "+212"
+          ],
+          [
+            "S%",
+            "27%",
+            "33%"
+          ],
+          [
+            "PASS%",
+            "77%",
+            "76%"
+          ],
+          [
+            "HIT",
+            "5",
+            "106"
+          ],
+          [
+            "TK",
+            "46",
+            "557"
+          ],
+          [
+            "GV",
+            "107",
+            "1327"
+          ],
+          [
+            "PIM",
+            "12",
+            "147"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 78,
+          "hot": 0,
+          "result": "W",
+          "score": "2-1",
+          "opp": "LG SHERBROOKE PHOENIX",
+          "statLine": "1G 0A 84%"
+        },
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "6-2",
+          "opp": "LG BAIE COMEAU DRAKKAR",
+          "statLine": "3G 2A 74%"
+        },
+        {
+          "rtg": 78,
+          "hot": 0,
+          "result": "W",
+          "score": "6-3",
+          "opp": "LG Saskatoon Blades",
+          "statLine": "0G 3A 81%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "0-3",
+          "opp": "LG SAINT JOHN",
+          "statLine": "0G 0A 84%"
+        },
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "L",
+          "score": "3-7",
+          "opp": "OG FREEBIRDS",
+          "statLine": "1G 1A 72%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "2-4",
+          "opp": "LMS Kings",
+          "statLine": "0G 1A 77%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "2-6",
+          "opp": "LG Guelph Storm",
+          "statLine": "2G 0A 65%"
+        },
+        {
+          "rtg": 75,
+          "hot": -1,
+          "result": "W",
+          "score": "3-2",
+          "opp": "LG Barrie Colts",
+          "statLine": "1G 2A 83%"
+        },
+        {
+          "rtg": 77,
+          "hot": 0,
+          "result": "L",
+          "score": "0-3",
+          "opp": "Med Hat Tigers",
+          "statLine": "2G 2A 82%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "2-3",
+          "opp": "G O R I L L A Z",
+          "statLine": "1G 1A 63%"
+        }
+      ],
+      "avatar": "avatars/6dafcf29cfa42aae.png"
+    },
+    {
+      "id": "edgex22",
+      "name": "EDGEx22",
+      "position": "C",
+      "ovr": 79,
+      "ovrTracked": 76,
+      "trend": "steady",
+      "games": 30,
+      "club": {
+        "name": "LG Brantford  Bulldogs",
+        "code": "BUL",
+        "logo": "logos/d4e7ef5a5de21524.png"
+      },
+      "tier": "gold",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 79,
+        "ovrTracked": 76,
+        "rows": [
+          [
+            "FO%",
+            "52%",
+            "50%"
+          ],
+          [
+            "G",
+            "5",
+            "12"
+          ],
+          [
+            "A",
+            "20",
+            "52"
+          ],
+          [
+            "P",
+            "25",
+            "64"
+          ],
+          [
+            "+/-",
+            "+5",
+            "+10"
+          ],
+          [
+            "S%",
+            "31%",
+            "23%"
+          ],
+          [
+            "PASS%",
+            "77%",
+            "73%"
+          ],
+          [
+            "HIT",
+            "42",
+            "105"
+          ],
+          [
+            "TK",
+            "46",
+            "141"
+          ],
+          [
+            "GV",
+            "65",
+            "225"
+          ],
+          [
+            "PIM",
+            "4",
+            "12"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "6-10",
+          "opp": "LG3s Slovakia",
+          "statLine": "1G 2A 90%"
+        },
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "L",
+          "score": "5-8",
+          "opp": "LG3s Japan",
+          "statLine": "0G 4A 86%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "W",
+          "score": "8-4",
+          "opp": "LG3s Canada",
+          "statLine": "0G 1A 76%"
+        },
+        {
+          "rtg": 77,
+          "hot": 1,
+          "result": "W",
+          "score": "5-2",
+          "opp": "LG Shawinigan",
+          "statLine": "1G 1A 79%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "OTL",
+          "score": "4-5",
+          "opp": "LG Moose Jaw Warriors",
+          "statLine": "2G 1A 65%"
+        },
+        {
+          "rtg": 78,
+          "hot": 1,
+          "result": "W",
+          "score": "5-4",
+          "opp": "LGCHL Charlottetown",
+          "statLine": "0G 3A 80%"
+        },
+        {
+          "rtg": 77,
+          "hot": 1,
+          "result": "W",
+          "score": "4-3",
+          "opp": "LG Voltigeurs",
+          "statLine": "1G 1A 79%"
+        },
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "—",
+          "score": "3-3",
+          "opp": "LGCHL Chilliwack Bruins",
+          "statLine": "0G 1A 85%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "W",
+          "score": "3-0",
+          "opp": "OTHL Kings Los Angeles",
+          "statLine": "0G 2A 55%"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "W",
+          "score": "9-3",
+          "opp": "ACHA Neegys",
+          "statLine": "0G 4A 67%"
+        }
+      ],
+      "avatar": "avatars/6236401103dc27a4.png"
+    },
+    {
+      "id": "teekneeweknee",
+      "name": "TeeKneeWeKnee",
+      "position": "C",
+      "ovr": 75,
+      "ovrTracked": 84,
+      "trend": "down",
+      "games": 405,
+      "club": {
+        "name": "Frosty Furballs",
+        "code": "FUR",
+        "logo": "logos/a02d2e91016c036e.png"
+      },
+      "tier": "silver",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 75,
+        "ovrTracked": 84,
+        "rows": [
+          [
+            "FO%",
+            "43%",
+            "52%"
+          ],
+          [
+            "G",
+            "10",
+            "456"
+          ],
+          [
+            "A",
+            "17",
+            "667"
+          ],
+          [
+            "P",
+            "27",
+            "1123"
+          ],
+          [
+            "+/-",
+            "-1",
+            "+529"
+          ],
+          [
+            "S%",
+            "33%",
+            "33%"
+          ],
+          [
+            "PASS%",
+            "79%",
+            "79%"
+          ],
+          [
+            "HIT",
+            "13",
+            "413"
+          ],
+          [
+            "TK",
+            "29",
+            "1349"
+          ],
+          [
+            "GV",
+            "62",
+            "2629"
+          ],
+          [
+            "PIM",
+            "10",
+            "312"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 67,
+          "hot": -1,
+          "result": "L",
+          "score": "1-4",
+          "opp": "Lakonia Spartans",
+          "statLine": "1G 0A 82%"
+        },
+        {
+          "rtg": 83,
+          "hot": 1,
+          "result": "W",
+          "score": "10-6",
+          "opp": "Cardiac Cobras",
+          "statLine": "3G 5A 70%"
+        },
+        {
+          "rtg": 76,
+          "hot": 0,
+          "result": "W",
+          "score": "8-3",
+          "opp": "LMSA Roadrunners",
+          "statLine": "1G 3A 81%"
+        },
+        {
+          "rtg": 77,
+          "hot": 1,
+          "result": "W",
+          "score": "6-2",
+          "opp": "On joue pour le fun",
+          "statLine": "1G 3A 79%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "5-9",
+          "opp": "LMS Sharks 27",
+          "statLine": "2G 1A 100%"
+        },
+        {
+          "rtg": 66,
+          "hot": -1,
+          "result": "L",
+          "score": "2-3",
+          "opp": "LMS Avalanche",
+          "statLine": "0G 0A 82%"
+        },
+        {
+          "rtg": 66,
+          "hot": -1,
+          "result": "OTL",
+          "score": "2-3",
+          "opp": "LMS Sabres 27",
+          "statLine": "0G 1A 75%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "1-5",
+          "opp": "RUCKUS N CO",
+          "statLine": "0G 1A 71%"
+        },
+        {
+          "rtg": 77,
+          "hot": 1,
+          "result": "L",
+          "score": "4-7",
+          "opp": "RUCKUS N CO",
+          "statLine": "1G 1A 83%"
+        },
+        {
+          "rtg": 81,
+          "hot": 1,
+          "result": "W",
+          "score": "3-0",
+          "opp": "AXHL Dallas Stars",
+          "statLine": "1G 2A 75%"
+        }
+      ],
+      "avatar": "avatars/dceb740d52a2f28e.png"
+    },
+    {
+      "id": "unclestoneyz",
+      "name": "UncleStoneyz",
+      "position": "LD",
+      "ovr": 75,
+      "ovrTracked": 78,
+      "trend": "down",
+      "games": 140,
+      "club": {
+        "name": "Frosty Furballs",
+        "code": "FUR",
+        "logo": "logos/a02d2e91016c036e.png"
+      },
+      "tier": "silver",
+      "halo": false,
+      "award": {
+        "line1": "SHOOTING",
+        "line2": "BLANKS",
+        "negative": true,
+        "tier": null,
+        "overlay": null
+      },
+      "back": {
+        "goalie": false,
+        "ovrLast10": 75,
+        "ovrTracked": 78,
+        "rows": [
+          [
+            "BLK",
+            "9",
+            "113"
+          ],
+          [
+            "G",
+            "1",
+            "44"
+          ],
+          [
+            "A",
+            "12",
+            "131"
+          ],
+          [
+            "P",
+            "13",
+            "175"
+          ],
+          [
+            "+/-",
+            "+10",
+            "+121"
+          ],
+          [
+            "S%",
+            "6%",
+            "15%"
+          ],
+          [
+            "PASS%",
+            "74%",
+            "76%"
+          ],
+          [
+            "HIT",
+            "12",
+            "254"
+          ],
+          [
+            "TK",
+            "27",
+            "458"
+          ],
+          [
+            "GV",
+            "41",
+            "456"
+          ],
+          [
+            "PIM",
+            "2",
+            "146"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 64,
+          "hot": -1,
+          "result": "L",
+          "score": "2-10",
+          "opp": "Community Service HC",
+          "statLine": "0G 0A 75%"
+        },
+        {
+          "rtg": 69,
+          "hot": -1,
+          "result": "L",
+          "score": "2-4",
+          "opp": "VHL Orryx",
+          "statLine": "0G 0A 58%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "1-4",
+          "opp": "Lakonia Spartans",
+          "statLine": "0G 0A 68%"
+        },
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "W",
+          "score": "10-6",
+          "opp": "Cardiac Cobras",
+          "statLine": "0G 2A 75%"
+        },
+        {
+          "rtg": 85,
+          "hot": 1,
+          "result": "W",
+          "score": "8-3",
+          "opp": "LMSA Roadrunners",
+          "statLine": "1G 2A 74%"
+        },
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "W",
+          "score": "6-2",
+          "opp": "On joue pour le fun",
+          "statLine": "0G 1A 76%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "1-5",
+          "opp": "Vice HC",
+          "statLine": "0G 1A 89%"
+        },
+        {
+          "rtg": 76,
+          "hot": 1,
+          "result": "W",
+          "score": "9-1",
+          "opp": "Rangersk",
+          "statLine": "0G 1A 79%"
+        },
+        {
+          "rtg": 76,
+          "hot": 1,
+          "result": "W",
+          "score": "4-0",
+          "opp": "Rangersk",
+          "statLine": "0G 1A 70%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "W",
+          "score": "5-4",
+          "opp": "The First Timers",
+          "statLine": "0G 4A 83%"
+        }
+      ],
+      "avatar": "avatars/44fa492c63f48147.png"
+    },
+    {
+      "id": "joinedjoint",
+      "name": "JoinedJoint",
+      "position": "C",
+      "ovr": 75,
+      "ovrTracked": 72,
+      "trend": "steady",
+      "games": 212,
+      "club": {
+        "name": "L E G I O N HC",
+        "code": "HC",
+        "logo": "logos/80ff9d9916fe7937.png"
+      },
+      "tier": "silver",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 75,
+        "ovrTracked": 72,
+        "rows": [
+          [
+            "FO%",
+            "55%",
+            "51%"
+          ],
+          [
+            "G",
+            "20",
+            "213"
+          ],
+          [
+            "A",
+            "15",
+            "282"
+          ],
+          [
+            "P",
+            "35",
+            "495"
+          ],
+          [
+            "+/-",
+            "+6",
+            "-113"
+          ],
+          [
+            "S%",
+            "35%",
+            "27%"
+          ],
+          [
+            "PASS%",
+            "62%",
+            "66%"
+          ],
+          [
+            "HIT",
+            "71",
+            "1316"
+          ],
+          [
+            "TK",
+            "30",
+            "604"
+          ],
+          [
+            "GV",
+            "85",
+            "1314"
+          ],
+          [
+            "PIM",
+            "12",
+            "224"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "W",
+          "score": "3-1",
+          "opp": "Pucks Deeeeeeep",
+          "statLine": "0G 2A 65%"
+        },
+        {
+          "rtg": 76,
+          "hot": 1,
+          "result": "L",
+          "score": "5-6",
+          "opp": "LTQC Caribou de Kegaska",
+          "statLine": "3G 2A 75%"
+        },
+        {
+          "rtg": 73,
+          "hot": 0,
+          "result": "W",
+          "score": "4-3",
+          "opp": "VVHL BRAVEHEARTS",
+          "statLine": "3G 1A 57%"
+        },
+        {
+          "rtg": 74,
+          "hot": 0,
+          "result": "W",
+          "score": "5-1",
+          "opp": "The Cowboys at Ram Ranch",
+          "statLine": "3G 2A 50%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "5-6",
+          "opp": "Les Requins de St Lin",
+          "statLine": "1G 2A 44%"
+        },
+        {
+          "rtg": 76,
+          "hot": 1,
+          "result": "L",
+          "score": "6-10",
+          "opp": "Frosty Furball Gaming",
+          "statLine": "3G 0A 61%"
+        },
+        {
+          "rtg": 75,
+          "hot": 1,
+          "result": "L",
+          "score": "3-4",
+          "opp": "Flick up",
+          "statLine": "0G 2A 68%"
+        },
+        {
+          "rtg": 76,
+          "hot": 1,
+          "result": "W",
+          "score": "6-3",
+          "opp": "Big Hogs of Steel",
+          "statLine": "3G 1A 67%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "3-5",
+          "opp": "VVHL Eagles",
+          "statLine": "2G 1A 67%"
+        },
+        {
+          "rtg": 75,
+          "hot": 1,
+          "result": "W",
+          "score": "5-4",
+          "opp": "Greenville All Stars",
+          "statLine": "2G 2A 58%"
+        }
+      ],
+      "avatar": "avatars/a15db47fcf746632.png"
+    },
+    {
+      "id": "pootsys",
+      "name": "pootsys",
+      "position": "RW",
+      "ovr": 73,
+      "ovrTracked": 83,
+      "trend": "down",
+      "games": 305,
+      "club": {
+        "name": "Flickering Fluffballs",
+        "code": "FLU",
+        "logo": "logos/939e1ecce48885be.png"
+      },
+      "tier": "silver",
+      "halo": false,
+      "award": null,
+      "back": {
+        "goalie": false,
+        "ovrLast10": 73,
+        "ovrTracked": 83,
+        "rows": [
+          [
+            "P/GP",
+            "2.40",
+            "3.20"
+          ],
+          [
+            "G",
+            "11",
+            "530"
+          ],
+          [
+            "A",
+            "13",
+            "444"
+          ],
+          [
+            "P",
+            "24",
+            "974"
+          ],
+          [
+            "+/-",
+            "+10",
+            "+258"
+          ],
+          [
+            "S%",
+            "27%",
+            "31%"
+          ],
+          [
+            "PASS%",
+            "75%",
+            "73%"
+          ],
+          [
+            "HIT",
+            "6",
+            "303"
+          ],
+          [
+            "TK",
+            "38",
+            "862"
+          ],
+          [
+            "GV",
+            "67",
+            "2586"
+          ],
+          [
+            "PIM",
+            "11",
+            "198"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "W",
+          "score": "8-0",
+          "opp": "LMS Devils",
+          "statLine": "0G 4A 79%"
+        },
+        {
+          "rtg": 68,
+          "hot": -1,
+          "result": "L",
+          "score": "4-5",
+          "opp": "LMS Predators",
+          "statLine": "0G 1A 83%"
+        },
+        {
+          "rtg": 77,
+          "hot": 1,
+          "result": "OTL",
+          "score": "5-6",
+          "opp": "LMS Hurricanes",
+          "statLine": "3G 1A 68%"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "5-9",
+          "opp": "LMS Sharks 27",
+          "statLine": "0G 1A 76%"
+        },
+        {
+          "rtg": 69,
+          "hot": -1,
+          "result": "L",
+          "score": "2-3",
+          "opp": "LMS Avalanche",
+          "statLine": "0G 0A 65%"
+        },
+        {
+          "rtg": 67,
+          "hot": -1,
+          "result": "OTL",
+          "score": "2-3",
+          "opp": "LMS Sabres 27",
+          "statLine": "0G 1A 81%"
+        },
+        {
+          "rtg": 66,
+          "hot": -1,
+          "result": "W",
+          "score": "6-1",
+          "opp": "Fiery Fuzzballs",
+          "statLine": "0G 0A 82%"
+        },
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "OTL",
+          "score": "3-4",
+          "opp": "Fiery Fuzzballs",
+          "statLine": "3G 0A 75%"
+        },
+        {
+          "rtg": 86,
+          "hot": 1,
+          "result": "W",
+          "score": "10-6",
+          "opp": "The Band HC",
+          "statLine": "4G 3A 81%"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "L",
+          "score": "5-7",
+          "opp": "F A D E D",
+          "statLine": "1G 2A 65%"
+        }
+      ],
+      "avatar": "avatars/f2d3ebe5eb3b87e2.png"
+    },
+    {
+      "id": "b5nny",
+      "name": "B5nny",
+      "position": "G",
+      "ovr": 69,
+      "ovrTracked": 70,
+      "trend": "down",
+      "games": 221,
+      "club": {
+        "name": "Drop Bears HC",
+        "code": "HC",
+        "logo": "logos/3f7372195931d740.png"
+      },
+      "tier": "bronze",
+      "halo": false,
+      "award": {
+        "line1": "HIGHWAY",
+        "line2": "ROBBERY",
+        "negative": false,
+        "tier": null,
+        "overlay": null
+      },
+      "back": {
+        "goalie": true,
+        "ovrLast10": 69,
+        "ovrTracked": 70,
+        "rows": [
+          [
+            "GP",
+            "10",
+            "112"
+          ],
+          [
+            "SV%",
+            "73.7%",
+            "74.4%"
+          ],
+          [
+            "GAA",
+            "4.57",
+            "4.50"
+          ],
+          [
+            "SO",
+            "0",
+            "6"
+          ],
+          [
+            "SV",
+            "123",
+            "1279"
+          ],
+          [
+            "SA",
+            "167",
+            "1719"
+          ],
+          [
+            "GA",
+            "44",
+            "440"
+          ],
+          [
+            "BRK",
+            "1/1",
+            "20/41"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 66,
+          "hot": -1,
+          "result": "L",
+          "score": "1-7",
+          "opp": "Circxm Snipers",
+          "statLine": "3SV .300"
+        },
+        {
+          "rtg": 63,
+          "hot": -1,
+          "result": "L",
+          "score": "3-9",
+          "opp": "Phase 12",
+          "statLine": "8SV .471"
+        },
+        {
+          "rtg": 70,
+          "hot": -1,
+          "result": "L",
+          "score": "3-4",
+          "opp": "T H E 0 L D E A G L E S",
+          "statLine": "11SV .733"
+        },
+        {
+          "rtg": 76,
+          "hot": 1,
+          "result": "OTL",
+          "score": "4-5",
+          "opp": "LMS Bruins",
+          "statLine": "18SV .783"
+        },
+        {
+          "rtg": 76,
+          "hot": 1,
+          "result": "W",
+          "score": "5-4",
+          "opp": "LMS Ducks",
+          "statLine": "16SV .800"
+        },
+        {
+          "rtg": 81,
+          "hot": 1,
+          "result": "W",
+          "score": "4-2",
+          "opp": "LMS Penguins",
+          "statLine": "14SV .875"
+        },
+        {
+          "rtg": 78,
+          "hot": 1,
+          "result": "L",
+          "score": "2-4",
+          "opp": "Brooklyn boys",
+          "statLine": "17SV .810"
+        },
+        {
+          "rtg": 79,
+          "hot": 1,
+          "result": "W",
+          "score": "3-2",
+          "opp": "That Was Special",
+          "statLine": "17SV .895"
+        },
+        {
+          "rtg": 69,
+          "hot": -1,
+          "result": "L",
+          "score": "3-4",
+          "opp": "DANS TON QC BONS",
+          "statLine": "9SV .692"
+        },
+        {
+          "rtg": 76,
+          "hot": 1,
+          "result": "W",
+          "score": "7-3",
+          "opp": "BJR",
+          "statLine": "10SV .769"
+        }
+      ],
+      "avatar": "avatars/665f89491e8300cf.png"
+    },
+    {
+      "id": "apollo1398",
+      "name": "Apollo1398",
+      "position": "RW",
+      "ovr": 68,
+      "ovrTracked": 84,
+      "trend": "down",
+      "games": 301,
+      "club": {
+        "name": "Flickering Fluffballs",
+        "code": "FLU",
+        "logo": "logos/939e1ecce48885be.png"
+      },
+      "tier": "bronze",
+      "halo": false,
+      "award": {
+        "line1": "PYLON",
+        "line2": "",
+        "negative": true,
+        "tier": null,
+        "overlay": null
+      },
+      "back": {
+        "goalie": false,
+        "ovrLast10": 68,
+        "ovrTracked": 84,
+        "rows": [
+          [
+            "P/GP",
+            "1.70",
+            "1.73"
+          ],
+          [
+            "G",
+            "6",
+            "84"
+          ],
+          [
+            "A",
+            "11",
+            "151"
+          ],
+          [
+            "P",
+            "17",
+            "235"
+          ],
+          [
+            "+/-",
+            "-25",
+            "+51"
+          ],
+          [
+            "S%",
+            "14%",
+            "22%"
+          ],
+          [
+            "PASS%",
+            "68%",
+            "77%"
+          ],
+          [
+            "HIT",
+            "30",
+            "391"
+          ],
+          [
+            "TK",
+            "30",
+            "511"
+          ],
+          [
+            "GV",
+            "87",
+            "831"
+          ],
+          [
+            "PIM",
+            "17",
+            "85"
+          ]
+        ]
+      },
+      "last10": [
+        {
+          "rtg": 66,
+          "hot": -1,
+          "result": "L",
+          "score": "2-7",
+          "opp": "West End Trashers",
+          "statLine": "0G 1A 87%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "L",
+          "score": "3-9",
+          "opp": "Phase 12",
+          "statLine": "0G 2A 53%"
+        },
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "L",
+          "score": "3-4",
+          "opp": "T H E 0 L D E A G L E S",
+          "statLine": "0G 0A 73%"
+        },
+        {
+          "rtg": 73,
+          "hot": -1,
+          "result": "L",
+          "score": "2-10",
+          "opp": "Community Service HC",
+          "statLine": "1G 1A 75%"
+        },
+        {
+          "rtg": 71,
+          "hot": -1,
+          "result": "L",
+          "score": "2-4",
+          "opp": "VHL Orryx",
+          "statLine": "0G 2A 68%"
+        },
+        {
+          "rtg": 68,
+          "hot": -1,
+          "result": "L",
+          "score": "1-4",
+          "opp": "Lakonia Spartans",
+          "statLine": "0G 1A 68%"
+        },
+        {
+          "rtg": 75,
+          "hot": 0,
+          "result": "L",
+          "score": "1-5",
+          "opp": "Vice HC",
+          "statLine": "1G 0A 100%"
+        },
+        {
+          "rtg": 72,
+          "hot": -1,
+          "result": "W",
+          "score": "6-5",
+          "opp": "RibsDuNord",
+          "statLine": "1G 1A 61%"
+        },
+        {
+          "rtg": 82,
+          "hot": 1,
+          "result": "W",
+          "score": "6-2",
+          "opp": "Wram Wranch",
+          "statLine": "1G 3A 76%"
+        },
+        {
+          "rtg": 69,
+          "hot": -1,
+          "result": "L",
+          "score": "2-6",
+          "opp": "THE FLOWJOBS",
+          "statLine": "2G 0A 50%"
+        }
+      ],
+      "avatar": "avatars/1c3928adae8cabe7.png"
+    }
+  ]
+}

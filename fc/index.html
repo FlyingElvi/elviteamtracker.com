@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Elvi's Team Tracker</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  #members { min-height: 60vh; }
+  .members-wait { color: var(--fg-dim); padding: 48px 0; }
+  .members-none { padding: 64px 0; }
+  .members-none h1 { margin: 0 0 8px; }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/">Overview</a>
+    <a href="/changelog/">What's new</a>
+    <a href="/playercards/">Cards</a>
+    <a href="/leaderboards/">Leaderboards</a>
+  </div>
+</div></nav>
+
+<!-- A members' page: what it holds is the API's to send, to whom it is for. -->
+<main id="members"><div class="wrap"><p class="members-wait">Loading…</p></div></main>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord. EA SPORTS and NHL are trademarks of their respective
+  owners.</p>
+  <p><a href="/changelog/">What's new</a> · <a href="/terms/">Terms of Service</a> · <a href="/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+<script type="module">
+import { mountAuth } from '/leaderboards/auth.js';
+
+const params = new URLSearchParams(location.search);
+const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
+const API = (LOCAL && params.get('api')) || 'https://api.elviteamtracker.com';
+
+const me = await mountAuth();
+const mine = me.signedIn && (me.links ?? []).some((l) => l.href === location.pathname);
+if (!me.available) {
+  // The session couldn't be checked (a slow moment on the server): say so,
+  // rather than telling a member the page isn't there.
+  document.querySelector('#members .wrap').innerHTML =
+    '<div class="members-none"><h1>Unavailable right now</h1><p>Try again in a minute. '
+    + '<a href="">Reload</a></p></div>';
+} else if (!mine) {
+  document.querySelector('#members .wrap').innerHTML =
+    '<div class="members-none"><h1>Page not found</h1><p><a href="/">Back to the home page</a></p></div>';
+} else {
+  // The page's own code and look come from the API, for this session only.
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.crossOrigin = 'use-credentials';
+  css.href = `${API}${location.pathname}app.css`;
+  document.head.append(css);
+  const app = document.createElement('script');
+  app.type = 'module';
+  app.crossOrigin = 'use-credentials';
+  app.src = `${API}${location.pathname}app.js`;
+  document.body.append(app);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leaderboards — Elvi's Team Tracker</title>
+  <meta name="description" content="EA NHL Pro Clubs leaderboards for any club the bot tracks — every lens, every column, sortable.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <!-- The site's own sheet first (nav, footer, colour tokens, light/dark) -->
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="leaderboards.css?v=7796c3622c">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/">Overview</a>
+    <a href="/changelog/">What's new</a>
+    <a href="/playercards/">Cards</a>
+    <a href="/leaderboards/" aria-current="page">Leaderboards</a>
+  </div>
+</div></nav>
+
+<header class="lb-head"><div class="lb-wrap">
+  <h1>Leaderboards</h1>
+  <p class="lb-note">Every club the bot tracks, from EA's public match data — the games we saw,
+  not necessarily every game a player ever played. Updated live; a board can be up to five
+  minutes old. For members of the community: sign in with Discord.</p>
+</div></header>
+
+<main class="lb-wrap">
+  <section class="lb-gate" id="gate" hidden aria-labelledby="gate-title">
+    <img src="/assets/logo-180.png" alt="" width="84" height="84">
+    <h2 id="gate-title">Members only</h2>
+    <p>The leaderboards are for the Elvi's Team Tracker community: <strong>people who already
+    have the bot in one of their Discord servers</strong>.</p>
+    <a class="lb-signin" id="signin" href="#">Sign in with Discord</a>
+    <p class="lb-small">We only ask Discord who you are, then check with the bot that you share a
+    server with it. Nothing is posted and nothing else is read.</p>
+  </section>
+  <section class="lb-gate" id="down" hidden>
+    <h2>Unavailable right now</h2>
+    <p>The leaderboards can't be reached at the moment — try again in a few minutes.</p>
+  </section>
+
+  <div id="board" hidden>
+  <div class="lb-boards" id="boards" role="tablist" aria-label="Board"></div>
+
+  <div id="clubui">
+  <section class="lb-pick" aria-label="Club">
+    <div class="lb-search" id="searchbox">
+      <input id="q" type="search" placeholder="Find a club…" autocomplete="off"
+             aria-label="Find a club" aria-controls="hits" aria-expanded="false">
+      <ul id="hits" class="lb-hits" role="listbox" hidden></ul>
+    </div>
+    <h2 id="club" class="lb-club"></h2>
+  </section>
+  <div class="lb-chips lb-mine" id="myclubs" role="group" aria-label="Your clubs" hidden></div>
+
+  <section class="lb-controls" aria-label="Filters">
+    <div class="lb-chips" id="modes" role="group" aria-label="Games"></div>
+    <label class="lb-min" id="seasonwrap" hidden>Season
+      <select id="season"></select>
+    </label>
+    <!-- The Leagues tab (Oct 24): one of your leagues, then its season. -->
+    <label class="lb-min" id="leaguewrap" hidden>League
+      <select id="league"></select>
+    </label>
+    <label class="lb-min" id="lseasonwrap" hidden>Season
+      <select id="lseason"></select>
+    </label>
+    <div class="lb-chips" id="views" role="group" aria-label="Position"></div>
+    <label class="lb-min">Min. GP
+      <select id="min">
+        <option value="1">1</option>
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </label>
+  </section>
+  </div>
+
+  <section class="lb-controls" id="pcontrols" aria-label="Filters" hidden>
+    <label class="lb-min" id="fwrap" hidden>Tournament
+      <select id="ftour"></select>
+    </label>
+    <div class="lb-chips" id="pmodes" role="group" aria-label="View"></div>
+  </section>
+
+  <div id="boardout">
+  <p class="lb-status" id="status" role="status"></p>
+  <div class="lb-scroll"><table class="lb-table" id="table"></table></div>
+  </div>
+
+  <!-- My player (Oct 19): the signed-in member's own stats and game log. -->
+  <section id="playerui" class="pl" hidden aria-labelledby="pl-name">
+    <div class="pl-head">
+      <h2 id="pl-name" class="lb-club"></h2>
+      <p class="lb-status" id="pl-sub" role="status"></p>
+    </div>
+    <section class="lb-controls" aria-label="Filters">
+      <div class="lb-chips" id="pl-modes" role="group" aria-label="Games"></div>
+      <label class="lb-min" id="pl-seasonwrap" hidden>Season
+        <select id="pl-season"></select>
+      </label>
+      <div class="lb-chips" id="pl-roles" role="group" aria-label="Position"></div>
+    </section>
+    <div id="pl-tiles"></div>
+    <h3 class="pl-role" id="pl-clubstitle">CLUBS</h3>
+    <div class="lb-chips lb-mine" id="pl-clubs" role="group" aria-labelledby="pl-clubstitle"></div>
+    <div class="pl-loghead">
+      <h3 class="pl-title">Game log</h3>
+    </div>
+    <p class="lb-status" id="pl-logstatus" role="status"></p>
+    <div class="lb-scroll"><table class="lb-table" id="pl-log"></table></div>
+    <nav class="pl-pager" id="pl-pager" aria-label="Game log pages" hidden>
+      <button type="button" class="lb-chip" id="pl-prev">‹ Prev</button>
+      <span id="pl-page"></span>
+      <button type="button" class="lb-chip" id="pl-next">Next ›</button>
+    </nav>
+  </section>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord. EA SPORTS and NHL are trademarks of their respective
+  owners.</p>
+  <p><a href="/changelog/">What's new</a> · <a href="/terms/">Terms of Service</a> · <a href="/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+<script type="module" src="leaderboards.js?v=7796c3622c"></script>
+</body>
+</html>

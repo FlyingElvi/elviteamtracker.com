@@ -29,7 +29,7 @@
 <main><div class="wrap legal">
 
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: October 18, 2026</p>
+<p class="updated">Last updated: November 4, 2026</p>
 
 <div class="note">
   <p><strong>The short version.</strong> The bot stores Discord <em>ids</em> — server, channel,
@@ -85,7 +85,8 @@ support server linked at the bottom of this page.</p>
 <table class="cmds">
   <thead><tr><th>Stored</th><th>When</th></tr></thead>
   <tbody>
-    <tr><td>Your Discord user id, linked to your in-game player id, platform and in-game name</td><td>Only when <strong>you</strong> run <code>/trackme</code>. Nothing links you to a gamertag until you do.</td></tr>
+    <tr><td>Your Discord user id, linked to your in-game player id, platform and in-game name</td><td>Only when <strong>you</strong> run <code>/trackme</code>, or link your gamertag on this website. Nothing links you to a gamertag until you do.</td></tr>
+    <tr><td>That you linked on this website without sharing a server with the bot (a <em>web only</em> player), and when</td><td>Only when you link on this website. It is dropped as soon as you share a server with the bot.</td></tr>
     <tr><td>Your user id on a sign-up sheet or a lineup</td><td>When you click to answer one.</td></tr>
     <tr><td>What you type into the bot's own dialogs</td><td>Only when you type it — a note for the players, a comment between coaches, a name for a week. Stored as typed, and shown where you put it.</td></tr>
     <tr><td>Your user id on a server roster used to gate optional features</td><td>Only on servers where those features are switched on.</td></tr>
@@ -93,14 +94,16 @@ support server linked at the bottom of this page.</p>
   </tbody>
 </table>
 <p>That's the whole list. The bot stores no Discord username, avatar, email address, IP address
-or payment information, and it has no accounts and no login. The one exception is yours to make:
+or payment information, and it has no accounts of its own. The one exception is yours to make:
 if you put your card on the web, a copy of your Discord avatar picture is published with it —
 see below.</p>
 
 <h3 id="webcards">Player cards on the web</h3>
 <p>Pressing <strong>🌐 Web</strong> under your <code>/playercard</code> and agreeing puts your
 card on <a href="/playercards/">elviteamtracker.com/playercards</a>. Nobody is published without
-having said yes, and the page's data holds only the players who did — not everyone, hidden.</p>
+having said yes, and the page's data holds only the players who did — not everyone, hidden.
+Linking your gamertag on this website is that yes: the form says your card goes on the web
+before you click.</p>
 <ul>
   <li><strong>What is published:</strong> your in-game name, your Discord avatar picture, your
   club's name and logo, and your card — rating, position, games played, the stats table and your
@@ -159,7 +162,7 @@ in-game name and stats being visible there is a function of the game, not of thi
 <!--LB <p>This website's <a href="/leaderboards/">leaderboards</a> show those same public
 statistics, added up by in-game name for the clubs the bot tracks. They carry nothing from
 Discord — no name, no id, no avatar — and no Furball Coins or anything else the bot keeps
-for itself. They are for members: you <a href="#site">sign in with Discord</a> to see them.</p> LB-->
+for itself. You <a href="#site">sign in with Discord</a> to see them.</p> LB-->
 
 <h2 id="sharing">6. Who can see it</h2>
 <ul>
@@ -167,8 +170,7 @@ for itself. They are for members: you <a href="#site">sign in with Discord</a> t
   and leaderboards posted there. That is the point of the bot.</li>
   <li><strong>Anyone on the internet</strong> can see the player cards their owners chose to put
   on <a href="/playercards/">the web</a>.</li>
-  <!--LB <li><strong>Members signed in with Discord</strong> — anyone who shares a Discord server
-  with the bot — can see the <a href="/leaderboards/">leaderboards</a>: EA's public match
+  <!--LB <li><strong>Anyone signed in with Discord</strong> can see the <a href="/leaderboards/">leaderboards</a>: EA's public match
   statistics by in-game name, for the clubs the bot tracks, never a Discord name, id or
   avatar.</li> LB-->
   <li><strong>Nobody else.</strong> Data is not sold, rented, licensed, shared with advertisers
@@ -207,6 +209,10 @@ give a reason.</p>
   <strong>Remove my card from the web</strong> — or sign in on the <a href="/playercards/">Cards</a>
   page and remove it there, or ask. It disappears from the page, avatar
   included, at the next refresh. Unlinking yourself does the same.</li>
+  <li><strong>Linked on this website, without a server of the bot?</strong> <strong>Remove my
+  card</strong>, in your menu once signed in, is your right to be forgotten: your Discord account
+  is unlinked from your gamertag and your card comes off the web, in one click and without
+  asking anyone. Your games themselves stay — they are EA's public record (see below).</li>
   <li><strong>Remove your sign-ups:</strong> your id is cleared from every sign-up sheet and lineup.</li>
   <li><strong>A whole server:</strong> a server admin can ask for every row belonging to their
   server — settings, channels, sign-ups — to be deleted.</li>
@@ -232,16 +238,18 @@ Cloudflare receive the requests your browser makes; their handling of that is co
 and <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's</a>.</p>
 
 <h3>Signing in with Discord</h3>
-<p>Signing in is optional, and only for people who already have the bot in one of their Discord
-servers — it opens what is meant for that community, like the leaderboards.</p>
+<p>Signing in is optional, and open to any Discord account — you don't need to share a server
+with the bot. It opens your own card and games, the leaderboards, and the rest of the site.</p>
 <ul>
   <li><strong>What Discord shares:</strong> who you are — your Discord id and name — and nothing
   else. Discord shows you that request before you accept it.</li>
-  <li><strong>The check:</strong> the bot is asked whether it shares a server with you. The answer
-  is a yes or a no, and it is not stored.</li>
+  <li><strong>The check:</strong> the bot is asked whether it shares a server with you, which
+  decides what you see (some features are only for its servers). The answer is a yes or a no,
+  kept in your cookie only. If you then link your gamertag here without sharing a server, that
+  one fact is noted (section 2).</li>
   <li><strong>The one cookie:</strong> signing in sets a single cookie, from
   <code>api.elviteamtracker.com</code>, holding your Discord id, your name, your avatar's
-  reference, whether you are in a premium server, and when it expires. It is signed so it cannot be forged, it lives in your
+  reference, whether you share a server (or a premium server) with the bot, and when it expires. It is signed so it cannot be forged, it lives in your
   browser only, and nothing about your sign-in is kept on our side. It lasts 14 days, or until
   you sign out. The only other one is a ten-minute cookie that protects the trip to Discord and
   back while you sign in; nothing is set if you don't.</li>

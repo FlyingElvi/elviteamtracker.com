@@ -26,6 +26,22 @@ $('signin').href = `${API}/auth/login?return=/`;
 /** The session, once /auth/me answers (see the bottom of this file). */
 let me;
 
+/** Your live card, asked at once with the slug this browser kept from its
+ *  last visit -- before /auth/me, not after it (Nov 4, elvis). */
+const early = (() => {
+  try {
+    const slug = JSON.parse(localStorage.getItem('ett-me') || 'null')?.me?.slug;
+    if (!slug) return null;
+    const card = fetch(`${API}/cards/${encodeURIComponent(slug)}?t=${Math.floor(Date.now() / 15000)}`,
+      { signal: AbortSignal.timeout(30000) })
+      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
+    card.catch(() => {});
+    return { slug, card };
+  } catch {
+    return null;
+  }
+})();
+
 // ── 2. link your gamertag ─────────────────────────────────────────────
 function say(anId, aText, aBad) {
   const p = $(anId);
@@ -147,25 +163,28 @@ const view = { p: null, face: 'front', faces: FACES, theme: null, data: new Map(
 
 async function drawCard() {
   const slug = me.slug;
+  // Two ways to the same card, raced (Nov 4): the live one (recomputed at the
+  // origin -- warmed by /auth/me, but seconds when cold) and the full list
+  // (edge-cached, built in the background; a card just linked is not in it
+  // yet). The first to answer draws; the other completes it after: the list
+  // brings the card's extra faces, the live one the newest game.
+  const live = early?.slug === slug ? early.card
+    : fetch(`${API}/cards/${encodeURIComponent(slug)}?t=${bucket()}`, { signal: AbortSignal.timeout(30000) })
+      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
+  const listed = fetch(`${API}/cards`, { signal: AbortSignal.timeout(20000) })
+    .then((r) => r.json()).then((j) => j.players?.find((x) => x.id === slug) ?? null).catch(() => null);
+  live.catch(() => {});
+  const redraw = () => { if (view.p && !PREMIUM_FACES.some((f) => f.id === view.face)) paint(false); };
   try {
-    const [theme, card, all] = await Promise.all([
+    const [theme, card] = await Promise.all([
       fetch('/playercards/data/theme.json', { cache: 'no-cache' }).then((r) => r.json()),
-      fetch(`${API}/cards/${encodeURIComponent(slug)}?t=${bucket()}`, { signal: AbortSignal.timeout(20000) })
-        .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }),
-      // The card's extra faces ride the full list (worked out in the
-      // background); a card just linked is not in it yet -- Challenges then.
-      fetch(`${API}/cards`, { signal: AbortSignal.timeout(6000) }).then((r) => r.json()).catch(() => null),
+      Promise.any([listed.then((x) => x ?? Promise.reject(new Error('not listed'))), live]),
       document.fonts.load('bold 20px EASSCard'),
       document.fonts.load('20px EASSCard'),
     ]);
     view.theme = theme;
-    view.p = card;
-    const listed = all?.players?.find((x) => x.id === slug);
-    const extra = (listed?.faces ?? ['quests'])
-      .filter((f) => me.premium || listed?.openFaces || f === 'quests');
-    view.faces = [...FACES, ...PREMIUM_FACES.filter((f) => extra.includes(f.id))]
-      .map((f) => (f.id === 'bets' && listed?.openFaces ? { ...f, label: 'Picks' } : f))
-      .sort((a, b) => FACE_ORDER.indexOf(a.id) - FACE_ORDER.indexOf(b.id));
+    view.p = { ...card };
+    view.faces = facesFrom(null);
   } catch (anErr) {
     console.warn('home: card', anErr);
     // Just linked: the card's first drawing can take a moment.
@@ -177,6 +196,25 @@ async function drawCard() {
     const at = view.faces.findIndex((f) => f.id === view.face);
     turn(view.faces[(at + 1) % view.faces.length].id);
   });
+  listed.then((x) => {
+    if (!x) return;
+    view.faces = facesFrom(x);
+    redraw();
+  });
+  live.then((fresh) => {
+    Object.assign(view.p, fresh);
+    redraw();
+  }).catch(() => {});
+}
+
+/** The faces of your card: the three, plus its extra ones from the list
+ *  (Challenges alone until the list answers, or for a card just linked). */
+function facesFrom(aListed) {
+  const extra = (aListed?.faces ?? ['quests'])
+    .filter((f) => me.premium || aListed?.openFaces || f === 'quests');
+  return [...FACES, ...PREMIUM_FACES.filter((f) => extra.includes(f.id))]
+    .map((f) => (f.id === 'bets' && aListed?.openFaces ? { ...f, label: 'Picks' } : f))
+    .sort((a, b) => FACE_ORDER.indexOf(a.id) - FACE_ORDER.indexOf(b.id));
 }
 
 function faceData(aFace, aFresh) {

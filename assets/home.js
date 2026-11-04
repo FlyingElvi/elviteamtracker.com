@@ -124,27 +124,8 @@ async function drawMine() {
   $('me-club').textContent = me.club?.name ? `${me.club.name} · signed in as ${me.name}` : `Signed in as ${me.name}`;
   $('log-all').href = `/leaderboards/?board=me${apiQ('&')}`;
 
-  // The ways on: My player, the leaderboards, the cards, and the server's
-  // own (Furball Coins), worded by /auth/me for whom they exist.
-  const go = [
-    { label: '📜 My player', href: `/leaderboards/?board=me${apiQ('&')}` },
-    { label: '📊 Leaderboards', href: `/leaderboards/${apiQ('?')}` },
-    ...(me.links ?? []).map((l) => ({ label: l.label, href: `${l.href}${apiQ('?')}`, icon: l.icon })),
-    { label: '🃏 All cards', href: `/playercards/${apiQ('?')}` },
-  ];
-  $('me-go').replaceChildren(...go.map((g) => {
-    const a = document.createElement('a');
-    a.href = g.href;
-    if (g.icon) {
-      const img = document.createElement('img');
-      img.src = g.icon;
-      img.alt = '';
-      a.append(img);
-    }
-    a.append(g.label);
-    return a;
-  }));
-
+  // The ways on (My player, Leaderboards, Furball Coins) live in the nav
+  // since Nov 4 -- no second row of them here.
   drawGames();
   if (!me.webCard) {
     // A member whose card is only in Discord: one click puts it here too.

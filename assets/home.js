@@ -245,7 +245,7 @@ async function paint(anAnimate, aFresh) {
       b.addEventListener('click', () => turn(f.id));
       return b;
     }));
-    drawAction();
+    drawAction(aFresh);
   };
   if (!anAnimate) { draw(); return; }
   $('card').classList.add('turning');
@@ -258,28 +258,62 @@ function turn(aFace) {
   paint(true);
 }
 
-/** Under the Challenges face: Get a challenge, or Abandon it (Discord's rule). */
-async function drawAction() {
+/**
+ * The face's own gestures, in the panel under Last games (Nov 4, elvis):
+ * Challenges = get the next one / abandon it (Discord's rule), Clubs = track
+ * an EA club. The other faces have none: the panel hides. A redraw of the
+ * same face keeps the panel (and what is typed in it) unless forced.
+ */
+async function drawAction(aForce) {
   const box = $('cardact');
-  if (view.face !== 'quests') { box.hidden = true; box.replaceChildren(); return; }
+  const face = view.face;
+  if (!aForce && box.dataset.face === face) return;
+  box.dataset.face = face;
+  if (face === 'quests') {
+    await questAction(box);
+  } else if (face === 'clubs') {
+    clubAction(box);
+  } else {
+    box.hidden = true;
+    box.replaceChildren();
+  }
+}
+
+/** The panel's frame: a title, a line, then the controls. */
+function panel(aBox, aTitle, aText, ...aNodes) {
+  const h = document.createElement('h2');
+  h.textContent = aTitle;
+  const p = document.createElement('p');
+  p.className = 'home-acts-text';
+  p.textContent = aText;
+  aBox.replaceChildren(h, p, ...aNodes);
+  aBox.hidden = false;
+}
+
+async function questAction(aBox) {
   let st;
   try {
     const r = await fetch(`${API}/me/quest`, { credentials: 'include', cache: 'no-store' });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     st = await r.json();
   } catch {
-    box.hidden = true;
+    aBox.hidden = true;
     return;
   }
   if (view.face !== 'quests') return;
   const draw = !st.hasActive;
   const skip = st.hasActive && st.skippable;
-  if (!draw && !skip) { box.hidden = true; box.replaceChildren(); return; }
+  if (!draw && !skip) {
+    panel(aBox, 'Your challenge', 'It\'s running: every game counts toward it. Ten games '
+      + 'without finishing it and you can abandon it for another.');
+    return;
+  }
   const b = document.createElement('button');
   b.type = 'button';
-  b.className = skip ? 'danger' : '';
-  b.textContent = draw ? '🗺️ Get a challenge' : '⏭️ Abandon this challenge';
+  b.className = `btn ${skip ? 'home-danger' : 'btn-primary'}`;
+  b.textContent = draw ? 'Get a challenge' : 'Abandon this challenge';
   const note = document.createElement('p');
+  note.className = 'home-msg';
   note.setAttribute('role', 'status');
   b.addEventListener('click', async () => {
     if (skip && !confirm('Abandon this challenge?\n\nIt unlocks nothing — its sequel waits for a real completion.')) return;
@@ -299,8 +333,76 @@ async function drawAction() {
       note.textContent = `Couldn't do that: ${anErr.message}`;
     }
   });
-  box.replaceChildren(b, note);
-  box.hidden = false;
+  panel(aBox, draw ? 'Next challenge' : 'Your challenge',
+    draw ? 'Draw one: it fills up with your games, one after the other.'
+      : 'Ten games without finishing it: you can abandon it and draw another.', b, note);
+}
+
+/** Clubs: a club you play for that we don't follow yet -- find it, track it. */
+function clubAction(aBox) {
+  const form = document.createElement('form');
+  form.className = 'home-form';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.maxLength = 40;
+  input.autocomplete = 'off';
+  input.spellcheck = false;
+  input.placeholder = 'Start of the club\'s name';
+  input.setAttribute('aria-label', 'Start of the club\'s name');
+  const find = document.createElement('button');
+  find.type = 'submit';
+  find.className = 'btn';
+  find.textContent = 'Find';
+  form.append(input, find);
+  const msg = document.createElement('p');
+  msg.className = 'home-msg';
+  msg.setAttribute('role', 'status');
+  const list = document.createElement('div');
+  list.className = 'home-clubs';
+  const tell = (aText, aBad) => { msg.textContent = aText; msg.classList.toggle('bad', !!aBad); };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = input.value.trim();
+    if (!name) return;
+    list.replaceChildren();
+    tell('Searching EA…');
+    let clubs;
+    try {
+      clubs = await searchClub(name);
+    } catch (anErr) {
+      tell(anErr.message || 'The search didn\'t work — try again in a minute.', true);
+      return;
+    }
+    if (!clubs.length) {
+      tell(`No club found starting with "${name}".`, true);
+      return;
+    }
+    tell(clubs.length === 1 ? 'This one?' : 'Pick the club:');
+    for (const c of clubs) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.innerHTML = `${esc(c.name ?? `Club ${c.clubId}`)}${c.division ? `<small>Div ${esc(c.division)}</small>` : ''}`;
+      b.addEventListener('click', async () => {
+        for (const x of list.querySelectorAll('button')) x.disabled = true;
+        tell('One moment…');
+        try {
+          const r = await trackClub(c.clubId, c.name);
+          list.replaceChildren();
+          input.value = '';
+          const club = c.name ?? 'That club';
+          tell(r.outcome === 'already'
+            ? `${club} is already tracked — its newest games are being pulled now.`
+            : `Done — ${club} is tracked now. Its games show up on your card within a few minutes.`);
+        } catch (anErr) {
+          for (const x of list.querySelectorAll('button')) x.disabled = false;
+          tell(anErr.message || 'Couldn\'t do that right now — try again in a minute.', true);
+        }
+      });
+      list.append(b);
+    }
+  });
+  panel(aBox, 'Track an EA club', 'Play for a club that isn\'t tracked? Find it: its games '
+    + 'count on your card from then on. Nothing gets posted anywhere.', form, msg, list);
 }
 
 const DATE = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' });

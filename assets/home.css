@@ -36,6 +36,7 @@
 }
 .home-small { color: var(--fg-dim); font-size: 13px; margin: 12px 0 0; }
 .home-feats { margin-top: 0; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.home-ico { display: inline-block; width: 20px; height: 20px; margin-right: 6px; vertical-align: -4px; }
 .home-band {
   display: flex;
   align-items: center;

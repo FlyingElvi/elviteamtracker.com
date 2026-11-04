@@ -52,6 +52,9 @@ a:hover { text-decoration: none; }
 }
 
 .nav .wrap {
+  /* Wider than the page (Nov 4): seven tabs and the account chip fit on one
+     row on a desktop instead of pushing the chip under the brand. */
+  max-width: 1200px;
   display: flex;
   align-items: center;
   gap: 20px;

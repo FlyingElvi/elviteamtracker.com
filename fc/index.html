@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Elvi's Team Tracker</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=2">
 <style>
   #members { min-height: 60vh; }
   .members-wait { color: var(--fg-dim); padding: 48px 0; }
@@ -38,7 +38,7 @@
 </div></footer>
 
 <script type="module">
-import { mountAuth } from '/leaderboards/auth.js';
+import { mountAuth } from '/leaderboards/auth.js?v=2';
 
 const params = new URLSearchParams(location.search);
 const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);

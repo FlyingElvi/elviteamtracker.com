@@ -251,7 +251,16 @@ async function paint(anAnimate, aFresh) {
       b.type = 'button';
       b.setAttribute('role', 'tab');
       b.setAttribute('aria-selected', String(f.id === view.face));
-      b.textContent = `${f.icon} ${f.label}`;
+      if (f.img) {
+        // The Furball Coin art, not the emoji (relative to /playercards/).
+        const img = document.createElement('img');
+        img.src = `/playercards/${f.img}`;
+        img.alt = '';
+        img.style.cssText = 'width:1.15em;height:1.15em;vertical-align:-0.2em;margin-right:4px';
+        b.append(img, f.label);
+      } else {
+        b.textContent = `${f.icon} ${f.label}`;
+      }
       b.addEventListener('click', () => turn(f.id));
       return b;
     }));

@@ -6,7 +6,7 @@
 // Any Discord account signs in: no server of the bot needed (web only players).
 
 import { mountAuth, linkGamertag, searchClub, trackClub, loginUrl, API_BASE as API }
-  from '/leaderboards/auth.js?v=8';
+  from '/leaderboards/auth.js?v=9';
 import { renderCard, FACES, PREMIUM_FACES, FACE_ORDER } from '/playercards/card.js';
 
 const $ = (id) => document.getElementById(id);

@@ -206,10 +206,16 @@ async function drawCard() {
 
 /** The faces of your card: the three, plus its extra ones -- all of them,
  *  it is yours (Challenges alone until the server answers). */
+/** The chips' order on the home page (Nov 5, elvis): Discord's, with Frenzy
+ *  and Duels swapped so the eleven fit three rows of a phone (335 px). */
+const HOME_ORDER = ['front', 'back', 'awards', 'last10', 'quests', 'streaks', 'frenzy', 'duels',
+  'milestones', 'bets', 'clubs'];
+
 function facesFrom(aListed) {
   const extra = aListed?.faces ?? ['quests'];
+  const rank = (aId) => (HOME_ORDER.includes(aId) ? HOME_ORDER.indexOf(aId) : 100 + FACE_ORDER.indexOf(aId));
   return [...FACES, ...PREMIUM_FACES.filter((f) => extra.includes(f.id))]
-    .sort((a, b) => FACE_ORDER.indexOf(a.id) - FACE_ORDER.indexOf(b.id));
+    .sort((a, b) => rank(a.id) - rank(b.id));
 }
 
 function faceData(aFace, aFresh) {
@@ -254,7 +260,9 @@ async function paint(anAnimate, aFresh) {
         img.style.cssText = 'width:1.15em;height:1.15em;vertical-align:-0.2em;margin-right:4px';
         b.append(img, f.label);
       } else {
-        b.textContent = `${f.icon} ${f.label}`;
+        // "Frenzy" alone on the chip (Nov 5): the row has no room for
+        // the first name, and the trophy says the rest.
+        b.textContent = `${f.icon} ${f.id === 'frenzy' ? 'Frenzy' : f.label}`;
       }
       b.addEventListener('click', () => turn(f.id));
       return b;

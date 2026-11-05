@@ -145,11 +145,13 @@
 .home-card.turning { transform: rotateY(90deg); opacity: .4; }
 .home-card svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 26px rgba(0, 0, 0, .4)); }
 .home-wait { color: var(--fg-dim); padding: 60px 0; text-align: center; }
-.home-faces { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+/* Tighter chips (Nov 5, elvis): eleven faces on three rows of a phone. */
+.home-faces { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
 .home-faces button {
   all: unset;
   cursor: pointer;
-  padding: 6px 11px;
+  padding: 5px 8px;
+  white-space: nowrap;
   border-radius: 999px;
   border: 1px solid var(--line);
   font-size: 13px;

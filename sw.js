@@ -42,7 +42,10 @@ self.addEventListener('push', (e) => {
   } catch {
     d = { body: e.data ? e.data.text() : '' };
   }
-  const actions = Array.isArray(d.actions) ? d.actions.filter((a) => a && a.action && a.title).slice(0, 2) : [];
+  const actions = Array.isArray(d.actions)
+    ? d.actions.filter((a) => a && a.action && a.title).slice(0, 2)
+      .map((a) => ({ action: a.action, title: a.title, url: a.url, call: Array.isArray(a.call) ? a.call : null }))
+    : [];
   const opts = {
     body: d.body || '',
     icon: '/assets/logo-192.png',
@@ -57,23 +60,19 @@ self.addEventListener('push', (e) => {
   e.waitUntil(self.registration.showNotification(d.title || 'Elvi\'s Team Tracker', opts));
 });
 
-// What a button does before the page opens: the API call it stands for,
-// with this device's session (same-site, so the cookie rides along).
+// What a button does before the page opens: the API call the message
+// named ([path, body] on our own API), with this device's session --
+// same-site, so the cookie rides along.
 const API = 'https://api.elviteamtracker.com';
-const DOES = {
-  'quest-draw': ['/me/quest', { action: 'draw' }],
-  'coins-claim': ['/fc/claim', {}],
-};
 
-async function act(aName) {
-  const call = DOES[aName];
-  if (!call) return;
+async function act(aCall) {
+  if (!aCall || typeof aCall[0] !== 'string' || !aCall[0].startsWith('/')) return;
   try {
-    await fetch(`${API}${call[0]}`, {
+    await fetch(`${API}${aCall[0]}`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json', 'X-ETT': '1' },
-      body: JSON.stringify(call[1]),
+      body: JSON.stringify(aCall[1] || {}),
     });
   } catch { /* the page opens anyway, the gesture is there too */ }
 }
@@ -84,7 +83,7 @@ self.addEventListener('notificationclick', (e) => {
   const action = (data.actions || []).find((a) => a.action === e.action);
   const url = new URL((action && action.url) || data.url || '/', self.location.origin).href;
   e.waitUntil((async () => {
-    if (e.action) await act(e.action);
+    if (action) await act(action.call);
     const all = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
     const open = all.find((c) => c.url.startsWith(self.location.origin));
     if (open) {

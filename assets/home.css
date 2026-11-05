@@ -188,6 +188,13 @@
 html.app #st-mine { padding-top: 14px; }
 html.app .home-cardcol .home-me { margin-bottom: 10px; }
 html.app .home-cardcol .home-me h1 { display: none; }
+/* …and the face's own panel (challenge, track a club) right under the face
+   buttons; Last games last -- it is secondary, and My player has it all. */
+html.app .home-grid { display: flex; flex-direction: column; gap: 20px; }
+html.app .home-side { display: contents; }
+html.app .home-cardcol { order: 1; }
+html.app .home-acts { order: 2; }
+html.app .home-log { order: 3; }
 .home-acts {
   padding: 20px 22px;
   border: 1px solid var(--line);

@@ -176,7 +176,10 @@
 
 /* The right column (Nov 4): Last games level with your name, then the
    panel of what the card's face lets you do. */
-.home-side { display: grid; gap: 28px; align-content: start; }
+.home-side { display: grid; gap: 20px; align-content: start; }
+/* An empty message line or club list takes no room (Nov 4, elvis): the
+   panel sits right under the games and ends at its form. */
+.home-side .home-msg:empty, .home-acts .home-clubs:empty { display: none; }
 .home-cardcol .home-me { display: block; margin-bottom: 18px; }
 .home-cardcol .home-me h1 { overflow-wrap: anywhere; }
 .home-acts {

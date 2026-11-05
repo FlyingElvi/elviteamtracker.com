@@ -209,6 +209,17 @@ html.app .home-log { order: 3; }
 .home-acts .home-clubs { margin: 10px 0 0; max-width: 460px; }
 .home-acts .btn { cursor: pointer; font-family: inherit; }
 .home-acts .btn:disabled { opacity: .6; cursor: default; }
+/* The duel composer (Nov 5): a short form, one field per line. */
+.home-duel { display: grid; gap: 10px; max-width: 460px; }
+.home-duel label { display: grid; gap: 4px; font-size: 13px; color: var(--fg-dim); }
+.home-duel select, .home-duel input {
+  font: inherit; font-size: 15px; padding: 8px 10px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--fg); min-width: 0;
+}
+.home-duel select:focus, .home-duel input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.home-duel .btn { cursor: pointer; font-family: inherit; justify-self: start; }
+.home-duel .btn:disabled { opacity: .6; cursor: default; }
+.home-duel .home-msg { margin: 0; }
 .home-danger { border-color: var(--warn); }
 .home-danger:hover { border-color: var(--warn); filter: brightness(1.15); }
 

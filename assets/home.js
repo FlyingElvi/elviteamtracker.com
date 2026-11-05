@@ -287,6 +287,8 @@ async function drawAction(aForce) {
     await questAction(box);
   } else if (face === 'clubs') {
     clubAction(box);
+  } else if (face === 'duels') {
+    await duelAction(box);
   } else {
     box.hidden = true;
     box.replaceChildren();
@@ -350,6 +352,122 @@ async function questAction(aBox) {
   panel(aBox, draw ? 'Next challenge' : 'Your challenge',
     draw ? 'Draw one: it fills up with your games, one after the other.'
       : 'Ten games without finishing it: you can abandon it and draw another.', b, note);
+}
+
+/**
+ * Duels (Nov 5): the composer, on the Duels face -- Discord's, on the web.
+ * A Face-off (most X in N games, a third seat makes it a truel) or Repeat
+ * the feat (one of your recent exploits to match). The server creates it
+ * like the bot's and the bot posts the challenge in the Furballs' channel,
+ * where Accept / Decline live.
+ */
+async function duelAction(aBox) {
+  let opt;
+  try {
+    const r = await fetch(`${API}/me/duel`, { credentials: 'include', cache: 'no-store' });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    opt = await r.json();
+  } catch {
+    aBox.hidden = true;
+    return;
+  }
+  if (view.face !== 'duels') return;
+  if (opt.live) {
+    panel(aBox, 'Your duel', 'One at a time: it settles when the windows fill (or they answer), then you can send another.');
+    return;
+  }
+  const form = document.createElement('form');
+  form.className = 'home-duel';
+  const field = (aLabel, aControl) => {
+    const l = document.createElement('label');
+    l.append(aLabel, aControl);
+    return l;
+  };
+  const select = (aOptions, aValue) => {
+    const s = document.createElement('select');
+    for (const o of aOptions) {
+      const op = document.createElement('option');
+      op.value = o.value;
+      op.textContent = o.label;
+      if (o.disabled) op.disabled = true;
+      s.append(op);
+    }
+    if (aValue != null) s.value = aValue;
+    return s;
+  };
+  const kind = select([{ value: 'faceoff', label: 'Face-off — most X in N games' },
+    { value: 'repeat', label: 'Repeat the feat — match one of my recent exploits' }]);
+  const stats = opt.stats ?? [];
+  const stat = select(stats.map((s) => ({ value: s.key, label: s.lowest ? `fewest ${s.label}` : `most ${s.label}` })));
+  const windowSel = select([1, 2, 3, 4, 5].map((w) => ({ value: String(w), label: `${w} game${w === 1 ? '' : 's'}` })), '3');
+  const feats = opt.feats ?? [];
+  const feat = select(feats.length
+    ? feats.map((f, i) => ({ value: String(i), label: `${f.total} ${f.statLabel} in ${f.window} game${f.window === 1 ? '' : 's'}` }))
+    : [{ value: '', label: 'No recent feat to repeat yet — play a few games', disabled: true }]);
+  const roster = opt.roster ?? [];
+  const who = (aNone) => select([{ value: '', label: aNone }, ...roster.map((r) => ({
+    value: r.slug, label: r.busy ? `${r.name} — in a duel` : r.name, disabled: !!r.busy }))]);
+  const opponent = who('Pick an opponent');
+  const third = who('Nobody — a plain duel');
+  const subject = document.createElement('input');
+  subject.type = 'text';
+  subject.maxLength = 80;
+  subject.placeholder = 'The stakes, if any (“loser buys the pizza”)';
+  subject.setAttribute('aria-label', 'The stakes');
+  const send = document.createElement('button');
+  send.type = 'submit';
+  send.className = 'btn btn-primary';
+  send.textContent = 'Send the challenge';
+  const note = document.createElement('p');
+  note.className = 'home-msg';
+  note.setAttribute('role', 'status');
+  const fStat = field('Stat', stat);
+  const fWindow = field('Window', windowSel);
+  const fFeat = field('Feat to repeat', feat);
+  const fThird = field('Third player (truel)', third);
+  const mode = () => {
+    const repeat = kind.value === 'repeat';
+    fStat.hidden = repeat;
+    fWindow.hidden = repeat;
+    fFeat.hidden = !repeat;
+    fThird.hidden = repeat;
+  };
+  kind.addEventListener('change', mode);
+  mode();
+  form.append(field('Kind', kind), fStat, fWindow, fFeat, field('Opponent', opponent), fThird,
+    field('Stakes', subject), send, note);
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const repeat = kind.value === 'repeat';
+    if (!opponent.value) { note.textContent = 'Pick an opponent.'; return; }
+    if (repeat && !feats.length) { note.textContent = 'No feat to repeat yet.'; return; }
+    const body = { challenged: opponent.value, subject: subject.value.trim() || null };
+    if (repeat) {
+      const f = feats[Number(feat.value)];
+      Object.assign(body, { stat: f.stat, windowGames: f.window, target: f.total });
+    } else {
+      Object.assign(body, { stat: stat.value, windowGames: Number(windowSel.value), third: third.value || null });
+    }
+    send.disabled = true;
+    note.textContent = 'Sending…';
+    try {
+      const r = await fetch(`${API}/me/duel`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json', 'X-ETT': '1' },
+        body: JSON.stringify(body),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || `HTTP ${r.status}`);
+      note.textContent = 'Challenge sent — the bot posts it in the Furballs\' channel within a minute. They answer there, or from their phone.';
+      await paint(false, true);
+    } catch (anErr) {
+      send.disabled = false;
+      note.textContent = `Couldn't send it: ${anErr.message}`;
+    }
+  });
+  panel(aBox, 'Challenge someone', 'A duel between Furballs: pick the stat and the window, name your opponent — '
+    + 'a third one makes it a truel. Or dare them to repeat one of your feats.', form);
 }
 
 /** Clubs: a club you play for that we don't follow yet -- find it, track it. */

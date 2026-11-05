@@ -6,7 +6,7 @@
 // Any Discord account signs in: no server of the bot needed (web only players).
 
 import { mountAuth, linkGamertag, searchClub, trackClub, loginUrl, API_BASE as API }
-  from '/leaderboards/auth.js?v=4';
+  from '/leaderboards/auth.js?v=5';
 import { renderCard, FACES, PREMIUM_FACES, FACE_ORDER } from '/playercards/card.js';
 
 const $ = (id) => document.getElementById(id);
@@ -178,6 +178,10 @@ async function drawCard() {
     $('card').innerHTML = '<p class="home-wait">Your card is being drawn — refresh in a minute.</p>';
     return;
   }
+  // A notification's button lands on its face (Nov 5): /?face=quests after
+  // "Get my next challenge" shows the one just drawn.
+  const want = params.get('face');
+  if (want && [...FACES, ...PREMIUM_FACES].some((f) => f.id === want)) view.face = want;
   paint(false);
   $('card').addEventListener('click', () => {
     const at = view.faces.findIndex((f) => f.id === view.face);

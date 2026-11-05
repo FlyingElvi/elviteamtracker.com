@@ -42,28 +42,57 @@ self.addEventListener('push', (e) => {
   } catch {
     d = { body: e.data ? e.data.text() : '' };
   }
+  const actions = Array.isArray(d.actions) ? d.actions.filter((a) => a && a.action && a.title).slice(0, 2) : [];
   const opts = {
     body: d.body || '',
     icon: '/assets/logo-192.png',
     badge: '/assets/badge-96.png',
-    data: { url: d.url || '/' },
+    data: { url: d.url || '/', actions },
+    // Buttons on the notification (Android, desktop Chrome; an iPhone
+    // shows none and the tap opens the url).
+    actions: actions.map((a) => ({ action: a.action, title: a.title })),
   };
   // Game over and the weekly coins replace their last one; the rest stack.
   if (d.tag === 'games' || d.tag === 'coins') opts.tag = d.tag;
   e.waitUntil(self.registration.showNotification(d.title || 'Elvi\'s Team Tracker', opts));
 });
 
+// What a button does before the page opens: the API call it stands for,
+// with this device's session (same-site, so the cookie rides along).
+const API = 'https://api.elviteamtracker.com';
+const DOES = {
+  'quest-draw': ['/me/quest', { action: 'draw' }],
+  'coins-claim': ['/fc/claim', {}],
+};
+
+async function act(aName) {
+  const call = DOES[aName];
+  if (!call) return;
+  try {
+    await fetch(`${API}${call[0]}`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', 'X-ETT': '1' },
+      body: JSON.stringify(call[1]),
+    });
+  } catch { /* the page opens anyway, the gesture is there too */ }
+}
+
 self.addEventListener('notificationclick', (e) => {
   e.notification.close();
-  const url = new URL(e.notification.data?.url || '/', self.location.origin).href;
-  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((all) => {
+  const data = e.notification.data || {};
+  const action = (data.actions || []).find((a) => a.action === e.action);
+  const url = new URL((action && action.url) || data.url || '/', self.location.origin).href;
+  e.waitUntil((async () => {
+    if (e.action) await act(e.action);
+    const all = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
     const open = all.find((c) => c.url.startsWith(self.location.origin));
     if (open) {
-      if ('navigate' in open) open.navigate(url);
+      if ('navigate' in open) await open.navigate(url).catch(() => {});
       return open.focus();
     }
     return self.clients.openWindow(url);
-  }));
+  })());
 });
 
 async function networkFirst(aReq, aPage) {

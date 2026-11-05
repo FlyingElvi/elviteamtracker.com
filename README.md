@@ -19,6 +19,16 @@ Privacy Policy.
 
 Support and contact go to the Discord server: https://discord.gg/xJgUDyUhtP
 
+### The app (since Nov 5, 2026)
+
+The site installs as an app on a phone (a PWA): `manifest.webmanifest`, `sw.js` (never touches
+the API; pages and data network-first, art and fonts cache-first — bump its `CACHE` to drop what
+browsers kept), the `logo-192` / `logo-512` / `logo-512-maskable` icons, and the app metas in the
+head of the four app pages (`/`, `/fc/`, and the generated `/playercards/` and `/leaderboards/`).
+What the installed app does differently — the tab bar at the bottom, the "Get the app" banner,
+the sign-in hand-off through the URL fragment — lives in the generated `/leaderboards/auth.js`
+(EASSS repo, `site-common/auth.js`), loaded by every page.
+
 ## Editing
 
 Plain HTML, one shared stylesheet in `assets/site.css`. No build step, no dependencies, no

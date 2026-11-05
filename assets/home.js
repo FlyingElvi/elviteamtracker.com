@@ -155,6 +155,12 @@ async function drawCard() {
   const listed = fetch(`${API}/cards`, { signal: AbortSignal.timeout(20000) })
     .then((r) => r.json()).then((j) => j.players?.find((x) => x.id === slug) ?? null).catch(() => null);
   live.catch(() => {});
+  // Your card's own faces (Nov 5): asked of the server by its owner's rules
+  // -- a card just linked is not in the list yet, and a web only player's
+  // Clubs face is where he tracks a club. They win over the list's.
+  const own = fetch(`${API}/cards/${encodeURIComponent(slug)}/faces`, { credentials: 'include' })
+    .then((r) => (r.ok ? r.json() : null)).then((j) => j?.faces ?? null).catch(() => null);
+  let ownDone = false;
   const redraw = () => { if (view.p && !PREMIUM_FACES.some((f) => f.id === view.face)) paint(false); };
   try {
     const [theme, card] = await Promise.all([
@@ -177,8 +183,14 @@ async function drawCard() {
     const at = view.faces.findIndex((f) => f.id === view.face);
     turn(view.faces[(at + 1) % view.faces.length].id);
   });
+  own.then((f) => {
+    if (!f) return;
+    ownDone = true;
+    view.faces = facesFrom({ faces: f });
+    redraw();
+  });
   listed.then((x) => {
-    if (!x) return;
+    if (!x || ownDone) return;
     view.faces = facesFrom(x);
     redraw();
   });
@@ -188,13 +200,11 @@ async function drawCard() {
   }).catch(() => {});
 }
 
-/** The faces of your card: the three, plus its extra ones from the list
- *  (Challenges alone until the list answers, or for a card just linked). */
+/** The faces of your card: the three, plus its extra ones -- all of them,
+ *  it is yours (Challenges alone until the server answers). */
 function facesFrom(aListed) {
-  const extra = (aListed?.faces ?? ['quests'])
-    .filter((f) => me.premium || aListed?.openFaces || f === 'quests');
+  const extra = aListed?.faces ?? ['quests'];
   return [...FACES, ...PREMIUM_FACES.filter((f) => extra.includes(f.id))]
-    .map((f) => (f.id === 'bets' && aListed?.openFaces ? { ...f, label: 'Picks' } : f))
     .sort((a, b) => FACE_ORDER.indexOf(a.id) - FACE_ORDER.indexOf(b.id));
 }
 

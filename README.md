@@ -29,6 +29,10 @@ What the installed app does differently — the tab bar at the bottom, the "Get 
 the sign-in hand-off through the URL fragment — lives in the generated `/leaderboards/auth.js`
 (EASSS repo, `site-common/auth.js`), loaded by every page.
 
+Push notifications (also Nov 5): `sw.js` shows what the API sends and opens the page on a tap;
+the Notifications panel (`/?notify=1`, from the account menu) and the subscription live in
+`auth.js` and the API's `/me/push`. `assets/badge-96.png` is the monochrome status-bar badge.
+
 ## Editing
 
 Plain HTML, one shared stylesheet in `assets/site.css`. No build step, no dependencies, no

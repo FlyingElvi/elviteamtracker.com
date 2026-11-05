@@ -1,7 +1,7 @@
 {
   "id": "/",
   "name": "Elvi's Team Tracker",
-  "short_name": "Team Tracker",
+  "short_name": "Elvi's Team Tracker",
   "description": "Your EA NHL card, your stats and your picks.",
   "start_url": "/",
   "scope": "/",

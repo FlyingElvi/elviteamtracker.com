@@ -5,8 +5,8 @@
 //   3. linked          -> your card and your last games
 // Any Discord account signs in: no server of the bot needed (web only players).
 
-import { mountAuth, linkGamertag, searchClub, trackClub, API_BASE as API }
-  from '/leaderboards/auth.js?v=2';
+import { mountAuth, linkGamertag, searchClub, trackClub, loginUrl, API_BASE as API }
+  from '/leaderboards/auth.js?v=3';
 import { renderCard, FACES, PREMIUM_FACES, FACE_ORDER } from '/playercards/card.js';
 
 const $ = (id) => document.getElementById(id);
@@ -21,7 +21,7 @@ function show(aState) {
   document.documentElement.classList.remove('signed');
 }
 
-$('signin').href = `${API}/auth/login?return=/`;
+$('signin').href = loginUrl('/');
 
 /** The session, once /auth/me answers (see the bottom of this file). */
 let me;

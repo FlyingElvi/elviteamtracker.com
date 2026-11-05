@@ -193,7 +193,9 @@ html.app .home-cardcol .home-me h1 { display: none; }
 html.app .home-grid { display: flex; flex-direction: column; gap: 20px; }
 html.app .home-side { display: contents; }
 html.app .home-cardcol { order: 1; }
-html.app .home-acts { order: 2; }
+/* site.css gives "section + section" 52px on top: the panel follows the
+   games in the DOM, so it carried that air above it in the app. */
+html.app .home-acts { order: 2; margin-top: 0; }
 html.app .home-log { order: 3; }
 .home-acts {
   padding: 20px 22px;

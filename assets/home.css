@@ -248,6 +248,11 @@ html.app .home-log { order: 3; }
 .home-table .w { color: #3ecf8e; font-weight: 600; }
 .home-table .x { color: #ff6b6b; font-weight: 600; }
 .home-table .o { color: var(--warn); font-weight: 600; }
+/* A game opens its box score (Nov 6). */
+.home-table tr.go { cursor: pointer; }
+.home-table tr.go:hover { background: var(--accent-soft); }
+.home-table td a { color: inherit; text-decoration: none; }
+.home-table td a:hover, .home-table td a:focus-visible { text-decoration: underline; }
 
 @media (max-width: 760px) {
   .home-grid { grid-template-columns: 1fr; }

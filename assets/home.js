@@ -6,7 +6,7 @@
 // Any Discord account signs in: no server of the bot needed (web only players).
 
 import { mountAuth, linkGamertag, searchClub, trackClub, loginUrl, API_BASE as API }
-  from '/leaderboards/auth.js?v=12';
+  from '/leaderboards/auth.js?v=13';
 import { renderCard, FACES, PREMIUM_FACES, FACE_ORDER } from '/playercards/card.js';
 
 const $ = (id) => document.getElementById(id);
@@ -571,13 +571,23 @@ async function drawGames() {
       ? `${g.saves ?? 0} SV`
       : `${g.goals ?? 0}G ${g.assists ?? 0}A`;
     const rtg = g.rating == null ? '—' : Number(g.rating).toFixed(1);
-    return `<tr><td class="l dim">${esc(DATE.format(new Date(g.ts * 1000)))}</td>`
+    // A game opens its box score (Nov 6): the row, the result a real link.
+    const href = g.matchId ? `/leaderboards/?game=${encodeURIComponent(g.matchId)}${apiQ('&')}` : null;
+    const result = `${esc(g.result)} ${esc(g.score)}`;
+    return `<tr${href ? ` class="go" data-href="${esc(href)}"` : ''}>`
+      + `<td class="l dim">${esc(DATE.format(new Date(g.ts * 1000)))}</td>`
       + `<td class="l opp">${esc(g.opp)} <span class="dim">· ${kind}</span></td>`
-      + `<td class="${res}">${esc(g.result)} ${esc(g.score)}</td>`
+      + `<td class="${res}">${href ? `<a href="${esc(href)}">${result}</a>` : result}</td>`
       + `<td>${esc(line)}</td><td>${esc(rtg)}</td></tr>`;
   }).join('');
   $('log').innerHTML = head + `<tbody>${body}</tbody>`;
 }
+
+$('log').addEventListener('click', (e) => {
+  if (e.target.closest('a')) return;
+  const row = e.target.closest('tr.go');
+  if (row) location.href = row.dataset.href;
+});
 
 // ── which page: last, once every declaration above exists ─────────────
 me = await mountAuth();

@@ -214,6 +214,8 @@ html.app .home-log { order: 3; }
 /* The duel composer (Nov 5): a short form, one field per line. */
 .home-duel { display: grid; gap: 10px; max-width: 460px; }
 .home-duel label { display: grid; gap: 4px; font-size: 13px; color: var(--fg-dim); }
+/* The kind's own fields only: display: grid above beat the hidden attribute. */
+.home-duel label[hidden] { display: none; }
 .home-duel select, .home-duel input {
   font: inherit; font-size: 15px; padding: 8px 10px; border-radius: 8px;
   border: 1px solid var(--line); background: var(--bg); color: var(--fg); min-width: 0;

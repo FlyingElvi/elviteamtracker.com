@@ -192,6 +192,7 @@ async function drawCard() {
     ownDone = true;
     view.faces = facesFrom({ faces: f });
     redraw();
+    preloadFaces(); // the redraw skips a premium face on screen: the new faces still load
   });
   listed.then((x) => {
     if (!x || ownDone) return;
@@ -228,6 +229,26 @@ function faceData(aFace, aFresh) {
       .catch((anErr) => { view.data.delete(aFace); throw anErr; }));
   }
   return view.data.get(aFace);
+}
+
+// Preload (Nov 7, elvis): once your card is drawn, its other faces load in
+// the background -- ONE at a time, when the browser is idle -- so a flip is
+// instant instead of a cold read. Every face goes through the server's DB
+// lock: never all at once.
+const idle = (aFn) => (window.requestIdleCallback
+  ? requestIdleCallback(aFn, { timeout: 2000 }) : setTimeout(aFn, 300));
+let preloadKey = null;
+function preloadFaces() {
+  const ids = view.faces.filter((f) => PREMIUM_FACES.some((x) => x.id === f.id)).map((f) => f.id);
+  const key = `${view.p.id}:${ids.join()}`;
+  if (preloadKey === key) return;
+  preloadKey = key;
+  const next = () => {
+    if (preloadKey !== key) return; // the face list changed: a newer run took over
+    const face = ids.shift();
+    if (face) faceData(face).catch(() => {}).finally(() => idle(next));
+  };
+  idle(next);
 }
 
 let ticket = 0;
@@ -268,6 +289,7 @@ async function paint(anAnimate, aFresh) {
       return b;
     }));
     drawAction(aFresh);
+    preloadFaces();
   };
   if (!anAnimate) { draw(); return; }
   $('card').classList.add('turning');

@@ -1,0 +1,260 @@
+/* The home page (Nov 4): the visitor's page, the link form, and your own
+   card and games once linked. Built on site.css's tokens only. */
+
+/* The card's typeface (the cards' own, from the Cards section). */
+@font-face {
+  font-family: 'EASSCard';
+  src: url('/playercards/fonts/DejaVuSans.ttf') format('truetype');
+  font-weight: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: 'EASSCard';
+  src: url('/playercards/fonts/DejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-display: block;
+}
+
+/* Signed in last time: the visitor's page stays hidden until we know. */
+.signed #st-out { display: none; }
+
+/* ---------- 1. the visitor ---------- */
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 40px;
+}
+.home-hero h1 { max-width: 16ch; }
+.home-sample {
+  width: 230px;
+  height: auto;
+  border-radius: 14px;
+  transform: rotate(3deg);
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, .45));
+}
+.home-small { color: var(--fg-dim); font-size: 13px; margin: 12px 0 0; }
+.home-feats { margin-top: 0; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.home-ico { display: inline-block; width: 20px; height: 20px; margin-right: 6px; vertical-align: -4px; }
+.home-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 32px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.home-band h2 { margin-bottom: 4px; }
+.home-band p { margin: 0; color: var(--fg-dim); max-width: 52ch; }
+.home-band .cta-row { margin-top: 0; }
+
+@media (max-width: 640px) {
+  .home-hero { grid-template-columns: 1fr; gap: 26px; }
+  .home-sample { width: 170px; justify-self: center; }
+}
+
+/* ---------- 2. link your gamertag ---------- */
+
+.home-narrow { max-width: 560px; }
+.home-panel {
+  text-align: center;
+  padding: 30px 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.home-panel h1 { font-size: 28px; margin: 12px 0 6px; letter-spacing: -0.02em; }
+.home-bot { border-radius: 50%; display: inline-block; }
+.home-form { display: flex; gap: 10px; margin: 0 auto; max-width: 420px; }
+.home-form input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+}
+.home-form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.home-form button { cursor: pointer; font-family: inherit; }
+.home-form button:disabled { opacity: .6; cursor: default; }
+.home-msg { min-height: 1.4em; margin: 12px 0 0; font-size: 14px; }
+.home-msg.bad { color: var(--warn); }
+.home-club { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+.home-club > p { margin: 0 0 12px; color: var(--fg-dim); font-size: 14px; }
+.home-clubs { display: grid; gap: 8px; max-width: 420px; margin: 12px auto 0; }
+.home-clubs button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: left;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  font-size: 15px;
+}
+.home-clubs button:hover, .home-clubs button:focus-visible { border-color: var(--accent); }
+.home-clubs small { color: var(--fg-dim); margin-left: 6px; }
+.home-panel .home-small { margin-top: 22px; text-align: left; }
+
+/* ---------- 3. your card, your games ---------- */
+
+.home-wide { max-width: 1040px; }
+.home-me {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.home-me h1 { margin: 0 0 4px; font-size: clamp(26px, 5vw, 34px); letter-spacing: -0.02em; }
+.home-me .sub { margin: 0; }
+.home-go { display: flex; gap: 8px; flex-wrap: wrap; }
+.home-go a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+.home-go a:hover { border-color: var(--accent); }
+.home-go img { width: 18px; height: 18px; }
+
+.home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+.home-card { cursor: pointer; transition: transform .16s ease, opacity .16s ease; }
+.home-card.turning { transform: rotateY(90deg); opacity: .4; }
+.home-card svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 26px rgba(0, 0, 0, .4)); }
+.home-wait { color: var(--fg-dim); padding: 60px 0; text-align: center; }
+/* Tighter chips (Nov 5, elvis): eleven faces on three rows of a phone. */
+.home-faces { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
+.home-faces button {
+  all: unset;
+  cursor: pointer;
+  padding: 5px 8px;
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--fg-dim);
+}
+.home-faces button[aria-selected="true"] { color: var(--fg); border-color: var(--accent); background: var(--accent-soft); }
+.home-faces button:focus-visible { outline: 2px solid var(--accent); }
+.home-act { margin-top: 12px; }
+.home-act button {
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--fg);
+}
+.home-act button.danger { border-color: var(--warn); background: transparent; }
+.home-act p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); }
+.home-offweb { padding: 24px; border: 1px dashed var(--line); border-radius: var(--radius); text-align: center; }
+.home-offweb p { margin: 0 0 14px; color: var(--fg-dim); }
+
+/* The right column (Nov 4): Last games level with your name, then the
+   panel of what the card's face lets you do. */
+.home-side { display: grid; gap: 20px; align-content: start; }
+/* An empty message line or club list takes no room (Nov 4, elvis): the
+   panel sits right under the games and ends at its form. */
+.home-side .home-msg:empty, .home-acts .home-clubs:empty { display: none; }
+.home-cardcol .home-me { display: block; margin-bottom: 18px; }
+.home-cardcol .home-me h1 { overflow-wrap: anywhere; }
+/* The app's card screen (Nov 5, elvis): the card and its face buttons fit
+   the first screen without a scroll -- the gamertag line goes (it is on
+   the card), "Frosty Furballs · signed in as …" leads, less air above. */
+html.app #st-mine { padding-top: 14px; }
+html.app .home-cardcol .home-me { margin-bottom: 10px; }
+html.app .home-cardcol .home-me h1 { display: none; }
+/* …and the face's own panel (challenge, track a club) right under the face
+   buttons; Last games last -- it is secondary, and My player has it all. */
+html.app .home-grid { display: flex; flex-direction: column; gap: 20px; }
+html.app .home-side { display: contents; }
+html.app .home-cardcol { order: 1; }
+/* site.css gives "section + section" 52px on top: the panel follows the
+   games in the DOM, so it carried that air above it in the app. */
+html.app .home-acts { order: 2; margin-top: 0; }
+html.app .home-log { order: 3; }
+.home-acts {
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.home-acts h2 { font-size: 18px; margin: 0 0 4px; }
+.home-acts-text { margin: 0 0 14px; color: var(--fg-dim); font-size: 14px; }
+.home-acts .home-form { margin: 0; max-width: 460px; }
+.home-acts .home-clubs { margin: 10px 0 0; max-width: 460px; }
+.home-acts .btn { cursor: pointer; font-family: inherit; }
+.home-acts .btn:disabled { opacity: .6; cursor: default; }
+/* The duel composer (Nov 5): a short form, one field per line. */
+.home-duel { display: grid; gap: 10px; max-width: 460px; }
+.home-duel label { display: grid; gap: 4px; font-size: 13px; color: var(--fg-dim); }
+/* The kind's own fields only: display: grid above beat the hidden attribute. */
+.home-duel label[hidden] { display: none; }
+.home-duel select, .home-duel input {
+  font: inherit; font-size: 15px; padding: 8px 10px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--fg); min-width: 0;
+}
+.home-duel select:focus, .home-duel input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.home-duel .btn { cursor: pointer; font-family: inherit; justify-self: start; }
+.home-duel .btn:disabled { opacity: .6; cursor: default; }
+.home-duel .home-msg { margin: 0; }
+.home-danger { border-color: var(--warn); }
+.home-danger:hover { border-color: var(--warn); filter: brightness(1.15); }
+
+.home-log-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.home-log-head a { font-size: 14px; color: var(--accent); text-decoration: none; }
+.home-tablewrap { overflow-x: auto; margin-top: 10px; }
+.home-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.home-table th {
+  text-align: right;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg-dim);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--line);
+}
+.home-table td { text-align: right; padding: 9px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.home-table .l { text-align: left; }
+.home-table .opp { white-space: normal; }
+.home-table .dim { color: var(--fg-dim); }
+.home-table .w { color: #3ecf8e; font-weight: 600; }
+.home-table .x { color: #ff6b6b; font-weight: 600; }
+.home-table .o { color: var(--warn); font-weight: 600; }
+/* A game opens its box score (Nov 6). */
+.home-table tr.go { cursor: pointer; }
+.home-table tr.go:hover { background: var(--accent-soft); }
+.home-table td a { color: inherit; text-decoration: none; }
+.home-table td a:hover, .home-table td a:focus-visible { text-decoration: underline; }
+
+@media (max-width: 760px) {
+  .home-grid { grid-template-columns: 1fr; }
+  .home-cardcol { max-width: 340px; margin: 0 auto; width: 100%; }
+}

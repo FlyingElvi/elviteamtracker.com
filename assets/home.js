@@ -6,7 +6,7 @@
 // Any Discord account signs in: no server of the bot needed (web only players).
 
 import { mountAuth, linkGamertag, searchClub, trackClub, loginUrl, API_BASE as API }
-  from '/leaderboards/auth.js?v=13';
+  from '/leaderboards/auth.js?v=14';
 import * as cardJs from '/playercards/card.js';
 const { renderCard, FACES, PREMIUM_FACES, FACE_ORDER } = cardJs;
 // Absent until the server's card.js has it (Nov 11): the emoji meanwhile.

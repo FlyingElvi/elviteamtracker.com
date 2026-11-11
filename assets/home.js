@@ -7,7 +7,10 @@
 
 import { mountAuth, linkGamertag, searchClub, trackClub, loginUrl, API_BASE as API }
   from '/leaderboards/auth.js?v=13';
-import { renderCard, FACES, PREMIUM_FACES, FACE_ORDER } from '/playercards/card.js';
+import * as cardJs from '/playercards/card.js';
+const { renderCard, FACES, PREMIUM_FACES, FACE_ORDER } = cardJs;
+// Absent until the server's card.js has it (Nov 11): the emoji meanwhile.
+const faceIcon = cardJs.faceIcon;
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -273,7 +276,11 @@ async function paint(anAnimate, aFresh) {
       b.type = 'button';
       b.setAttribute('role', 'tab');
       b.setAttribute('aria-selected', String(f.id === view.face));
-      if (f.img) {
+      if (f.art && faceIcon) {
+        // The section icons (Nov 11): card, clubs.
+        b.append(faceIcon(f.art, f.icon, 'width:1.15em;height:1.15em;vertical-align:-0.2em;margin-right:4px'),
+          f.label);
+      } else if (f.img) {
         // The Furball Coin art, not the emoji (relative to /playercards/).
         const img = document.createElement('img');
         img.src = `/playercards/${f.img}`;

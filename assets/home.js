@@ -6,7 +6,7 @@
 // Any Discord account signs in: no server of the bot needed (web only players).
 
 import { mountAuth, linkGamertag, searchClub, trackClub, loginUrl, API_BASE as API }
-  from '/leaderboards/auth.js?v=19';
+  from '/leaderboards/auth.js?v=20';
 import * as cardJs from '/playercards/card.js';
 const { renderCard, FACES, PREMIUM_FACES, FACE_ORDER } = cardJs;
 // Absent until the server's card.js has it (Nov 11): the emoji meanwhile.
@@ -125,7 +125,7 @@ function drawLink() {
 async function drawMine() {
   $('me-tag').textContent = me.gamertag;
   $('me-club').textContent = me.club?.name ? `${me.club.name} · signed in as ${me.name}` : `Signed in as ${me.name}`;
-  $('log-all').href = `/leaderboards/?board=me${apiQ('&')}`;
+  $('log-all').href = `/myplayer/${apiQ('?')}`;
 
   // The ways on (My player, Leaderboards, Furball Coins) live in the nav
   // since Nov 4 -- no second row of them here.

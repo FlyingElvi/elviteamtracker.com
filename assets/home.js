@@ -594,7 +594,9 @@ async function drawGames() {
   const head = '<thead><tr><th class="l">Date</th><th class="l">Opponent</th><th>Result</th>'
     + '<th title="Goals-assists, or saves in net">Line</th><th title="Game rating">RTG</th></tr></thead>';
   const body = rows.map((g) => {
-    const kind = g.private ? 'Private' : (g.threes ? '3s' : '6s');
+    // A league game says League, its league on hover (Nov 12).
+    const kind = g.league ? `<span title="${esc(g.league)}">League</span>`
+      : g.private ? 'Private' : (g.threes ? '3s' : '6s');
     const res = { W: 'w', L: 'x', OTL: 'o' }[g.result] ?? '';
     const line = g.goalie
       ? `${g.saves ?? 0} SV`

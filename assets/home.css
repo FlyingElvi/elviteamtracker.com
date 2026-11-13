@@ -138,6 +138,10 @@
   animation: home-nudge-pulse 2.4s ease-in-out infinite;
 }
 .home-nudge[hidden] { display: none; }
+/* The publish nudge is a link (Nov 13): no underline, and the two banners
+   stacked sit a little closer. */
+a.home-nudge { text-decoration: none; box-sizing: border-box; }
+.home-nudge:not([hidden]) + .home-nudge { margin-top: -8px; }
 .home-nudge:hover, .home-nudge:focus-visible { background: rgba(76, 194, 255, .2); outline: none; }
 .home-nudge:disabled { cursor: progress; opacity: .8; animation: none; }
 .home-nudge-ico { font-size: 26px; line-height: 1; }

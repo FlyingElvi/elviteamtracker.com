@@ -134,14 +134,13 @@ async function drawMine() {
   // The ways on (My player, Leaderboards, Furball Coins) live in the nav
   // since Nov 4 -- no second row of them here.
   drawGames();
+  // Not on the web (Nov 13, elvis): you see your card anyway -- for your eyes
+  // only, through /me/card -- and a banner nags you to publish it.
   if (!me.webCard) {
-    // A member whose card is only in Discord: one click puts it here too.
-    $('card').classList.add('home-offweb');
-    $('card').innerHTML = '<p>Your card isn\'t on the web yet.</p>'
-      + `<a class="btn btn-primary" href="/playercards/?consent=1${apiQ('&')}">Put my card on the web</a>`;
-    return;
+    $('pubnudge').href = `/playercards/?consent=1${apiQ('&')}`;
+    $('pubnudge').hidden = false;
   }
-  await drawCard();
+  await drawCard(!me.webCard);
 }
 
 // ── the challenge nudge (Nov 13, elvis) ───────────────────────────────
@@ -201,25 +200,37 @@ document.addEventListener('visibilitychange', () => {
 /** A 15-second bucket: past the browser's cache after a game, one URL per click burst. */
 const bucket = () => Math.floor(Date.now() / 15000);
 
-const view = { p: null, face: 'front', faces: FACES, theme: null, data: new Map() };
+const view = { p: null, face: 'front', faces: FACES, theme: null, data: new Map(), own: false };
 
-async function drawCard() {
+/**
+ * Your card on the home page.
+ *
+ * @param aPrivate true when it is not on the web (Nov 13): the card and its
+ *        faces come from /me/card, the session's own -- nothing public.
+ */
+async function drawCard(aPrivate) {
   const slug = me.slug;
+  view.own = !!aPrivate;
   // Two ways to the same card, raced (Nov 4): the live one (recomputed at the
   // origin -- warmed by /auth/me, but seconds when cold) and the full list
   // (edge-cached, built in the background; a card just linked is not in it
   // yet). The first to answer draws; the other completes it after: the list
   // brings the card's extra faces, the live one the newest game.
-  const live = early?.slug === slug ? early.card
-    : fetch(`${API}/cards/${encodeURIComponent(slug)}?t=${bucket()}`, { signal: AbortSignal.timeout(30000) })
-      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
-  const listed = fetch(`${API}/cards`, { signal: AbortSignal.timeout(20000) })
+  const live = view.own
+    ? fetch(`${API}/me/card?t=${bucket()}`, { credentials: 'include', signal: AbortSignal.timeout(30000) })
+      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+    : early?.slug === slug ? early.card
+      : fetch(`${API}/cards/${encodeURIComponent(slug)}?t=${bucket()}`, { signal: AbortSignal.timeout(30000) })
+        .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
+  // Not on the web: it is in no list.
+  const listed = view.own ? Promise.resolve(null) : fetch(`${API}/cards`, { signal: AbortSignal.timeout(20000) })
     .then((r) => r.json()).then((j) => j.players?.find((x) => x.id === slug) ?? null).catch(() => null);
   live.catch(() => {});
   // Your card's own faces (Nov 5): asked of the server by its owner's rules
   // -- a card just linked is not in the list yet, and a web only player's
   // Clubs face is where he tracks a club. They win over the list's.
-  const own = fetch(`${API}/cards/${encodeURIComponent(slug)}/faces`, { credentials: 'include' })
+  const own = fetch(view.own ? `${API}/me/card/faces` : `${API}/cards/${encodeURIComponent(slug)}/faces`,
+    { credentials: 'include' })
     .then((r) => (r.ok ? r.json() : null)).then((j) => j?.faces ?? null).catch(() => null);
   let ownDone = false;
   const redraw = () => { if (view.p && !PREMIUM_FACES.some((f) => f.id === view.face)) paint(false); };
@@ -284,7 +295,8 @@ function faceData(aFace, aFresh) {
   if (aFresh) view.data.delete(aFace);
   if (!view.data.has(aFace)) {
     const t = aFresh ? `${bucket()}-${Date.now()}` : bucket();
-    view.data.set(aFace, fetch(`${API}/cards/${encodeURIComponent(view.p.id)}/face/${aFace}?t=${t}`,
+    view.data.set(aFace, fetch(view.own ? `${API}/me/card/face/${aFace}?t=${t}`
+      : `${API}/cards/${encodeURIComponent(view.p.id)}/face/${aFace}?t=${t}`,
       { credentials: 'include' })
       .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
       .catch((anErr) => { view.data.delete(aFace); throw anErr; }));

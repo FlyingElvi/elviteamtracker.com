@@ -64,7 +64,10 @@ function drawLink() {
     try {
       const r = await linkGamertag(tag);
       say('link-msg', `✅ Linked to ${r.playerName}. Loading your card…`);
-      location.replace(`/${apiQ('?')}`);
+      // From the Cards page's "Link your gamertag and add my card here"
+      // (Nov 13, elvis: one action): straight on to the consent box there.
+      location.replace(params.get('then') === 'card'
+        ? `/playercards/?consent=1${apiQ('&')}` : `/${apiQ('?')}`);
     } catch (anErr) {
       btn.disabled = false;
       if (anErr.status === 422 && anErr.body?.needClub) {

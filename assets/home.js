@@ -123,6 +123,7 @@ function drawLink() {
 
 // ── 3. your card, your games ──────────────────────────────────────────
 async function drawMine() {
+  drawNudge();
   $('me-tag').textContent = me.gamertag;
   $('me-club').textContent = me.club?.name ? `${me.club.name} · signed in as ${me.name}` : `Signed in as ${me.name}`;
   $('log-all').href = `/myplayer/${apiQ('?')}`;
@@ -139,6 +140,60 @@ async function drawMine() {
   }
   await drawCard();
 }
+
+// ── the challenge nudge (Nov 13, elvis) ───────────────────────────────
+// "On veut encourager le plus possible les gens a prendre des challenges":
+// no challenge running = a banner over your name, whatever face is on show,
+// on the site and in the app (the app opens here). One click draws it and
+// turns the card to it. Gone as soon as one runs.
+
+/** Shows the banner when no challenge runs; hides it on any doubt. */
+async function drawNudge() {
+  const b = $('nudge');
+  try {
+    const r = await fetch(`${API}/me/quest`, { credentials: 'include', cache: 'no-store' });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const st = await r.json();
+    b.hidden = !!st.hasActive;
+  } catch {
+    b.hidden = true;
+  }
+}
+
+$('nudge').addEventListener('click', async () => {
+  const b = $('nudge');
+  if (b.disabled) return;
+  b.disabled = true;
+  $('nudge-go').textContent = 'Drawing your challenge…';
+  try {
+    const r = await fetch(`${API}/me/quest`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', 'X-ETT': '1' },
+      body: JSON.stringify({ action: 'draw' }),
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || `HTTP ${r.status}`);
+    b.hidden = true;
+    // The card turns to the one just drawn.
+    if (view.p && view.faces.some((f) => f.id === 'quests')) {
+      view.face = 'quests';
+      await paint(true, true);
+    }
+  } catch (anErr) {
+    $('nudge-go').textContent = `Couldn't draw one: ${anErr.message} — tap to try again`;
+  } finally {
+    b.disabled = false;
+    // Drawn: the label is ready for the next time. Failed: the error stays.
+    if (b.hidden) $('nudge-go').textContent = 'Get your next challenge →';
+  }
+});
+
+// The app stays open for days: back on it after a game that finished the
+// challenge, the banner has to be there.
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden && me && !$('st-mine').hidden) drawNudge();
+});
 
 /** A 15-second bucket: past the browser's cache after a game, one URL per click burst. */
 const bucket = () => Math.floor(Date.now() / 15000);
@@ -380,6 +435,7 @@ async function questAction(aBox) {
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(j.error || `HTTP ${r.status}`);
+      drawNudge();
       await paint(false, true);
     } catch (anErr) {
       b.disabled = false;

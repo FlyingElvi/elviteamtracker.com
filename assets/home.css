@@ -117,6 +117,38 @@
   margin-bottom: 24px;
 }
 .home-me h1 { margin: 0 0 4px; font-size: clamp(26px, 5vw, 34px); letter-spacing: -0.02em; }
+
+/* No challenge running (Nov 13): the banner over your name. Loud on purpose
+   -- the point is to get people drawing challenges. */
+.home-nudge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  font: inherit;
+  text-align: left;
+  color: var(--fg);
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius, 12px);
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 0 var(--accent-soft);
+  animation: home-nudge-pulse 2.4s ease-in-out infinite;
+}
+.home-nudge[hidden] { display: none; }
+.home-nudge:hover, .home-nudge:focus-visible { background: rgba(76, 194, 255, .2); outline: none; }
+.home-nudge:disabled { cursor: progress; opacity: .8; animation: none; }
+.home-nudge-ico { font-size: 26px; line-height: 1; }
+.home-nudge-text { display: flex; flex-direction: column; gap: 2px; font-size: 15px; }
+.home-nudge-text b { font-size: 16px; }
+.home-nudge-text span { color: var(--accent); font-weight: 600; }
+@keyframes home-nudge-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(76, 194, 255, .0); }
+  50% { box-shadow: 0 0 0 6px rgba(76, 194, 255, .18); }
+}
+@media (prefers-reduced-motion: reduce) { .home-nudge { animation: none; } }
 .home-me .sub { margin: 0; }
 .home-go { display: flex; gap: 8px; flex-wrap: wrap; }
 .home-go a {

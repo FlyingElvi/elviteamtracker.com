@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elvi's Team Tracker — your EA NHL card, stats and picks</title>
+<meta name="description" content="Your EA NHL Pro Clubs player card, your game log, your challenges and your picks. Sign in with Discord and link your gamertag — no server needed.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<!-- The app (Nov 5): installable from a phone's browser -- see /manifest.webmanifest and /sw.js -->
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0e141b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef1f5" media="(prefers-color-scheme: light)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Elvi's Team Tracker">
+<link rel="apple-touch-icon" href="/assets/logo-180.png">
+<meta property="og:title" content="Elvi's Team Tracker">
+<meta property="og:description" content="Your EA NHL Pro Clubs card, stats and picks.">
+<meta property="og:image" content="https://elviteamtracker.com/assets/logo-512.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/home.css?v=13">
+<!-- Signed in last time: hide the visitor's page until the session answers
+     (no flash of "Sign in" for somebody who is). Without JavaScript, the
+     visitor's page is what shows. -->
+<script>try{var c=JSON.parse(localStorage.getItem('ett-me')||'null');if(c&&c.me&&c.me.signedIn&&Date.now()-c.at<432e5)document.documentElement.classList.add('signed')}catch(e){}</script>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/" aria-current="page">Overview</a>
+    <a href="/changelog/">What's new</a>
+    <a href="/playercards/">Cards</a>
+    <a href="/leaderboards/">Leaderboards</a>
+    <a href="/setup/" data-tail>Add the bot</a>
+  </div>
+</div></nav>
+
+<!-- 1. Not signed in -->
+<div id="st-out">
+<header class="hero"><div class="wrap home-hero">
+  <div class="home-hero-text">
+    <h1>Your EA NHL card, stats and picks.</h1>
+    <p class="lede">Every Pro Clubs game you play, on a player card you can flip: your season,
+    your last 10, your clubs and your challenges.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" id="signin" href="https://api.elviteamtracker.com/auth/login?return=/">Sign in with Discord</a>
+    </div>
+    <p class="home-small">Any Discord account works — no server needed. We only ask Discord who you are.</p>
+  </div>
+  <img class="home-sample" src="/img/card-elvi-95.png?v=3" alt="A player card" width="300" height="420">
+</div></header>
+
+<main><div class="wrap">
+  <ul class="features home-feats">
+    <li><strong>🃏 Your card</strong><span>OVR, position and tier from your real games, with a Stats face and your last 10.</span></li>
+    <li><strong>📜 Your game log</strong><span>Every game, every line: goals, hits, saves, ratings — by club and by mode.</span></li>
+    <li><strong>🗺️ Challenges</strong><span>Draw a challenge, play, and watch it fill up game after game.</span></li>
+    <li><strong><img class="home-ico" src="/playercards/art/coin-art.png" alt="" width="20" height="20">Picks</strong><span>Furball Coins, if you want them: play-money picks on real World of CHEL games. Never real money.</span></li>
+  </ul>
+
+  <section class="home-band">
+    <div>
+      <h2>Run a team?</h2>
+      <p>Add the bot to your Discord: your games post themselves as they finish, with the real
+      score, the three stars and every line.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="/setup/">Add the bot</a>
+      <a class="btn" href="https://discord.gg/xJgUDyUhtP">Support server</a>
+    </div>
+  </section>
+</div></main>
+</div>
+
+<!-- 2. Signed in, no gamertag linked yet -->
+<main id="st-link" hidden><div class="wrap home-narrow">
+  <section class="home-panel" id="link">
+    <img class="home-bot" src="/img/ElviBot.png" alt="" width="72" height="72">
+    <h1 id="link-hi">Link your gamertag</h1>
+    <p class="sub">Type your in-game name exactly as it shows in EA NHL. That's all it takes to
+    get your card.</p>
+    <form class="home-form" id="link-form">
+      <input id="link-tag" type="text" autocomplete="off" spellcheck="false" maxlength="40"
+        placeholder="Your gamertag" aria-label="Your gamertag" required>
+      <button class="btn btn-primary" type="submit">Link</button>
+    </form>
+    <p class="home-msg" id="link-msg" role="status"></p>
+
+    <div class="home-club" id="club" hidden>
+      <p>Then we probably don't follow your club yet. Find it, and we'll start pulling its
+      games from EA:</p>
+      <form class="home-form" id="club-form">
+        <input id="club-name" type="text" autocomplete="off" spellcheck="false" maxlength="40"
+          placeholder="Start of your club's name" aria-label="Start of your club's name" required>
+        <button class="btn" type="submit">Find</button>
+      </form>
+      <p class="home-msg" id="club-msg" role="status"></p>
+      <div class="home-clubs" id="club-list"></div>
+    </div>
+
+    <p class="home-small">Your card goes on ElviTeamTracker.com, where anyone can see it. It shows
+    your gamertag and your Discord picture — never your Discord name, your servers or your id.
+    Changed your mind? <strong>Remove my card</strong> in your menu unlinks you and takes it
+    down. Mixed up? <a href="https://discord.gg/xJgUDyUhtP">Tell us on the support server</a>.</p>
+  </section>
+</div></main>
+
+<!-- 3. Signed in and linked: your card, your games -->
+<main id="st-mine" hidden><div class="wrap home-wide">
+  <div class="home-grid">
+    <section class="home-cardcol" aria-label="Your card">
+      <header class="home-me">
+        <!-- Your card isn't published (Nov 13, elvis): you see it here, and
+             this banner nags until it is on the Cards page. -->
+        <a class="home-nudge" id="pubnudge" href="/playercards/?consent=1" hidden>
+          <span class="home-nudge-ico" aria-hidden="true">🌐</span>
+          <span class="home-nudge-text"><b>Only you can see your card</b>
+            <span>Add it to the Cards page →</span></span>
+        </a>
+        <!-- No challenge running (Nov 13, elvis): the way to the next one,
+             whatever face is on show. Gone as soon as one runs. -->
+        <button type="button" class="home-nudge" id="nudge" hidden>
+          <span class="home-nudge-ico" aria-hidden="true">🗺️</span>
+          <span class="home-nudge-text"><b>No challenge running</b>
+            <span id="nudge-go">Get your next challenge →</span></span>
+        </button>
+        <h1 id="me-tag"></h1>
+        <p class="sub" id="me-club"></p>
+      </header>
+      <div class="home-card" id="card"><p class="home-wait">Loading your card…</p></div>
+      <div class="home-faces" id="faces" role="tablist" aria-label="Card faces"></div>
+    </section>
+    <div class="home-side">
+      <section class="home-log" aria-labelledby="log-title">
+        <div class="home-log-head">
+          <h2 id="log-title">Last games</h2>
+          <a id="log-all" href="/myplayer/">Full game log →</a>
+        </div>
+        <div class="home-tablewrap"><table class="home-table" id="log"></table></div>
+        <p class="home-msg" id="log-msg"></p>
+      </section>
+      <!-- What the face on show lets you do: a challenge to get or drop, a
+           club to track. Empty for the faces without a gesture. -->
+      <section class="home-acts" id="cardact" aria-live="polite" hidden></section>
+    </div>
+  </div>
+</div></main>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord. EA SPORTS and NHL are trademarks of their respective
+  owners.</p>
+  <p><a href="/setup/">Add the bot</a> · <a href="/changelog/">What's new</a> · <a href="/terms/">Terms of Service</a> · <a href="/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+<script type="module" src="/assets/home.js?v=20"></script>
+</body>
+</html>

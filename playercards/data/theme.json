@@ -1,0 +1,89 @@
+{
+  "width": 600,
+  "height": 840,
+  "colors": {
+    "red": "#C8102E",
+    "ink": "#141416",
+    "paper": "#F7F6F2",
+    "paperShade": "#E9E7E0",
+    "soft": "rgba(255,255,255,0.8039216)",
+    "muted": "#8A8A85",
+    "subtle": "#6A6A65",
+    "gold": "#B8860B",
+    "win": "#1B7F3B",
+    "loss": "#B3261E",
+    "otl": "#C77700",
+    "trendUp": "#86F09B",
+    "trendDown": "#FFB8B8",
+    "unlockNote": "#E3B341",
+    "stickerFill": "#FFFDF5",
+    "stickerPos": "#C8102E",
+    "stickerNeg": "#C99700"
+  },
+  "tiers": [
+    {
+      "name": "fire-elite",
+      "light": "#FF8A1F",
+      "dark": "#C81E0A",
+      "minOvr": 94,
+      "handMade": true
+    },
+    {
+      "name": "elite",
+      "light": "#FF6B2B",
+      "dark": "#E8342A",
+      "minOvr": 91,
+      "handMade": false
+    },
+    {
+      "name": "diamond",
+      "light": "#A855F7",
+      "dark": "#7C3AED",
+      "minOvr": 86,
+      "handMade": false
+    },
+    {
+      "name": "platinum",
+      "light": "#7FD4E8",
+      "dark": "#4A9FB8",
+      "minOvr": 81,
+      "handMade": false
+    },
+    {
+      "name": "gold",
+      "light": "#E8B92E",
+      "dark": "#B8860B",
+      "minOvr": 76,
+      "handMade": false
+    },
+    {
+      "name": "silver",
+      "light": "#C9CDD2",
+      "dark": "#8A9099",
+      "minOvr": 71,
+      "handMade": false
+    },
+    {
+      "name": "bronze",
+      "light": "#C87F3C",
+      "dark": "#8C5A2B",
+      "minOvr": 50,
+      "handMade": false
+    },
+    {
+      "name": "champ",
+      "light": "#FF7A1A",
+      "dark": "#B3170A",
+      "minOvr": null,
+      "handMade": true
+    }
+  ],
+  "positions": {
+    "C": "#E5352B",
+    "LW": "#35C759",
+    "RW": "#2F7CF6",
+    "LD": "#19BDC2",
+    "RD": "#F2C21B",
+    "G": "#9B4DE0"
+  }
+}

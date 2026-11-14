@@ -1,0 +1,432 @@
+/* The leaderboards page. Loaded AFTER /assets/site.css: nav, footer, body and
+   the colour tokens (--bg, --fg, --accent... light AND dark) are the site's;
+   this sheet adds only the board's pieces, under lb- names. */
+
+.lb-wrap { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+.lb-head { padding: 40px 0 22px; border-bottom: 1px solid var(--line); }
+/* The head's first-paint guesses (index.html), Nov 12: no flash of the
+   title on your pages, nor of the explanation once signed in. */
+.lb-own .lb-head, .lb-signed .lb-note { display: none; }
+.lb-head h1 { margin: 0; font-size: clamp(30px, 4vw, 42px); line-height: 1.1; letter-spacing: -0.02em; }
+.lb-note { margin: 10px 0 0; color: var(--fg-dim); font-size: 14px; max-width: 70ch; }
+
+/* The members-only screen (phase B): a centred card, the sign-in button in
+   Discord's own blurple so it reads as "Sign in with Discord" at a glance. */
+.lb-wrap .lb-gate {
+  max-width: 520px; margin: 40px auto 64px; padding: 32px 28px; text-align: center;
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: 16px;
+}
+.lb-gate img { border-radius: 50%; }
+.lb-gate h2 { margin: 14px 0 8px; font-size: 26px; }
+.lb-gate p { color: var(--fg-dim); margin: 0 0 18px; }
+.lb-gate p strong { color: var(--fg); }
+.lb-signin {
+  display: inline-block; background: #5865F2; color: #fff; font-weight: 700;
+  padding: 11px 22px; border-radius: 10px; text-decoration: none;
+}
+.lb-signin:hover { background: #4752C4; }
+.lb-gate .lb-small { font-size: 13px; margin: 18px 0 0; }
+
+/* site.css spaces its prose sections 52px apart; the board's are one tool. */
+.lb-wrap section + section { margin-top: 0; }
+
+/* The boards' tabs: Clubs for every member, the premium ones after it. */
+.lb-boards { display: flex; flex-wrap: wrap; gap: 6px; padding: 20px 0 0; border-bottom: 1px solid var(--line); }
+.lb-tab {
+  all: unset; cursor: pointer; padding: 8px 14px; font: 600 14px system-ui, sans-serif;
+  color: var(--fg-dim); border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.lb-tab:hover { color: var(--fg); }
+.lb-tab[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+.lb-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lb-tab .lb-premium { font-size: 10px; font-weight: 700; color: var(--warn); margin-left: 4px; }
+.lb-mine { padding: 6px 0 0; }
+.lb-mine .lb-chip { font-weight: 500; }
+.lb-mine .lb-chip small { color: var(--fg-dim); margin-left: 4px; }
+/* The home server's board (Nov 4): set apart from the clubs. */
+.lb-mine .lb-server { border-color: var(--accent); margin-right: 10px; }
+.lb-table tr.lb-section th {
+  text-align: left; background: var(--bg-sunk); color: var(--fg-dim); font-size: 12px;
+  letter-spacing: .06em; padding-top: 14px;
+}
+.lb-table td.lb-left, .lb-table th.lb-left { text-align: left; }
+.lb-table .lb-star { color: var(--warn); }
+
+.lb-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 20px 0 4px; }
+.lb-search { position: relative; flex: 0 1 340px; min-width: 0; }
+#q {
+  width: 100%;
+  background: var(--bg-elev); color: var(--fg);
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: 9px 12px; font: inherit; font-size: 15px;
+}
+#q:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.lb-hits {
+  position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 4px);
+  margin: 0; padding: 4px; list-style: none;
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35); max-height: 320px; overflow: auto;
+}
+.lb-hits li {
+  display: flex; justify-content: space-between; gap: 10px;
+  padding: 8px 10px; border-radius: 7px; cursor: pointer;
+}
+.lb-hits li:hover, .lb-hits li:focus { background: var(--accent-soft); outline: none; }
+.lb-hits small { color: var(--fg-dim); white-space: nowrap; }
+.lb-hits .lb-nohit { color: var(--fg-dim); cursor: default; }
+.lb-club { margin: 0; font-size: 24px; line-height: 1.2; }
+
+/* hidden must win over the display rules below: without it the Tournament
+   pick, the Streaks chips and an empty Season box showed on every tab. */
+[hidden] { display: none !important; }
+.lb-controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; padding: 14px 0 6px; }
+.lb-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.lb-chip {
+  border: 1px solid var(--line); background: var(--bg-elev); color: var(--fg);
+  border-radius: 999px; padding: 5px 11px; font: 600 13px system-ui, sans-serif; cursor: pointer;
+}
+/* Picked = the site's accent (Oct 20), like the "you" outline and the nav. */
+.lb-chip[aria-pressed="true"] { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+/* The "55 GP" on a picked chip: the chip's own ink, a touch softer. */
+.lb-chip[aria-pressed="true"] small { color: inherit; opacity: .75; }
+/* A position dot keeps its ring on the teal (RW's blue would melt in). */
+.lb-chip[aria-pressed="true"] .lb-dot { box-shadow: 0 0 0 2px var(--bg); }
+/* The EA chip (Nov 11): EA's own numbers, set apart from our lenses by a
+   gap -- they are never mixed with ours. Otherwise a chip like the others,
+   outline and picked blue alike (Nov 12, elvis). */
+.lb-chip.lb-ea { display: inline-flex; align-items: center; gap: 6px; margin-left: 10px; }
+.lb-chip.lb-ea img { border-radius: 4px; }
+/* My clubs' Scout or track a club (Nov 12): a quiet link, top right, that
+   opens the EA club search in place -- not in your face. */
+/* Track it's look (elvis, Nov 12): the accent's outline, filled under the
+   pointer -- and while the search is open. */
+.mc-track-open {
+  background: transparent; border: 1px solid var(--accent); border-radius: 999px;
+  padding: 5px 12px; cursor: pointer; white-space: nowrap;
+  color: var(--accent); font: 600 13px system-ui, sans-serif;
+}
+.mc-track-open:hover, .mc-track-open[aria-expanded="true"] { background: var(--accent); color: var(--bg); }
+.mc-track-box {
+  margin: 10px 0 4px; padding: 12px 14px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--bg-elev);
+}
+.mc-track-form { display: flex; gap: 8px; max-width: 460px; }
+.mc-track-form input {
+  flex: 1; min-width: 0; background: var(--bg-sunk); color: var(--fg); border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 10px; font: 14px system-ui, sans-serif;
+}
+.mc-track-box .lb-status:empty { display: none; }
+/* The club's head (My clubs, a scout): crest, then name and line. */
+.mc-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 6px; }
+.mc-who { flex: 1 1 auto; min-width: 0; }
+/* Scout or track a club: quiet, top right of the head (Nov 12, elvis). */
+.mc-head .mc-track-open { margin-left: auto; align-self: flex-start; margin-top: 4px; }
+.mc-break { display: none; }
+.mc-head .lb-club { margin: 0; }
+.mc-crest {
+  flex: none; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--bg-elev); border: 1px solid var(--line); color: var(--fg-dim);
+  font: 700 18px system-ui, sans-serif; overflow: hidden;
+}
+.mc-crest img { width: 100%; height: 100%; object-fit: contain; }
+.mc-tiles { margin: 14px 0 6px; }
+.pl-tile.mc-wide { grid-column: span 2; }
+/* An opponent's EA record beside its name (Nov 12). */
+.mc-rec { margin-left: 6px; color: var(--fg-dim); font-size: .86em; white-space: nowrap; }
+.pl-tile.mc-hot b { color: var(--accent); }
+.pl-tile.mc-cold b { color: var(--fg-dim); }
+/* A scouted club's Track it, in the head under its line. */
+.mc-scout-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.mc-scout-foot:empty { display: none; }
+.mc-scout-foot .lb-status { margin: 0; }
+/* An ACTION, not a picked chip (Nov 12, elvis: filled read as "already
+   on"): the accent's outline, filled only under the pointer. */
+.lb-chip.mc-trackit { background: transparent; color: var(--accent); border-color: var(--accent); }
+.lb-chip.mc-trackit:hover:not(:disabled) { background: var(--accent); color: var(--bg); }
+.lb-min { color: var(--fg-dim); font-size: 13px; display: inline-flex; gap: 8px; align-items: center; }
+.lb-min select {
+  background: var(--bg-elev); color: var(--fg); border: 1px solid var(--line);
+  border-radius: 8px; padding: 5px 8px; font: inherit;
+}
+
+.lb-status { color: var(--fg-dim); font-size: 13px; margin: 6px 0 10px; }
+
+.lb-scroll { overflow-x: auto; margin-bottom: 48px; border: 1px solid var(--line); border-radius: 12px; }
+/* The sideways scrollbar (Nov 12, elvis): a thin accent line, no track, no
+   arrows. Chrome / Edge / Safari read the -webkit- rules -- as long as the
+   standard properties stay out of their way (Chrome drops the -webkit- ones
+   when scrollbar-color is set), so those go to Firefox only. */
+.lb-scroll::-webkit-scrollbar { height: 4px; }
+.lb-scroll::-webkit-scrollbar-track { background: transparent; margin: 0 12px; } /* clear of the round corners */
+.lb-scroll::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+.lb-scroll::-webkit-scrollbar-button { display: none; }
+@supports (-moz-appearance: none) {
+  .lb-scroll { scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+}
+.lb-table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.lb-table th, .lb-table td { padding: 7px 10px; text-align: right; white-space: nowrap; }
+.lb-table thead th {
+  position: sticky; top: 0; background: var(--bg-sunk);
+  border-bottom: 1px solid var(--line); font-size: 12px;
+}
+.lb-table thead button {
+  all: unset; cursor: pointer; color: var(--fg-dim); font-weight: 700; letter-spacing: .02em;
+}
+.lb-table thead button:hover, .lb-table thead button:focus-visible { color: var(--fg); }
+.lb-table th[aria-sort="ascending"] button, .lb-table th[aria-sort="descending"] button { color: var(--accent); }
+.lb-table tbody tr:nth-child(even) { background: var(--bg-sunk); }
+.lb-table tbody tr:hover { background: var(--accent-soft); }
+.lb-table .lb-rank { color: var(--fg-dim); text-align: right; width: 1%; }
+.lb-table .lb-name { text-align: left; font-weight: 600; position: sticky; left: 0; background: inherit; }
+.lb-table thead .lb-name { color: var(--fg-dim); font-size: 12px; }
+.lb-table td.lb-on { font-weight: 700; color: var(--fg); }
+.lb-table tbody tr { background: var(--bg); }
+/* Phase C: the signed-in member's own row. */
+.lb-table tbody tr.lb-me { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
+/* A STUCK cell (the name, the log's Opponent) inherits its row's tint, and
+   the "you" and hover tints are see-through: the columns scrolling under it
+   showed through ("FlyingElvi241", Nov 11). Same tint, on the page's solid. */
+.lb-table tbody tr.lb-me > .lb-name, .lb-table tbody tr.lb-me > .pl-opp,
+.lb-table tbody tr:hover > .lb-name, .lb-table tbody tr:hover > .pl-opp {
+  background: linear-gradient(var(--accent-soft), var(--accent-soft)), var(--bg);
+}
+.lb-table tbody tr.lb-me > .lb-name { box-shadow: inset 3px 0 0 var(--accent); }
+.lb-you {
+  font-size: 11px; font-weight: 700; color: var(--accent); border: 1px solid var(--accent);
+  border-radius: 999px; padding: 0 6px; margin-left: 4px; vertical-align: 1px;
+}
+
+/* Your row on a club board opens My player. */
+.lb-table tbody tr.lb-me.lb-open { cursor: pointer; }
+.lb-table tbody tr.lb-me.lb-open:hover .lb-name { text-decoration: underline; }
+
+/* My player (Oct 19): tiles per role, then the game log. */
+.pl-head { padding: 20px 0 0; }
+.pl-head .lb-status { margin: 4px 0 0; }
+.pl-role { margin: 18px 0 8px; font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--accent); }
+.pl-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+.pl-tile {
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: 10px;
+  padding: 10px 12px; font-variant-numeric: tabular-nums;
+}
+.pl-tile b { display: block; font-size: 22px; line-height: 1.2; color: var(--fg); }
+.pl-tile span { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--fg-dim); }
+/* My player's tiles (Nov 12, elvis): three rows at most, the second tier
+   behind a vertical scroll -- the tables' thin accent line, and a fade at
+   the bottom while more waits below (.more-down, settleTiles). */
+.pl-tiles-more {
+  --tile-h: 68px; --tile-gap: 8px;
+  grid-auto-rows: var(--tile-h); gap: var(--tile-gap);
+  max-height: calc(3 * var(--tile-h) + 2 * var(--tile-gap));
+  /* No overscroll containment (Nov 12, elvis): at the grid's end the finger
+     goes on scrolling the page. */
+  overflow-y: auto;
+}
+.pl-tiles-more.scrolls { padding-right: 8px; }
+.pl-tiles-more::-webkit-scrollbar { width: 4px; }
+.pl-tiles-more::-webkit-scrollbar-track { background: transparent; margin: 6px 0; }
+.pl-tiles-more::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+.pl-tiles-more::-webkit-scrollbar-button { display: none; }
+@supports (-moz-appearance: none) {
+  .pl-tiles-more { scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+}
+.pl-tiles-more.more-down {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 26px), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 26px), transparent);
+}
+.pl-empty { color: var(--fg-dim); margin: 18px 0; }
+/* The game log's position chips: the Cards page's coloured dots. */
+.lb-chip.lb-pos { display: inline-flex; align-items: center; gap: 7px; }
+.lb-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.pl-loghead { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 34px 0 0; }
+.pl-title { margin: 0; font-size: 20px; }
+/* The game log's opponent holds the left edge once Date / Game / Club have
+   scrolled under it (Oct 21) — the Player column's trick, so the stats on the
+   right always read against the game they belong to. */
+.lb-table .pl-opp {
+  position: sticky; left: 0; z-index: 1; background: inherit;
+  box-shadow: 1px 0 0 var(--line);
+}
+.lb-table thead th.pl-opp { z-index: 2; background: var(--bg-sunk); }
+/* At rest the whole name, one line, no ellipsis (elvis, Oct 21). Only while
+   the column is STUCK (JS sets .pl-stuck on the table) does it narrow to
+   161px, and a name wider than that loses its START under a fade, so its end
+   stays readable. NOTHING in the table moves: the name stays in the cell,
+   made transparent, so the column keeps its width (a width on a table cell
+   is not honoured when the content shrinks — tried), and the narrow name is
+   an overlay drawn from data-n, row-coloured, with the columns scrolling
+   under showing again to its right. */
+.lb-table tbody tr { --row-bg: var(--bg); }
+.lb-table tbody tr:nth-child(even) { --row-bg: var(--bg-sunk); }
+.lb-table .pl-oppn { display: inline-block; white-space: nowrap; }
+.lb-table.pl-stuck .pl-opp { background: transparent; box-shadow: none; color: transparent; }
+.lb-table.pl-stuck .pl-opp::after {
+  content: attr(data-n); position: absolute; left: 0; top: 0; bottom: 0; z-index: 1;
+  display: flex; align-items: center; box-sizing: border-box;
+  width: min(100%, 183px); /* 161px of name (11.5em at the rows' 14px) + padding + 2px */
+  padding: 0 10px; overflow: hidden; white-space: nowrap;
+  color: var(--fg); background: var(--row-bg); box-shadow: 1px 0 0 var(--line);
+}
+.lb-table.pl-stuck thead .pl-opp::after { background: var(--bg-sunk); }
+/* One straight edge down the column (never narrower than the column when
+   every name is short); 2px of slack so rounding never eats a last letter.
+   Only the measured-long names are anchored by their end. */
+.lb-table.pl-stuck .pl-long::after { justify-content: flex-end; }
+.lb-table.pl-stuck .pl-long::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2.6em; z-index: 2;
+  background: linear-gradient(to right, var(--row-bg) 10px, transparent);
+}
+.lb-table td.pl-w { color: var(--accent); font-weight: 700; }
+.lb-table td.pl-otl { color: var(--warn); font-weight: 700; }
+.lb-table td.pl-l { color: var(--fg-dim); font-weight: 700; }
+.lb-table .lb-dim, .lb-dim { color: var(--fg-dim); }
+.pl-pager { display: flex; align-items: center; justify-content: center; gap: 14px; margin: -32px 0 48px; color: var(--fg-dim); font-size: 13px; }
+.pl-pager .lb-chip:disabled { opacity: .4; cursor: default; }
+
+/* One game (Nov 6): the score post for the web and the phone -- an NHL-style
+   header, the stars, then the game sheet, a team at a time on a phone (both,
+   one above the other, on a wide screen), every column, the name stuck left. */
+.lb-table tbody tr.pl-game { cursor: pointer; }
+.lb-table a.pl-glink { color: inherit; text-decoration: none; }
+.lb-table a.pl-glink:hover, .lb-table a.pl-glink:focus-visible { text-decoration: underline; }
+.gm { padding: 18px 0 40px; }
+.gm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.gm-back { display: inline-block; color: var(--accent); text-decoration: none; font-size: 14px; margin-bottom: 12px; }
+.gm-back:hover { text-decoration: underline; }
+.gm-head {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 10px;
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 14px;
+}
+.gm-team { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px; min-width: 0; }
+.gm-logo { width: 64px; height: 64px; object-fit: contain; }
+.gm-init {
+  width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--bg-sunk); border: 1px solid var(--line); font-weight: 800; font-size: 22px; color: var(--fg-dim);
+}
+.gm-name { font-weight: 800; font-size: 18px; line-height: 1.2; overflow-wrap: anywhere; }
+.gm-rec, .gm-sog { color: var(--fg-dim); font-size: 13px; font-variant-numeric: tabular-nums; }
+.gm-res { font-size: 12px; font-weight: 800; letter-spacing: .06em; }
+.gm-res.w { color: #2fbf71; }
+.gm-res.l { color: #e5534b; }
+.gm-res.o { color: var(--warn); }
+.gm-mid { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.gm-score { display: flex; align-items: center; gap: 14px; }
+.gm-goals { font-size: 52px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.gm-goals.lost { color: var(--fg-dim); }
+.gm-final {
+  font-size: 12px; font-weight: 800; letter-spacing: .04em; padding: 4px 8px; border-radius: 6px;
+  background: var(--bg-sunk); border: 1px solid var(--line);
+}
+.gm-when { color: var(--fg-dim); font-size: 12px; text-align: center; }
+.gm-stars { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin: 14px 0 4px; font-weight: 700; font-size: 15px; }
+.gm-stars .s1 { color: #f0b849; }
+.gm-stars .s2 { color: #b9c3cc; }
+.gm-stars .s3 { color: #d19a66; }
+.gm-h2h { text-align: center; color: var(--fg-dim); font-size: 13px; margin: 0 0 6px; }
+.gm-sheethead { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 22px 0 10px; flex-wrap: wrap; }
+.gm-toggle { display: flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; flex: 1 1 260px; max-width: 520px; }
+.gm-toggle button {
+  all: unset; box-sizing: border-box; flex: 1 1 0; min-width: 0; text-align: center; cursor: pointer;
+  padding: 9px 10px; font-weight: 700; font-size: 14px; color: var(--fg); background: var(--bg-elev);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.gm-toggle button[aria-selected="true"] { background: var(--fg); color: var(--bg); }
+.gm-toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.gm-sheet.off { display: none; }
+.gm-sheettop { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 0 0 8px; }
+.gm-sheettop h4 { margin: 0; font-size: 17px; border-left: 4px solid var(--line); padding-left: 8px; }
+.gm-sheettop h4.w { border-left-color: #2fbf71; }
+.gm-sheettop h4.l, .gm-sheettop h4.o { border-left-color: #e5534b; }
+.gm-sheettop span { color: var(--fg-dim); font-size: 13px; white-space: nowrap; }
+.gm .lb-scroll { margin-bottom: 14px; }
+.gm .lb-table thead th.lb-name { background: var(--bg-sunk); z-index: 2; }
+.gm .lb-table td.lb-name { z-index: 1; }
+.gm-sheet { margin-bottom: 28px; }
+/* Post-game notes (Nov 13): the roster's own words under the sheet. */
+.gm-notes { margin: 8px 0 28px; }
+.gm-notes-who { color: var(--fg-dim); font-size: 13px; }
+.gm-note, .gm-note-empty {
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; margin: 0 0 10px;
+}
+.gm-note-empty { color: var(--fg-dim); font-size: 14px; }
+.gm-note p { margin: 0 0 6px; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.45; }
+.gm-note footer { color: var(--fg-dim); font-size: 12px; }
+.gm-note-form textarea {
+  box-sizing: border-box; width: 100%; min-height: 96px; resize: vertical; font: inherit;
+  color: var(--fg); background: var(--bg-sunk); border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 12px;
+}
+.gm-note-form textarea:focus { outline: none; border-color: var(--accent); }
+.gm-note-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 8px; }
+.gm-note-status { color: var(--fg-dim); font-size: 13px; }
+.gm .lb-table tfoot td { font-weight: 700; color: var(--fg-dim); border-top: 1px solid var(--line); background: var(--bg-sunk); }
+.gm .lb-table tfoot td.lb-name { background: var(--bg-sunk); }
+@media (min-width: 900px) {
+  .gm-toggle { display: none; }
+  .gm-sheet.off { display: block; }
+  .gm-goals { font-size: 64px; }
+  .gm-logo, .gm-init { width: 88px; height: 88px; }
+  .gm-name { font-size: 24px; }
+}
+
+@media (max-width: 560px) {
+  .gm-head { padding: 14px 8px; gap: 6px; }
+  .gm-logo, .gm-init { width: 48px; height: 48px; }
+  .gm-name { font-size: 15px; }
+  .gm-goals { font-size: 40px; }
+  .gm-score { gap: 8px; }
+  .gm-final { font-size: 11px; padding: 3px 6px; }
+  .pl-tiles { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
+  .pl-tile b { font-size: 18px; }
+  /* Four a row on a phone (Nov 12): three rows of three hid all but nine. */
+  .pl-tiles-more { --tile-h: 58px; --tile-gap: 6px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .pl-tiles-more .pl-tile { padding: 8px 8px; overflow: hidden; }
+  .pl-tiles-more .pl-tile b { font-size: 16px; white-space: nowrap; }
+  .pl-tiles-more .pl-tile span { font-size: 11px; white-space: nowrap; }
+  .lb-wrap { padding: 0 16px; }
+  .lb-search { flex-basis: 100%; }
+  .lb-table th, .lb-table td { padding: 6px 7px; }
+}
+
+/* The clubs on a phone, My clubs and My player (Nov 12, elvis: they took
+   half the screen): ONE line that swipes, edge to edge, every club in it.
+   The edges fade where there is more to swipe to (.more-left / .more-right,
+   set by leaderboards.js swipeHints) -- "pas mal de clubs a scroller".
+   leaderboards.js SWIPE matches this query. */
+@media (max-width: 700px) {
+  .lb-swipe {
+    flex-wrap: nowrap; overflow-x: auto;
+    margin: 0 -16px; padding: 6px 16px 8px; scroll-padding: 0 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* The tables' thin accent line under it (elvis: the evidence of a swipe).
+     Same rules as .lb-scroll: -webkit- for Chrome / Edge / Safari desktop,
+     the standard pair for Firefox only. */
+  .lb-swipe::-webkit-scrollbar { height: 3px; }
+  .lb-swipe::-webkit-scrollbar-track { background: transparent; margin: 0 16px; }
+  .lb-swipe::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+  .lb-swipe::-webkit-scrollbar-button { display: none; }
+  @supports (-moz-appearance: none) {
+    .lb-swipe { scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+  }
+  .lb-swipe .lb-chip { flex: none; white-space: nowrap; }
+  .lb-swipe.more-right {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 64px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 64px), transparent);
+  }
+  .lb-swipe.more-left {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 48px);
+    mask-image: linear-gradient(to right, transparent, #000 48px);
+  }
+  .lb-swipe.more-left.more-right {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 64px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 64px), transparent);
+  }
+  /* Scout or track a club over the head, right: wrapped under it, it sat
+     between a scout's Track it and the clubs (elvis, the app). */
+  /* Its own row, on the right: a break after it puts crest + name below. */
+  .mc-head .mc-track-open { order: -1; margin-top: 0; }
+  .mc-head .mc-break { display: block; order: -1; flex-basis: 100%; height: 0; }
+}

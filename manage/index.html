@@ -53,7 +53,8 @@ const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
 const API = (LOCAL && params.get('api')) || 'https://api.elviteamtracker.com';
 
 const me = await mountAuth();
-const mine = me.signedIn && (me.links ?? []).some((l) => l.href === location.pathname);
+// Nov 19: no plain /manage/ link any more, only the avatar menu's /manage/?team=... entries
+const mine = me.signedIn && (me.links ?? []).some((l) => l.href === location.pathname || String(l.href).startsWith(location.pathname + '?'));
 if (!me.available) {
   // The session couldn't be checked (a slow moment on the server): say so,
   // rather than telling a member the page isn't there.

@@ -81,12 +81,20 @@ function keepCols(cols, fixedPx) {
   const keep = new Set([...cols].sort((a, b) => a[2] - b[2]).slice(0, n).map((c) => c[0]));
   return cols.filter((c) => keep.has(c[0]));
 }
+// a table's own width, not the width it was stretched to (it is min-width:100%, so offsetWidth never says)
+function naturalWidth(tb) {
+  const w0 = tb.style.width, m0 = tb.style.minWidth;
+  tb.style.width = 'max-content'; tb.style.minWidth = '0';
+  const n = tb.offsetWidth;
+  tb.style.width = w0; tb.style.minWidth = m0;
+  return n;
+}
 function fitSheets(el) {
   if (!el) return;
   el.querySelectorAll('.body').forEach((body) => {
     body.querySelectorAll('table').forEach((tb) => {
       let guard = 12;
-      while (guard-- > 0 && tb.offsetWidth > body.clientWidth - 2) {
+      while (guard-- > 0 && naturalWidth(tb) + 24 > body.clientWidth) {   // 24 = the box's side margins and borders: no sideways scroll left
         const ths = [...tb.querySelectorAll('thead th[data-r]')];
         if (ths.length <= 3) break;
         const worst = ths.reduce((a, b) => (+b.dataset.r > +a.dataset.r ? b : a));
@@ -101,12 +109,12 @@ function sheet(g, box, side) {
   if (!cl) return `<div class="sh"><table><tr><td>${box && box.clubs ? 'No box score' : 'Loading the box score...'}</td></tr></table></div>`;
   const sk = cl.skaters.slice().sort((x, y) => (PO[x.position] ?? 9) - (PO[y.position] ?? 9));
   const t = cl.totals || {};
-  const sc = keepCols(SKC, 128 + 42);
+  const sc = SKC;   // all of them first: fitSheets then measures and drops the lowest ranks until the table fits
   const cell = (c, v) => `<td${c[3] ? ` class="${c[3]}"` : ''}>${v}</td>`;
   const skaters = `<div class="sh"><table><thead><tr><th>Player</th><th>POS</th>${sc.map((c) => `<th data-r="${c[2]}">${c[0]}</th>`).join('')}</tr></thead>
     <tbody>${sk.map((x) => `<tr><td>${esc(x.name)}</td><td class="pos">${esc(x.position)}</td>${sc.map((c) => cell(c, c[1](x))).join('')}</tr>`).join('')}
     <tr class="tot"><td>TOTALS</td><td></td>${sc.map((c) => `<td>${TOT[c[0]] ? t[TOT[c[0]]] : ''}</td>`).join('')}</tr></tbody></table></div>`;
-  const gc = keepCols(GKC, 128);
+  const gc = GKC;
   const goalies = (cl.goalies || []).length
     ? `<div class="sh"><table><thead><tr><th>Goalie</th>${gc.map((c) => `<th data-r="${c[2]}">${c[0]}</th>`).join('')}</tr></thead>
     <tbody>${cl.goalies.map((x) => `<tr><td>${esc(x.name)}</td>${gc.map((c) => cell(c, c[1](x))).join('')}</tr>`).join('')}</tbody></table></div>` : '';

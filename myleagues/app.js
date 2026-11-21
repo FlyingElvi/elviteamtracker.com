@@ -162,7 +162,7 @@ function nightCard(u) {
   const pub = u.status === 'published';
   const lu = pub ? (u.pos ? `<div class="lu yes">YOU'RE IN THE LINEUP &middot; ${esc(POS[u.pos] || u.pos)}</div>` : `<div class="lu no">LINEUP PUBLISHED &middot; YOU'RE NOT IN</div>`) : '<div class="lu open">AVAILABILITY OPEN</div>';
   return `${wkTab(u, dt)}<div class="in nt"><div class="strip"><span></span><span>${u.status === 'published' && u.pos ? `<span class="you">YOU &middot; ${esc(POS[u.pos] || u.pos)}</span>` : ''}${u.phase === 'playoffs' ? 'PLAYOFFS' : 'COMING UP'}</span></div>
-    <div class="nb"><div class="nk">${esc(wk(u.weekLabel)).toUpperCase()}</div><div class="vs">${u.opp ? 'vs ' + esc(u.opp) : 'Opponent TBD'}</div>
+    <div class="nb"><div class="nday">${LONG[u.dow].toUpperCase()} &mdash; ${MONTHS[u.mon]} ${ord(u.day)}</div><div class="nk">${esc(wk(u.weekLabel)).toUpperCase()}</div><div class="vs">${u.opp ? 'vs ' + esc(u.opp) : 'Opponent TBD'}</div>
     <div class="hrs">${u.hours.map((x, i) => (pub ? `<i class="st">${esc(x.h)}</i>` : `<button data-i="${i}" class="${x.out ? 'off' : ''}">${esc(x.h)}</button>`)).join('')}</div>${lu}
     ${lineupGrid(u)}
     <div class="av" data-nid="${u.nightId}">${pub
@@ -170,6 +170,7 @@ function nightCard(u) {
       : ['in', 'out', 'maybe'].map((a) => `<button data-a="${a}" class="${isOn(u, a) ? 'on' : ''}">${avLabel(u, a)}</button>`).join('')}</div></div></div>`;
 }
 const LONG = { Sun: 'Sunday', Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday' };
+const MONTHS = { Jan: 'JANUARY', Feb: 'FEBRUARY', Mar: 'MARCH', Apr: 'APRIL', May: 'MAY', Jun: 'JUNE', Jul: 'JULY', Aug: 'AUGUST', Sep: 'SEPTEMBER', Oct: 'OCTOBER', Nov: 'NOVEMBER', Dec: 'DECEMBER' };
 const ord = (n) => n + (n % 10 === 1 && n !== 11 ? 'st' : n % 10 === 2 && n !== 12 ? 'nd' : n % 10 === 3 && n !== 13 ? 'rd' : 'th');
 function myLines() {
   const m = D.my || {}, o = [];

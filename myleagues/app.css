@@ -98,3 +98,4 @@ html.app .mlg .top{padding-top:10px}
 /* the title sits closer to the header (PC) */
 .mlg .top{padding-top:8px}
 .mlg .al a.alb{flex:none;font:inherit;font-size:13px;font-weight:700;padding:7px 12px;border-radius:8px;color:#0b1118;background:var(--o);border:1px solid var(--o);text-decoration:none}
+.mlg .nt .nday{font-size:21px;font-weight:800;letter-spacing:.04em;color:var(--tx);margin:0 0 14px;text-align:center}

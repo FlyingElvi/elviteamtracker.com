@@ -236,9 +236,9 @@ function queueBoxes() {
 function fit() {
   const g = document.querySelector('.mlg'); if (!g) return;
   const top = $('sc').getBoundingClientRect().top + scrollY;
-  const under = document.querySelector('.mlg .mlnav').offsetHeight + $('pos').offsetHeight + 14;
+  const under = document.querySelector('.mlg .mlnav').offsetHeight + $('pos').offsetHeight + 4;
   const tabs = document.querySelector('.app-tabs');
-  const room = innerHeight - top - under - (tabs ? tabs.getBoundingClientRect().height + 6 : 16);
+  const room = innerHeight - top - under - (tabs ? tabs.getBoundingClientRect().height + 2 : 12);
   g.style.setProperty('--s', Math.max(0.5, Math.min(1, room / 740)).toFixed(3));
 }
 // the header can still grow after the first draw (the css arrives after this file, a league note wraps):

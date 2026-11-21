@@ -455,7 +455,8 @@ function renderPicker() {
 // the line under the pills shows only while they slide
 let slideT;
 document.addEventListener('scroll', (e) => {
-  const pk = e.target && e.target.classList && e.target.classList.contains('pk') ? e.target : null;
+  const c = e.target && e.target.classList;
+  const pk = c && (c.contains('pk') || c.contains('body')) ? e.target : null;
   if (!pk) return;
   pk.classList.add('sliding'); clearTimeout(slideT); slideT = setTimeout(() => pk.classList.remove('sliding'), 700);
 }, true);

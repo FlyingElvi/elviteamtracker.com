@@ -69,3 +69,16 @@ html.app .mlg .top{padding-top:10px}
 /* the three stars on one line (elvis, Nov 21), short names like the lineup; it wraps only if a name is long */
 .mlg .stars{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:2px 12px}
 .mlg .stars span{white-space:nowrap}
+/* the box score: ONE scroller (the card's body) for both directions, so the header row stays put when it
+   scrolls up and the player names stay put when it scrolls sideways (elvis, Nov 21) */
+.mlg .it .in > .body{overflow:auto}
+.mlg .body .sh{overflow:visible;border-radius:0}
+.mlg .body .sh table{border-collapse:separate;border-spacing:0}
+.mlg .sh th{position:sticky;top:0;z-index:3;background:var(--card2)}
+.mlg .sh th:first-child{left:0;z-index:4}
+.mlg .sh td:first-child{z-index:2}
+/* the teal scroll line is off until he slides, in the tables too */
+.mlg .it .in > .body{scrollbar-width:none}
+.mlg .it .in > .body::-webkit-scrollbar{display:none}
+.mlg .it .in > .body.sliding{scrollbar-width:thin}
+.mlg .it .in > .body.sliding::-webkit-scrollbar{display:block;width:3px;height:3px}

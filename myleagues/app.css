@@ -88,3 +88,10 @@ html.app .mlg .top{padding-top:10px}
 .mlg .sh th:first-child,.mlg .sh td:first-child{padding-left:8px;max-width:104px;overflow:hidden;text-overflow:ellipsis}
 /* the name column takes what its names need and no more: the spare width goes to the stats */
 .mlg .sh th:first-child,.mlg .sh td:first-child{width:1%;white-space:nowrap}
+/* rows closer together: the whole box score shows without scrolling (elvis, Nov 21) */
+.mlg .sh th,.mlg .sh td{padding:3px 4px}
+.mlg .sh{margin-top:6px}
+/* box score only (elvis, Nov 21): a pixel smaller and tighter, so it shows whole, without scrolling */
+.mlg .sh table{font-size:11.5px}
+.mlg .sh th,.mlg .sh td{padding:2px 4px}
+.mlg .tt button{padding-top:6px;padding-bottom:6px}

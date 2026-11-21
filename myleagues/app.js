@@ -112,8 +112,7 @@ function sheet(g, box, side) {
   const sc = SKC;   // all of them first: fitSheets then measures and drops the lowest ranks until the table fits
   const cell = (c, v) => `<td${c[3] ? ` class="${c[3]}"` : ''}>${v}</td>`;
   const skaters = `<div class="sh"><table><thead><tr><th>Player</th><th>POS</th>${sc.map((c) => `<th data-r="${c[2]}">${c[0]}</th>`).join('')}</tr></thead>
-    <tbody>${sk.map((x) => `<tr><td>${esc(x.name)}</td><td class="pos">${esc(x.position)}</td>${sc.map((c) => cell(c, c[1](x))).join('')}</tr>`).join('')}
-    <tr class="tot"><td>TOTALS</td><td></td>${sc.map((c) => `<td>${TOT[c[0]] ? t[TOT[c[0]]] : ''}</td>`).join('')}</tr></tbody></table></div>`;
+    <tbody>${sk.map((x) => `<tr><td>${esc(x.name)}</td><td class="pos">${esc(x.position)}</td>${sc.map((c) => cell(c, c[1](x))).join('')}</tr>`).join('')}</tbody></table></div>`;   // no TOTALS row (elvis, Nov 21): the Game page has it
   const gc = GKC;
   const goalies = (cl.goalies || []).length
     ? `<div class="sh"><table><thead><tr><th>Goalie</th>${gc.map((c) => `<th data-r="${c[2]}">${c[0]}</th>`).join('')}</tr></thead>

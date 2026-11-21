@@ -65,16 +65,16 @@ if (!me.available) {
   document.querySelector('#members .wrap').innerHTML =
     '<div class="members-none"><h1>Page not found</h1><p><a href="/">Back to the home page</a></p></div>';
 } else {
-  // The page's own code and look come from the API, for this session only.
+  // The page's own code and look: static files of the site, like the cards (the API sends JSON only).
+  // v = bump it when app.js / app.css change (the phones keep files).
+  const V = 1;
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.crossOrigin = 'use-credentials';
-  css.href = `${API}${location.pathname}app.css`;
+  css.href = `/myleagues/app.css?v=${V}`;
   document.head.append(css);
   const app = document.createElement('script');
   app.type = 'module';
-  app.crossOrigin = 'use-credentials';
-  app.src = `${API}${location.pathname}app.js`;
+  app.src = `/myleagues/app.js?v=${V}`;
   document.body.append(app);
 }
 </script>

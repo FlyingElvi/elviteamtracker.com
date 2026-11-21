@@ -82,3 +82,4 @@ html.app .mlg .top{padding-top:10px}
 .mlg .it .in > .body::-webkit-scrollbar{display:none}
 .mlg .it .in > .body.sliding{scrollbar-width:thin}
 .mlg .it .in > .body.sliding::-webkit-scrollbar{display:block;width:3px;height:3px}
+.mlg .sh td.rtg{color:var(--tx);font-weight:700}

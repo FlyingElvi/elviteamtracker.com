@@ -66,13 +66,13 @@ function starsOf(box) {
 }
 const PO = { LW: 0, C: 1, RW: 2, LD: 3, RD: 4, D: 5 };
 // The stat columns that FIT the card (elvis, Nov 21): columns are dropped, never scrolled; the Game page has them all.
-// Each column carries its rank (1 = the first kept).
+// Each column carries its rank (1 = the first kept). RTG is rank 1: it is THE stat of the bot (elvis, Nov 21).
 const sgn = (v) => (v > 0 ? '+' + v : v);
-const SKC = [['RTG', (x) => x.rating, 5], ['G', (x) => x.goals, 2], ['A', (x) => x.assists, 3], ['P', (x) => x.points, 1, 'p'],
-  ['+/-', (x) => sgn(x.plusMinus), 4], ['PIM', (x) => x.pim, 8], ['S', (x) => x.shots, 6], ['H', (x) => x.hits, 7],
+const SKC = [['RTG', (x) => x.rating, 1, 'rtg'], ['G', (x) => x.goals, 3], ['A', (x) => x.assists, 4], ['P', (x) => x.points, 2, 'p'],
+  ['+/-', (x) => sgn(x.plusMinus), 5], ['PIM', (x) => x.pim, 8], ['S', (x) => x.shots, 6], ['H', (x) => x.hits, 7],
   ['B', (x) => x.blocks, 9], ['TK', (x) => x.takeaways, 10], ['GV', (x) => x.giveaways, 11], ['PAS', (x) => x.passes, 12]];
-const GKC = [['RTG', (x) => x.rating, 5], ['SV%', (x) => x.savePct + '%', 1, 'p hl'], ['GAA', (x) => (+x.gaa).toFixed(2), 2],
-  ['SV', (x) => x.saves, 3], ['SA', (x) => x.shots, 4], ['GA', (x) => x.ga, 6],
+const GKC = [['RTG', (x) => x.rating, 1, 'rtg'], ['SV%', (x) => x.savePct + '%', 2, 'p hl'], ['GAA', (x) => (+x.gaa).toFixed(2), 3],
+  ['SV', (x) => x.saves, 4], ['SA', (x) => x.shots, 5], ['GA', (x) => x.ga, 6],
   ['BRK', (x) => `${x.breakawaySaves}/${x.breakawayShots}`, 7], ['PS', (x) => `${x.penaltyShotSaves}/${x.penaltyShots}`, 8]];
 const TOT = { G: 'goals', A: 'assists', P: 'points', PIM: 'pim', S: 'shots', H: 'hits', B: 'blocks', TK: 'takeaways', GV: 'giveaways', PAS: 'passes' };
 function keepCols(cols, fixedPx) {

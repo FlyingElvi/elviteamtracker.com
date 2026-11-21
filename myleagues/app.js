@@ -161,7 +161,7 @@ function nightCard(u) {
   const dt = `${u.dow.toUpperCase()} ${u.mon.toUpperCase()} ${u.day}`;
   const pub = u.status === 'published';
   const lu = pub ? (u.pos ? `<div class="lu yes">YOU'RE IN THE LINEUP &middot; ${esc(POS[u.pos] || u.pos)}</div>` : `<div class="lu no">LINEUP PUBLISHED &middot; YOU'RE NOT IN</div>`) : '<div class="lu open">AVAILABILITY OPEN</div>';
-  return `${wkTab(u, dt)}<div class="in nt"><div class="strip"><span><b>${dt}</b></span><span>${u.status === 'published' && u.pos ? `<span class="you">YOU &middot; ${esc(POS[u.pos] || u.pos)}</span>` : ''}${u.phase === 'playoffs' ? 'PLAYOFFS' : 'COMING UP'}</span></div>
+  return `${wkTab(u, dt)}<div class="in nt"><div class="strip"><span></span><span>${u.status === 'published' && u.pos ? `<span class="you">YOU &middot; ${esc(POS[u.pos] || u.pos)}</span>` : ''}${u.phase === 'playoffs' ? 'PLAYOFFS' : 'COMING UP'}</span></div>
     <div class="nb"><div class="nk">${esc(wk(u.weekLabel)).toUpperCase()}</div><div class="vs">${u.opp ? 'vs ' + esc(u.opp) : 'Opponent TBD'}</div>
     <div class="hrs">${u.hours.map((x, i) => (pub ? `<i class="st">${esc(x.h)}</i>` : `<button data-i="${i}" class="${x.out ? 'off' : ''}">${esc(x.h)}</button>`)).join('')}</div>${lu}
     ${lineupGrid(u)}

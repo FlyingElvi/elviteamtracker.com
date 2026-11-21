@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="/assets/site.css?v=2">
 <style>
   #members { min-height: 60vh; }
+  /* phone (elvis, Nov 21): the deck starts right under the header, not 44 px below it */
+  @media (max-width: 640px) { #members { padding: 8px 0 10px; } }
   .members-wait { color: var(--fg-dim); padding: 48px 0; }
   .members-none { padding: 64px 0; }
   .members-none h1 { margin: 0 0 8px; }

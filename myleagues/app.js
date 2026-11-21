@@ -241,8 +241,8 @@ function fit() {
   const room = innerHeight - top - under - (tabs ? tabs.getBoundingClientRect().height + 2 : 12);
   // Text no smaller than 85% of its design size (elvis, Nov 21: smaller than My clubs): when the room is short
   // the CARD gets shorter instead (its box score scrolls inside), the scale stays at 85%.
-  let s = room / 740, ch = 570;
-  if (s < 0.85) { s = 0.85; ch = Math.max(380, Math.floor(room / s - 170)); }
+  let s = room / 692, ch = 570;
+  if (s < 0.85) { s = 0.85; ch = Math.max(380, Math.floor(room / s - 122)); }
   g.style.setProperty('--s', Math.min(1, s).toFixed(3));
   g.style.setProperty('--ch', ch + 'px');
 }

@@ -26,3 +26,6 @@ html.app .mlg .top{padding-top:10px}
 .mlg .slogo .cr img{object-fit:contain}
 .mlg .slogo.a1{padding-bottom:18px}
 .mlg .slogo.a2{align-items:flex-start;padding-top:2px}
+.mlg .pk .chip{white-space:nowrap;flex:none;padding:4px 10px;font-size:12px;gap:5px}
+.mlg .pk{gap:6px}
+.mlg .chip .lgl{width:18px;height:18px}

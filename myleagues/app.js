@@ -421,6 +421,8 @@ function leaguesOf() {
 // The LG leagues (LG AHL, LG CHL, LG NHL...) share one pill with a sub-menu (elvis, Nov 21), but only when he
 // plays in more than one of them: with a single LG league its own pill is enough.
 const isLg = (x) => /^LG\b/i.test(x.league);
+// the pill's short name (ITHL NA -> ITHL): five pills and their logos must fit one row of a phone
+const leagueLabel = (n) => String(n).replace(/ NA$/, '');
 let famOpen = false;
 function pillGroups() {
   const all = leaguesOf(), lg = all.filter(isLg);
@@ -435,7 +437,7 @@ function pillGroups() {
 const lgImg = (x) => (x.leagueLogo ? `<img class="lgl" src="${esc(x.leagueLogo)}" alt="">` : '');
 function renderPicker() {
   const sel = IDX.seasons.find((x) => x.seasonId === curSeason);
-  const pill = (x) => `<button class="chip${x.league === sel.league ? ' on' : ''}" data-sid="${x.seasonId}">${lgImg(x)}${esc(x.league)}</button>`;
+  const pill = (x) => `<button class="chip${x.league === sel.league ? ' on' : ''}" data-sid="${x.seasonId}">${lgImg(x)}${esc(leagueLabel(x.league))}</button>`;
   const groups = pillGroups();
   const fam = groups.find((g) => g.fam);
   const inFam = !!fam && fam.items.some((x) => x.league === sel.league);

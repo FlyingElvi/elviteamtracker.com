@@ -38,3 +38,5 @@ html.app .mlg .top{padding-top:10px}
 .mlg .posl{padding-bottom:4px}
 /* PC and tablet (elvis, Nov 21): the deck was narrower than on the phone, relative to its page */
 @media (min-width:700px){.mlg{max-width:580px}}
+/* phone in the browser (elvis, Nov 21): the highlighted tab of your pages already says where you are, so no page title, and the deck grows into the room */
+@media (max-width:640px){.mlg .top h1{display:none}.mlg .top{padding-top:10px}}

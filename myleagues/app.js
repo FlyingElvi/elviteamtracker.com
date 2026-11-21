@@ -447,6 +447,13 @@ function renderPicker() {
     + (fam && (famOpen || inFam) ? `<div class="pk sub">${fam.items.map(pill).join('')}</div>` : '')
     + (sel.otherTeams.length ? `<div class="alt">Also played for ${sel.otherTeams.map((t) => esc(t.name)).join(', ')} this season &mdash; see My teams</div>` : '');
 }
+// the line under the pills shows only while they slide
+let slideT;
+document.addEventListener('scroll', (e) => {
+  const pk = e.target && e.target.classList && e.target.classList.contains('pk') ? e.target : null;
+  if (!pk) return;
+  pk.classList.add('sliding'); clearTimeout(slideT); slideT = setTimeout(() => pk.classList.remove('sliding'), 700);
+}, true);
 document.addEventListener('click', (e) => {
   const f = e.target.closest('.chip[data-fam]'); if (!f) return;
   famOpen = !famOpen; renderPicker();

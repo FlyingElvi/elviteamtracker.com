@@ -40,3 +40,8 @@ html.app .mlg .top{padding-top:10px}
 @media (min-width:700px){.mlg{max-width:580px}}
 /* phone in the browser (elvis, Nov 21): the highlighted tab of your pages already says where you are, so no page title, and the deck grows into the room */
 @media (max-width:640px){.mlg .top h1{display:none}.mlg .top{padding-top:10px}}
+/* the league pills' scroll line (elvis, Nov 21): off when the page loads, shown only while he slides them */
+.mlg .pk{scrollbar-width:none}
+.mlg .pk::-webkit-scrollbar{display:none}
+.mlg .pk.sliding{scrollbar-width:thin}
+.mlg .pk.sliding::-webkit-scrollbar{display:block;height:3px}

@@ -59,21 +59,58 @@ function crest(logo, name) {
   return `<span class="cr">${logo ? `<img src="${esc(logo)}" alt="">` : esc(init(name))}</span>`;
 }
 const logoOf = (box, us) => ((box && box.clubs) || []).find((c) => (c.clubId === D.club) === us)?.logo || null;
+// a star's short name: the name his team knows him by (the Discord name, <= 7 chars stays whole), else the rule
+const starName = (n) => sn(((D && D.names) || {})[String(n).toLowerCase()] || n);
 function starsOf(box) {
-  return ((box && box.stars) || []).slice(0, 3).map((s, i) => `<span class="s${i + 1}" title="${esc(s.name)}">&#9733; ${esc(sn(s.name))} <em>${esc(s.detail)}</em></span>`).join('');
+  return ((box && box.stars) || []).slice(0, 3).map((s, i) => `<span class="s${i + 1}" title="${esc(s.name)}">&#9733; ${esc(starName(s.name))} <em>${esc(s.detail)}</em></span>`).join('');
 }
 const PO = { LW: 0, C: 1, RW: 2, LD: 3, RD: 4, D: 5 };
+// The stat columns that FIT the card (elvis, Nov 21): columns are dropped, never scrolled; the Game page has them all.
+// Each column carries its rank (1 = the first kept).
+const sgn = (v) => (v > 0 ? '+' + v : v);
+const SKC = [['RTG', (x) => x.rating, 5], ['G', (x) => x.goals, 2], ['A', (x) => x.assists, 3], ['P', (x) => x.points, 1, 'p'],
+  ['+/-', (x) => sgn(x.plusMinus), 4], ['PIM', (x) => x.pim, 8], ['S', (x) => x.shots, 6], ['H', (x) => x.hits, 7],
+  ['B', (x) => x.blocks, 9], ['TK', (x) => x.takeaways, 10], ['GV', (x) => x.giveaways, 11], ['PAS', (x) => x.passes, 12]];
+const GKC = [['RTG', (x) => x.rating, 5], ['SV%', (x) => x.savePct + '%', 1, 'p hl'], ['GAA', (x) => (+x.gaa).toFixed(2), 2],
+  ['SV', (x) => x.saves, 3], ['SA', (x) => x.shots, 4], ['GA', (x) => x.ga, 6],
+  ['BRK', (x) => `${x.breakawaySaves}/${x.breakawayShots}`, 7], ['PS', (x) => `${x.penaltyShotSaves}/${x.penaltyShots}`, 8]];
+const TOT = { G: 'goals', A: 'assists', P: 'points', PIM: 'pim', S: 'shots', H: 'hits', B: 'blocks', TK: 'takeaways', GV: 'giveaways', PAS: 'passes' };
+function keepCols(cols, fixedPx) {
+  const room = (parseFloat(getComputedStyle($('deck')).width) || 340) - 26 - fixedPx;
+  const n = Math.max(3, Math.floor(room / 42));
+  const keep = new Set([...cols].sort((a, b) => a[2] - b[2]).slice(0, n).map((c) => c[0]));
+  return cols.filter((c) => keep.has(c[0]));
+}
+function fitSheets(el) {
+  if (!el) return;
+  el.querySelectorAll('.body').forEach((body) => {
+    body.querySelectorAll('table').forEach((tb) => {
+      let guard = 12;
+      while (guard-- > 0 && tb.offsetWidth > body.clientWidth - 2) {
+        const ths = [...tb.querySelectorAll('thead th[data-r]')];
+        if (ths.length <= 3) break;
+        const worst = ths.reduce((a, b) => (+b.dataset.r > +a.dataset.r ? b : a));
+        const idx = [...worst.parentElement.children].indexOf(worst);
+        tb.querySelectorAll('tr').forEach((tr) => { if (tr.children[idx]) tr.children[idx].remove(); });
+      }
+    });
+  });
+}
 function sheet(g, box, side) {
   const cl = (box?.clubs || []).find((c) => (side === 'us') === (c.clubId === D.club));
   if (!cl) return `<div class="sh"><table><tr><td>${box && box.clubs ? 'No box score' : 'Loading the box score...'}</td></tr></table></div>`;
   const sk = cl.skaters.slice().sort((x, y) => (PO[x.position] ?? 9) - (PO[y.position] ?? 9));
-  const sg = (v) => (v > 0 ? '+' + v : v);
-  const rows = sk.map((x) => `<tr><td>${esc(x.name)}</td><td class="pos">${esc(x.position)}</td><td>${x.rating}</td><td>${x.goals}</td><td>${x.assists}</td><td class="p">${x.points}</td><td>${sg(x.plusMinus)}</td><td>${x.pim}</td><td>${x.shots}</td><td>${x.hits}</td><td>${x.blocks}</td><td>${x.takeaways}</td><td>${x.giveaways}</td><td>${x.passes}</td></tr>`).join('');
   const t = cl.totals || {};
-  const gk = (cl.goalies || []).map((x) => `<tr><td>${esc(x.name)}</td><td>${x.rating}</td><td class="p hl">${x.savePct}%</td><td>${(+x.gaa).toFixed(2)}</td><td>${x.saves}</td><td>${x.shots}</td><td>${x.ga}</td><td>${x.breakawaySaves}/${x.breakawayShots}</td><td>${x.penaltyShotSaves}/${x.penaltyShots}</td></tr>`).join('');
-  return `<div class="sh"><table><thead><tr><th>Player</th><th>POS</th><th>RTG</th><th>G</th><th>A</th><th>P</th><th>+/-</th><th>PIM</th><th>S</th><th>H</th><th>B</th><th>TK</th><th>GV</th><th>PAS</th></tr></thead>
-    <tbody>${rows}<tr class="tot"><td>TOTALS</td><td></td><td></td><td>${t.goals}</td><td>${t.assists}</td><td>${t.points}</td><td></td><td>${t.pim}</td><td>${t.shots}</td><td>${t.hits}</td><td>${t.blocks}</td><td>${t.takeaways}</td><td>${t.giveaways}</td><td>${t.passes}</td></tr></tbody></table></div>
-    ${gk ? `<div class="sh"><table><thead><tr><th>Goalie</th><th>RTG</th><th>SV%</th><th>GAA</th><th>SV</th><th>SA</th><th>GA</th><th>BRK</th><th>PS</th></tr></thead><tbody>${gk}</tbody></table></div>` : ''}`;
+  const sc = keepCols(SKC, 128 + 42);
+  const cell = (c, v) => `<td${c[3] ? ` class="${c[3]}"` : ''}>${v}</td>`;
+  const skaters = `<div class="sh"><table><thead><tr><th>Player</th><th>POS</th>${sc.map((c) => `<th data-r="${c[2]}">${c[0]}</th>`).join('')}</tr></thead>
+    <tbody>${sk.map((x) => `<tr><td>${esc(x.name)}</td><td class="pos">${esc(x.position)}</td>${sc.map((c) => cell(c, c[1](x))).join('')}</tr>`).join('')}
+    <tr class="tot"><td>TOTALS</td><td></td>${sc.map((c) => `<td>${TOT[c[0]] ? t[TOT[c[0]]] : ''}</td>`).join('')}</tr></tbody></table></div>`;
+  const gc = keepCols(GKC, 128);
+  const goalies = (cl.goalies || []).length
+    ? `<div class="sh"><table><thead><tr><th>Goalie</th>${gc.map((c) => `<th data-r="${c[2]}">${c[0]}</th>`).join('')}</tr></thead>
+    <tbody>${cl.goalies.map((x) => `<tr><td>${esc(x.name)}</td>${gc.map((c) => cell(c, c[1](x))).join('')}</tr>`).join('')}</tbody></table></div>` : '';
+  return skaters + goalies;
 }
 function gameCard(g, box) {
   const top = starsOf(box);
@@ -223,7 +260,7 @@ function pumpBox() {
 }
 function refreshGame(mid) {
   const i = items.findIndex((it) => it.kind === 'game' && String(it.g.matchId) === String(mid));
-  if (i >= 0 && els[i]) els[i].innerHTML = renderItem(items[i]) + backCard(items[i]);
+  if (i >= 0 && els[i]) { els[i].innerHTML = renderItem(items[i]) + backCard(items[i]); fitSheets(els[i]); }
 }
 // only the cards around the active one (a season is 60 games: never all of them)
 function queueBoxes() {
@@ -289,7 +326,7 @@ function build() {
     const e = document.createElement('div');
     e.className = 'it ' + (it.kind === 'game' ? it.g.res : it.kind === 'night' ? (it.u.status === 'published' && it.u.pos ? 'IN' : 'UP') : '');
     e.innerHTML = renderItem(it) + backCard(it);
-    deck.appendChild(e); return e;
+    deck.appendChild(e); fitSheets(e); return e;
   });
   const sc = $('sc'), track = $('track');
   track.style.height = ((items.length - 1) * STEP() + sc.clientHeight) + 'px';
@@ -304,6 +341,7 @@ document.addEventListener('click', (e) => {
   card.querySelectorAll('.tt button').forEach((x) => x.classList.toggle('on', x === b));
   const g = D.games.find((x) => String(x.matchId) === mid);
   body.innerHTML = sheet(g, BOX[mid], b.dataset.side);
+  fitSheets(card);
 });
 function paint() {
   const sc = $('sc'), step = STEP();

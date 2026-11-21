@@ -185,6 +185,10 @@ function seasonCard() {
     for (const u of ups.filter((x) => x.status === 'published' && x.pos)) {
       al += `<div class="al pl"><div><b>You're playing ${LONG[u.dow]} ${u.mon} ${ord(u.day)} at ${esc((u.playing && u.playing.length ? u.playing : u.hours.map((x) => x.h)).join(' / '))}</b><span>${esc(POS[u.pos] || u.pos)}${u.opp ? ' vs ' + esc(u.opp) : ''}</span></div><button data-go="${u.nightId}">View</button></div>`;
     }
+    // the notifications are what tells him about a lineup or an availability to give (elvis, Nov 21)
+    if (D.managed !== false && D.notify && !D.notify.on) {
+      al += `<div class="al todo"><div><b>Notifications are off</b><span>${D.notify.subscribed ? 'Availability and lineup are switched off.' : "You won't be told when you are in a lineup or when to answer."}</span></div><a class="alb" href="/?notify=1">Turn on</a></div>`;
+    }
     if (D.managed === false) al += `<div class="al nm2"><div class="nm">${NOT_MANAGED}</div></div>`;
     const un = ups.filter((x) => x.answer == null);
     if (un.length) al += `<div class="al todo"><div><b>Enter your availability</b><span>${un.length} night${un.length > 1 ? 's' : ''} still need${un.length > 1 ? '' : 's'} your answer</span></div><button data-go="${un[0].nightId}">Set it now</button></div>`;

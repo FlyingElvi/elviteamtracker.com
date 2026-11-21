@@ -60,7 +60,7 @@ function crest(logo, name) {
 }
 const logoOf = (box, us) => ((box && box.clubs) || []).find((c) => (c.clubId === D.club) === us)?.logo || null;
 function starsOf(box) {
-  return ((box && box.stars) || []).slice(0, 3).map((s, i) => `<span class="s${i + 1}">&#9733; ${esc(s.name)} <em>${esc(s.detail)}</em></span>`).join('');
+  return ((box && box.stars) || []).slice(0, 3).map((s, i) => `<span class="s${i + 1}" title="${esc(s.name)}">&#9733; ${esc(sn(s.name))} <em>${esc(s.detail)}</em></span>`).join('');
 }
 const PO = { LW: 0, C: 1, RW: 2, LD: 3, RD: 4, D: 5 };
 function sheet(g, box, side) {

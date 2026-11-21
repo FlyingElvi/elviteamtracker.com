@@ -66,3 +66,6 @@ html.app .mlg .top{padding-top:10px}
 .mlg .it .in > .body::-webkit-scrollbar{width:3px}
 .mlg .sh::-webkit-scrollbar-track,.mlg .it .in > .body::-webkit-scrollbar-track{background:transparent}
 .mlg .sh::-webkit-scrollbar-thumb,.mlg .it .in > .body::-webkit-scrollbar-thumb{background:var(--ac);border-radius:3px}
+/* the three stars on one line (elvis, Nov 21), short names like the lineup; it wraps only if a name is long */
+.mlg .stars{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:2px 12px}
+.mlg .stars span{white-space:nowrap}

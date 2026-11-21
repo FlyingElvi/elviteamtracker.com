@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- The stream overlay's score ticker (Nov 17, elvis): an OBS browser
+       source along the bottom of the band, 1664 wide by default. The
+       Furballs' primary and affiliate games posted in their discord, newest
+       first, scrolling left in a loop (/stream/scores).
+       ?speed=<px/s> (default 70), ?bg=transparent. -->
+  <meta name="robots" content="noindex">
+  <title>Stream scores — Elvi's Team Tracker</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; }
+    body { background: #060a14; color: #e8eef8;
+           font-family: 'Bahnschrift SemiBold Condensed', 'Bahnschrift Condensed', Bahnschrift, 'Arial Narrow', sans-serif;
+           font-size: 19px; line-height: 1; }
+    body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+                   background: rgba(79, 195, 247, .55); }
+    body.clear { background: transparent; }
+    body.clear::before { display: none; }
+    .bar { position: absolute; inset: 0; display: flex; align-items: center; }
+    .tag { flex: none; height: 100%; display: flex; align-items: center; padding: 0 14px;
+           background: #4fc3f7; color: #06101e; font-weight: bold; letter-spacing: .12em; font-size: 15px;
+           position: relative; z-index: 1; }
+    .view { flex: 1; height: 100%; overflow: hidden; position: relative;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent); }
+    .reel { position: absolute; top: 0; bottom: 0; left: 0; display: flex; align-items: center;
+            white-space: nowrap; will-change: transform; }
+    .g { display: inline-flex; align-items: center; gap: 8px; padding: 0 22px; position: relative; }
+    .g::after { content: ''; position: absolute; right: 0; top: 50%; width: 4px; height: 4px; margin-top: -2px;
+                border-radius: 50%; background: #3a4a66; }
+    /* a club's name opens its games; the separator dot stays between games */
+    .club { color: #fff; text-transform: uppercase; letter-spacing: .04em; padding: 0 4px 0 34px; }
+    .club.primary { color: #4fc3f7; }
+    .club + .g { padding-left: 12px; }
+    .r { font-size: 13px; font-weight: bold; padding: 3px 5px 2px; border-radius: 3px; color: #06101e; }
+    .r.W { background: #4ade80; } .r.L { background: #f87171; } .r.OTL { background: #fbbf24; }
+    .us { color: #fff; }
+    .s { color: #4fc3f7; font-variant-numeric: tabular-nums; }
+    .opp { color: #9fb0c8; }
+    .t { color: #5d6f8c; font-size: 14px; }
+    .empty { padding: 0 22px; color: #9fb0c8; }
+  </style>
+</head>
+<body>
+<div class="bar"><div class="tag">SCORES</div><div class="view"><div class="reel" id="reel"></div></div></div>
+<script type="module" src="scores.js?v=5bee1ea58d"></script>
+</body>
+</html>

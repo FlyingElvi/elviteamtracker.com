@@ -477,5 +477,6 @@ const wantNight = new URLSearchParams(location.search).get('night');
 get('/me/leagues' + (wantNight && /^\d{1,12}$/.test(wantNight) ? `?night=${wantNight}` : '')).then((ix) => {
   IDX = ix;
   if (!IDX.seasons.length) { $('rec').textContent = 'No league games yet this era.'; $('today').style.display = 'none'; return; }
-  return ix.focus ? pick(ix.focus, false, ix.focusNight) : pick(IDX.seasons[0].seasonId);
+  // a load lands on the front page of the deck (elvis, Nov 21); a notification's link lands on its night
+  return ix.focus ? pick(ix.focus, true, ix.focusNight) : pick(IDX.seasons[0].seasonId, true);
 }).catch(() => { $('rec').textContent = 'Could not load your leagues. Try again in a minute.'; });

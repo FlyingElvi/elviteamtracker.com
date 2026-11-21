@@ -239,7 +239,12 @@ function fit() {
   const under = document.querySelector('.mlg .mlnav').offsetHeight + $('pos').offsetHeight + 4;
   const tabs = document.querySelector('.app-tabs');
   const room = innerHeight - top - under - (tabs ? tabs.getBoundingClientRect().height + 2 : 12);
-  g.style.setProperty('--s', Math.max(0.5, Math.min(1, room / 740)).toFixed(3));
+  // Text no smaller than 85% of its design size (elvis, Nov 21: smaller than My clubs): when the room is short
+  // the CARD gets shorter instead (its box score scrolls inside), the scale stays at 85%.
+  let s = room / 740, ch = 570;
+  if (s < 0.85) { s = 0.85; ch = Math.max(380, Math.floor(room / s - 170)); }
+  g.style.setProperty('--s', Math.min(1, s).toFixed(3));
+  g.style.setProperty('--ch', ch + 'px');
 }
 // the header can still grow after the first draw (the css arrives after this file, a league note wraps):
 // fit again whenever it changes, and keep the scroll track the deck's height

@@ -140,7 +140,7 @@ const weekOfLabel = (t) => (String(t || '').split(/ - | \u00b7 /)[0].trim() || '
 function divCard(n) {
   const w = n.games.filter((g) => g.res === 'W').length, l = n.games.length - w;
   const pills = n.games.map((g) => `<i class="${g.res}">${g.gf}-${g.ga}</i>`).join('');
-  return `${wkTab(n, `${n.dow.toUpperCase()} ${n.mon.toUpperCase()} ${n.day}`)}<div class="in dv"><div class="big">${n.dow.toUpperCase()} ${n.mon.toUpperCase()} ${n.day}</div>
+  return `${wkTab(n, `${n.dow.toUpperCase()} ${n.mon.toUpperCase()} ${n.day}`)}<div class="in dv">
     <div class="d2">${n.games.length} GAME${n.games.length > 1 ? 'S' : ''}</div>
     <div class="r2">${w}-${l}</div><div class="gms">${pills}</div></div>`;
 }
@@ -207,7 +207,7 @@ function refreshSeason() { if (els[0]) els[0].innerHTML = seasonCard() + backCar
 const NOT_MANAGED = `Availability and lineup are not managed by<span class="ett"><img src="/assets/logo-64.png" alt="">Elvi's Team Tracker</span>for this team. You may want to contact your team to use it.`;
 function calNightCard(n) {
   const dt = `${n.dow.toUpperCase()} ${n.mon.toUpperCase()} ${n.day}`;
-  return `${wkTab(n, dt)}<div class="in dv"><div class="big">${dt}</div><div class="d2">${n.games.length} GAME${n.games.length > 1 ? 'S' : ''} SCHEDULED</div>
+  return `${wkTab(n, dt)}<div class="in dv"><div class="d2">${n.games.length} GAME${n.games.length > 1 ? 'S' : ''} SCHEDULED</div>
     <div class="gms">${n.games.map((g) => `<i class="cl">${esc(g.time || 'TBD')}</i>`).join('')}</div></div>`;
 }
 function calCard(c) {

@@ -95,3 +95,5 @@ html.app .mlg .top{padding-top:10px}
 .mlg .sh table{font-size:11.5px}
 .mlg .sh th,.mlg .sh td{padding:2px 4px}
 .mlg .tt button{padding-top:6px;padding-bottom:6px}
+/* the title sits closer to the header (PC) */
+.mlg .top{padding-top:8px}

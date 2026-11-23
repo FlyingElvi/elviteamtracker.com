@@ -236,7 +236,9 @@ html.app .home-cardcol .home-me h1 { display: none; }
    buttons; Last games last -- it is secondary, and My player has it all. */
 html.app .home-grid { display: flex; flex-direction: column; gap: 20px; }
 html.app .home-side { display: contents; }
-html.app .home-scout { order: 0; align-self: flex-end; margin: 0 0 -8px; }
+/* No row of its own in the app (Nov 23, elvis: the card went down): on the club's line, right */
+html.app .home-grid { position: relative; }
+html.app .home-scout { position: absolute; top: -4px; right: 0; margin: 0; }
 html.app .home-cardcol { order: 1; }
 /* site.css gives "section + section" 52px on top: the panel follows the
    games in the DOM, so it carried that air above it in the app. */

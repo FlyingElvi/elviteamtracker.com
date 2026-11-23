@@ -119,7 +119,18 @@ function sheet(g, box, side) {
     <tbody>${cl.goalies.map((x) => `<tr><td>${esc(x.name)}</td>${gc.map((c) => cell(c, c[1](x))).join('')}</tr>`).join('')}</tbody></table></div>` : '';
   return skaters + goalies;
 }
+// A game ruled a forfeit (Nov 23): no EA match, so no score, no box score
+function forfeitCard(g) {
+  const who = { us: `${D.clubName} forfeited`, them: `${g.opp} forfeited`, both: 'Both teams forfeited' }[g.forfeitSide] || 'Forfeit';
+  return `<div class="in"><div class="strip"><span><b>${g.dow.toUpperCase()} ${g.mon.toUpperCase()} ${g.day}</b>${g.time ? ` &middot; ${esc(g.time)}` : ''}</span><span>WEEK ${g.week ?? '?'} &middot; G${g.gameNo ?? ''}</span></div>
+    <div class="mu"><div class="tm">${crest(null, D.clubName)}${esc(D.clubName)}</div>
+      <div class="sc"><span></span><span class="fl">FORFEIT</span><span></span></div>
+      <div class="tm">${crest(null, g.opp)}${esc(g.opp)}</div></div>
+    <div class="sog"><span></span><span>${g.res === 'W' ? 'WIN' : 'LOSS'} BY FORFEIT</span><span></span></div>
+    <div class="stars"><div class="d2" style="text-align:center;padding:24px 8px">${esc(who)}${g.forfeitReason ? ` &middot; ${esc(g.forfeitReason)}` : ''}</div></div></div>`;
+}
 function gameCard(g, box) {
+  if (g.forfeit) return forfeitCard(g);
   const top = starsOf(box);
   const pct = g.sf && g.sa ? Math.round(100 * g.sf / (g.sf + g.sa)) : 50;
   const oppName = (box?.clubs || []).find((c) => c.clubId !== D.club)?.name || g.opp;
@@ -232,8 +243,8 @@ function backCard(it) {
   let l, r, big = '', sub = '';
   if (it.kind === 'game') {
     const g = it.g;
-    l = `${g.me ? '&#9733; ' : ''}${g.dow.toUpperCase()} ${g.mon.toUpperCase()} ${g.day} &middot; ${esc(g.time)}`; r = `${g.gf}-${g.ga} ${g.res}`;
-    big = `${g.dow.toUpperCase()} ${g.mon.toUpperCase()} ${g.day}`; sub = `${esc(g.time)} &middot; vs ${esc(g.opp)}`;
+    l = `${g.me ? '&#9733; ' : ''}${g.dow.toUpperCase()} ${g.mon.toUpperCase()} ${g.day}${g.time ? ` &middot; ${esc(g.time)}` : ''}`; r = g.forfeit ? `FORFEIT ${g.res}` : `${g.gf}-${g.ga} ${g.res}`;
+    big = `${g.dow.toUpperCase()} ${g.mon.toUpperCase()} ${g.day}`; sub = `${g.time ? `${esc(g.time)} &middot; ` : ''}vs ${esc(g.opp)}`;
   } else if (it.kind === 'div') {
     const n = it.n, w = n.games.filter((x) => x.res === 'W').length;
     l = `${n.dow.toUpperCase()} ${n.mon.toUpperCase()} ${n.day}`; r = `${w}-${n.games.length - w}`;
@@ -278,7 +289,7 @@ function refreshGame(mid) {
 function queueBoxes() {
   const c = cur();
   for (let i = Math.max(0, c - 2); i <= Math.min(items.length - 1, c + 3); i++) {
-    if (items[i] && items[i].kind === 'game') wantBox(items[i].g.matchId);
+    if (items[i] && items[i].kind === 'game' && !items[i].g.forfeit) wantBox(items[i].g.matchId);
   }
 }
 // the app and a small phone: the whole page must fit (cards, Today, Earlier / Later), so the deck is scaled down

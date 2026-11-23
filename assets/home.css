@@ -155,9 +155,8 @@ a.home-nudge { text-decoration: none; box-sizing: border-box; }
 @media (prefers-reduced-motion: reduce) { .home-nudge { animation: none; } }
 .home-me .sub { margin: 0; }
 /* the club on the left, Scout on the right (Nov 23) */
-.home-subrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; }
 .home-scout {
-  margin-left: auto; padding: 6px 14px; font-size: 14px; font-weight: 600; white-space: nowrap;
+  justify-self: end; margin-top: 4px; padding: 5px 12px; font-size: 13px; font-weight: 600; white-space: nowrap;
   color: var(--accent); text-decoration: none; border: 1px solid var(--accent); border-radius: 999px;
 }
 .home-scout:hover, .home-scout:focus-visible { background: var(--accent-soft); outline: none; }
@@ -237,6 +236,7 @@ html.app .home-cardcol .home-me h1 { display: none; }
    buttons; Last games last -- it is secondary, and My player has it all. */
 html.app .home-grid { display: flex; flex-direction: column; gap: 20px; }
 html.app .home-side { display: contents; }
+html.app .home-scout { order: 0; align-self: flex-end; margin: 0 0 -8px; }
 html.app .home-cardcol { order: 1; }
 /* site.css gives "section + section" 52px on top: the panel follows the
    games in the DOM, so it carried that air above it in the app. */

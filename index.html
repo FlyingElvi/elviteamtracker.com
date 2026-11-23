@@ -21,7 +21,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="/assets/site.css?v=2">
-<link rel="stylesheet" href="/assets/home.css?v=14">
+<link rel="stylesheet" href="/assets/home.css?v=15">
 <!-- Signed in last time: hide the visitor's page until the session answers
      (no flash of "Sign in" for somebody who is). Without JavaScript, the
      visitor's page is what shows. -->
@@ -130,16 +130,14 @@
             <span id="nudge-go">Get your next challenge →</span></span>
         </button>
         <h1 id="me-tag"></h1>
-        <!-- Scout, right on the first screen (Nov 23, elvis): where "signed in as ..." was -->
-        <div class="home-subrow">
-          <p class="sub" id="me-club"></p>
-          <a class="home-scout" id="me-scout" href="/scout/">&#128269; Scout a club</a>
-        </div>
+        <p class="sub" id="me-club"></p>
       </header>
       <div class="home-card" id="card"><p class="home-wait">Loading your card…</p></div>
       <div class="home-faces" id="faces" role="tablist" aria-label="Card faces"></div>
     </section>
     <div class="home-side">
+      <!-- Scout, top right like My clubs (Nov 23, elvis) -->
+      <a class="home-scout" id="me-scout" href="/scout/">&#128269; Scout or track a club</a>
       <section class="home-log" aria-labelledby="log-title">
         <div class="home-log-head">
           <h2 id="log-title">Last games</h2>

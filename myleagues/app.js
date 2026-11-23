@@ -123,9 +123,9 @@ function sheet(g, box, side) {
 function forfeitCard(g) {
   const who = { us: `${D.clubName} forfeited`, them: `${g.opp} forfeited`, both: 'Both teams forfeited' }[g.forfeitSide] || 'Forfeit';
   return `<div class="in"><div class="strip"><span><b>${g.dow.toUpperCase()} ${g.mon.toUpperCase()} ${g.day}</b>${g.time ? ` &middot; ${esc(g.time)}` : ''}</span><span>WEEK ${g.week ?? '?'} &middot; G${g.gameNo ?? ''}</span></div>
-    <div class="mu"><div class="tm">${crest(null, D.clubName)}${esc(D.clubName)}</div>
+    <div class="mu"><div class="tm">${crest(D.logo || null, D.clubName)}${esc(D.clubName)}</div>
       <div class="sc"><span></span><span class="fl">FORFEIT</span><span></span></div>
-      <div class="tm">${crest(null, g.opp)}${esc(g.opp)}</div></div>
+      <div class="tm">${crest(g.logo || null, g.opp)}${esc(g.opp)}</div></div>
     <div class="sog"><span></span><span>${g.res === 'W' ? 'WIN' : 'LOSS'} BY FORFEIT</span><span></span></div>
     <div class="stars"><div class="d2" style="text-align:center;padding:24px 8px">${esc(who)}${g.forfeitReason ? ` &middot; ${esc(g.forfeitReason)}` : ''}</div></div></div>`;
 }

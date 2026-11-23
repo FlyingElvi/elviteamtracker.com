@@ -128,7 +128,9 @@ function drawLink() {
 async function drawMine() {
   drawNudge();
   $('me-tag').textContent = me.gamertag;
-  $('me-club').textContent = me.club?.name ? `${me.club.name} · signed in as ${me.name}` : `Signed in as ${me.name}`;
+  // the avatar already says who is signed in (Nov 23): the club alone, the Scout button on the right
+  $('me-club').textContent = me.club?.name ?? '';
+  $('me-scout').href = `/scout/${apiQ('?')}`;
   $('log-all').href = `/myplayer/${apiQ('?')}`;
 
   // The ways on (My player, Leaderboards, Furball Coins) live in the nav

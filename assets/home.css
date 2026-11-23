@@ -154,6 +154,13 @@ a.home-nudge { text-decoration: none; box-sizing: border-box; }
 }
 @media (prefers-reduced-motion: reduce) { .home-nudge { animation: none; } }
 .home-me .sub { margin: 0; }
+/* the club on the left, Scout on the right (Nov 23) */
+.home-subrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; }
+.home-scout {
+  margin-left: auto; padding: 6px 14px; font-size: 14px; font-weight: 600; white-space: nowrap;
+  color: var(--accent); text-decoration: none; border: 1px solid var(--accent); border-radius: 999px;
+}
+.home-scout:hover, .home-scout:focus-visible { background: var(--accent-soft); outline: none; }
 .home-go { display: flex; gap: 8px; flex-wrap: wrap; }
 .home-go a {
   display: inline-flex;

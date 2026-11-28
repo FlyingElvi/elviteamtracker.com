@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- The ticker builder (Nov 25, elvis): anybody signed in builds a score
+       ticker for his stream -- his discord's clubs, any tracked club, the leagues
+       he follows. The OBS url only carries a code (scores.html?c=CODE). -->
+  <meta name="robots" content="noindex">
+  <title>Build your ticker — Elvi's Team Tracker</title>
+  <meta name="description" content="Build the live score ticker of your stream: your discord's clubs, any club, your leagues.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <meta name="theme-color" content="#0e141b" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#eef1f5" media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .tk-wrap { max-width: 920px; margin: 0 auto; padding: 0 20px 60px; }
+    .tk-head { padding: 40px 0 18px; border-bottom: 1px solid var(--line); }
+    .tk-head h1 { margin: 0; font-size: clamp(28px, 4vw, 40px); line-height: 1.1; letter-spacing: -0.02em; }
+    .tk-head p { margin: 8px 0 0; color: var(--fg-dim); }
+    .tk-gate { margin: 28px 0; }
+    .tk-btn { display: inline-block; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+              border: 1px solid var(--line); background: var(--bg-elev); color: var(--fg);
+              border-radius: 10px; padding: 9px 16px; text-decoration: none; }
+    .tk-btn:hover { border-color: var(--accent); }
+    .tk-btn.primary { background: var(--accent); color: #04121c; border-color: var(--accent); }
+    .tk-btn.danger { color: #f87171; }
+    .tk-btn:disabled { opacity: .5; cursor: default; }
+    .tk-grid { display: grid; grid-template-columns: 220px 1fr; gap: 24px; margin-top: 24px; align-items: start; }
+    @media (max-width: 720px) { .tk-grid { grid-template-columns: 1fr; } }
+    .tk-list { display: flex; flex-direction: column; gap: 8px; }
+    .tk-item { text-align: left; font: inherit; cursor: pointer; border: 1px solid var(--line); background: var(--bg-elev);
+               color: var(--fg); border-radius: 10px; padding: 10px 12px; }
+    .tk-item small { display: block; color: var(--fg-dim); margin-top: 2px; }
+    .tk-item[aria-current="true"] { border-color: var(--accent); }
+    .tk-edit { border: 1px solid var(--line); background: var(--bg-elev); border-radius: 14px; padding: 20px; }
+    .tk-edit h2 { margin: 0 0 14px; font-size: 20px; }
+    .tk-field { margin: 0 0 18px; }
+    .tk-field > label, .tk-field > .lbl { display: block; font-weight: 600; margin-bottom: 4px; }
+    .tk-field .hint { margin: 0 0 8px; color: var(--fg-dim); font-size: 14px; }
+    .tk-field input[type="text"], .tk-field input[type="search"], .tk-field select {
+      width: 100%; box-sizing: border-box; background: var(--bg); color: var(--fg); border: 1px solid var(--line);
+      border-radius: 10px; padding: 9px 12px; font: inherit; font-size: 15px; }
+    .tk-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; }
+    .tk-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--bg);
+               border-radius: 999px; padding: 4px 6px 4px 12px; font-size: 14px; }
+    .tk-chip button { border: 0; background: none; color: var(--fg-dim); cursor: pointer; font-size: 16px; line-height: 1; padding: 0 4px; }
+    .tk-found { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+    .tk-found button { text-align: left; font: inherit; cursor: pointer; border: 1px solid var(--line); background: var(--bg);
+                       color: var(--fg); border-radius: 8px; padding: 7px 10px; }
+    .tk-found button:hover { border-color: var(--accent); }
+    .tk-leagues { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tk-leagues label { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--bg);
+                        border-radius: 999px; padding: 6px 12px; cursor: pointer; font-size: 14px; }
+    .tk-leagues label:has(input:checked) { border-color: var(--accent); background: var(--accent); color: #04121c; font-weight: 600; }
+    .tk-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .tk-note { color: var(--fg-dim); font-size: 14px; min-height: 1.3em; }
+    .tk-url { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .tk-url code { display: block; word-break: break-all; background: var(--bg); border: 1px solid var(--line);
+                   border-radius: 10px; padding: 10px 12px; margin: 6px 0 10px; font-size: 14px; }
+    .tk-url ul { margin: 10px 0 0; padding-left: 20px; color: var(--fg-dim); font-size: 14px; }
+    .tk-url li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="nav-brand" href="/"><img src="/assets/logo-64.png" alt="" width="26" height="26">Elvi's Team Tracker</a>
+  <div class="nav-links">
+    <a href="/">Overview</a>
+    <a href="/changelog/">What's new</a>
+    <a href="/playercards/">Cards</a>
+    <a href="/setup/" data-tail>Add the bot</a>
+  </div>
+</div></nav>
+
+<header class="tk-head"><div class="tk-wrap" style="padding-bottom:0">
+  <h1>Build your ticker</h1>
+  <p>A live score ticker for your stream (an OBS browser source): your discord's clubs, any club you pick,
+  and the leagues you follow — with Elvi's remarks on the big games.</p>
+</div></header>
+
+<main class="tk-wrap" id="app">
+  <p class="tk-note" id="loading">Loading…</p>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p>Elvi's Team Tracker is an independent personal project. Not affiliated with, endorsed by, or
+  connected to Electronic Arts or Discord. EA SPORTS and NHL are trademarks of their respective
+  owners.</p>
+  <p><a href="/changelog/">What's new</a> · <a href="/terms/">Terms of Service</a> · <a href="/privacy/">Privacy Policy</a> · <a href="https://discord.gg/xJgUDyUhtP">Support</a></p>
+</div></footer>
+
+<script type="module" src="ticker.js?v=9883a712ed"></script>
+</body>
+</html>

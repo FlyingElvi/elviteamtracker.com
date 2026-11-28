@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- The stream overlay's card strip (Nov 16, elvis): an OBS browser
+       source, 256x1080 at the left of a 1080p stream, the Xbox 1664x936 to
+       its right. The opted-in Furballs members who played in the last 14
+       days, by OVR, scrolling up in a loop. No nav, no footer: only cards.
+       ?speed=<px/s> (default 40), ?bg=transparent, ?w=<px> (default 256). -->
+  <meta name="robots" content="noindex">
+  <title>Stream cards — Elvi's Team Tracker</title>
+  <style>
+    @font-face { font-family: 'EASSCard'; src: url('fonts/DejaVuSans.ttf') format('truetype');
+                 font-weight: normal; font-display: block; }
+    @font-face { font-family: 'EASSCard'; src: url('fonts/DejaVuSans-Bold.ttf') format('truetype');
+                 font-weight: bold; font-display: block; }
+    html, body { margin: 0; height: 100%; overflow: hidden; }
+    /* the bottom band's navy, so the strip and the band read as one frame */
+    body { background: linear-gradient(180deg, #101a2e, #070b16); }
+    body.clear { background: transparent; }
+    .strip { position: absolute; inset: 0 auto 0 0; overflow: hidden; }
+    .strip::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 3px;
+                    background: #4fc3f7; box-shadow: 0 0 10px #4fc3f7; }
+    body.clear .strip::after { display: none; }
+    .reel { position: absolute; left: 0; right: 0; top: 0; will-change: transform; }
+    .card { display: block; margin: 0 auto; filter: drop-shadow(0 6px 10px rgba(0,0,0,.55)); }
+    .card svg { display: block; width: 100%; height: auto; }
+    .empty { color: #8fa3c0; font: bold 22px EASSCard, sans-serif; text-align: center;
+             position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); }
+  </style>
+</head>
+<body>
+<div class="strip" id="strip"><div class="reel" id="reel"></div></div>
+<script type="module" src="stream.js?v=9883a712ed"></script>
+</body>
+</html>
